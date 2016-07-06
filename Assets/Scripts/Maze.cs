@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Maze : MonoBehaviour {
-	public int sizeX;
-	public int sizeZ;
+	//public int sizeX;
+	//public int sizeZ;
 	public MazeCell cellPrefab;
 	private MazeCell[,] cells;
 
@@ -41,6 +41,9 @@ public class Maze : MonoBehaviour {
 		//sizeZ = 20;
 		//sizeX = 20;
 		MazeCell newCell = Instantiate(cellPrefab) as MazeCell;
+		Debug.Log ("coordinates: " + coordinates.x);
+		Debug.Log ("coordinates: " + coordinates.z);
+		
 		cells[coordinates.x, coordinates.z] = newCell;
 		newCell.coordinates = coordinates;
 		newCell.name = "Maze Cell " + coordinates.x + ", " + coordinates.z;
@@ -95,7 +98,7 @@ public class Maze : MonoBehaviour {
 
 
 	private void CreatePassage (MazeCell cell, MazeCell otherCell, MazeDirection direction) {
-		Debug.Log ("in create passage");
+		//Debug.Log ("in create passage");
 		MazePassage passage = Instantiate(passagePrefab) as MazePassage;
 		passage.Initialize(cell, otherCell, direction);
 		passage = Instantiate(passagePrefab) as MazePassage;
@@ -103,7 +106,7 @@ public class Maze : MonoBehaviour {
 	}
 	
 	private void CreateWall (MazeCell cell, MazeCell otherCell, MazeDirection direction) {
-		Debug.Log ("in create wall");
+		//Debug.Log ("in create wall");
 		MazeWall wall = Instantiate(wallPrefab) as MazeWall;
 		wall.Initialize(cell, otherCell, direction);
 		if (otherCell != null) {
