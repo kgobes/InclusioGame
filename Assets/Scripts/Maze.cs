@@ -98,7 +98,7 @@ public class Maze : MonoBehaviour {
 
 
 	private void CreatePassage (MazeCell cell, MazeCell otherCell, MazeDirection direction) {
-		//Debug.Log ("in create passage");
+		Debug.Log ("in create passage");
 		MazePassage passage = Instantiate(passagePrefab) as MazePassage;
 		passage.Initialize(cell, otherCell, direction);
 		passage = Instantiate(passagePrefab) as MazePassage;
@@ -106,7 +106,7 @@ public class Maze : MonoBehaviour {
 	}
 	
 	private void CreateWall (MazeCell cell, MazeCell otherCell, MazeDirection direction) {
-		//Debug.Log ("in create wall");
+		Debug.Log ("in create wall");
 		MazeWall wall = Instantiate(wallPrefab) as MazeWall;
 		wall.Initialize(cell, otherCell, direction);
 		if (otherCell != null) {
