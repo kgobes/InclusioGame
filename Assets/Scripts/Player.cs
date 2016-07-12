@@ -11,10 +11,11 @@ public class Player : MonoBehaviour {
 	}
 	
 	public void SetLocation (MazeCell cell) {
-//		if(cell is MazeCellEdge)
-
-		currentCell = cell;
-		transform.localPosition = cell.transform.localPosition;
+		//if (cell is MazePassage) {
+			//Debug.Log ("In set location maze passage");
+			currentCell = cell;
+			transform.localPosition = cell.transform.localPosition;
+		//}
 	}
 	
 	private void Move (MazeDirection direction) {
@@ -39,4 +40,20 @@ public class Player : MonoBehaviour {
 			Rotate(currentDirection.GetNextClockwise ());
 		}
 	} 
+
+	void onTriggerEnter(Collider other){
+		Debug.Log ("In on trigger enter for player");
+		if (other.name == "Maze End") {
+			Debug.Log ("In end game! Yay!");
+		}
+	}
+
+
+
+
+
+
+
+
+
 }

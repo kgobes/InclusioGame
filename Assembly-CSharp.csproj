@@ -47,20 +47,28 @@
   <ItemGroup>
      <Compile Include="Assets\Old\ScenarioManager.cs" />
      <Compile Include="Assets\Old\textChange.cs" />
+     <Compile Include="Assets\Scripts\EndGame.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\IntVector2.cs" />
      <Compile Include="Assets\Scripts\Maze.cs" />
      <Compile Include="Assets\Scripts\MazeCell.cs" />
      <Compile Include="Assets\Scripts\MazeCellEdge.cs" />
      <Compile Include="Assets\Scripts\MazeDirection.cs" />
+     <Compile Include="Assets\Scripts\MazeDoor.cs" />
      <Compile Include="Assets\Scripts\MazePassage.cs" />
      <Compile Include="Assets\Scripts\MazeWall.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
