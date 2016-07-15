@@ -1,11 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-/*
- * Issues:
- * -Player is only generated on MazeWalls instead of MazePassages
- * It's a random assortment of blocks,
- */
+
 
 public class Maze : MonoBehaviour {
 	//public int sizeX;

@@ -16,13 +16,13 @@ public class ScenarioManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		title = GameObject.Find ("scenTitle").GetComponent<Text>();
-		scenText = GameObject.Find ("scenText").GetComponent<Text>();
-		opt1 = GameObject.Find ("opt1").GetComponent<Button>();
+//		title = GameObject.Find ("scenTitle").GetComponent<Text>();
+//		scenText = GameObject.Find ("scenText").GetComponent<Text>();
+/*		opt1 = GameObject.Find ("opt1").GetComponent<Button>();
 		opt2 = GameObject.Find ("opt2").GetComponent<Button>();
 		opt3 = GameObject.Find ("opt3").GetComponent<Button>();
 		points = GameObject.Find ("points").GetComponent<Text> ();
-		points.text = "Points: " + score;
+		points.text = "Points: " + score;*/
 
 	}
 	
@@ -32,7 +32,7 @@ public class ScenarioManager : MonoBehaviour {
 	}
 
 	public void StartGame(){
-		Application.LoadLevel ("GameScenarios");
+		Application.LoadLevel ("MazeScene");
 	}
 	public void loadNextScenario(){
 		score++;

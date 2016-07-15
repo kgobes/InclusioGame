@@ -11,4 +11,9 @@ public class EndGame : MazeCell {
 	void Update () {
 	
 	}
+	void OnTriggerEnter(Collider other){
+		Debug.Log ("hey");
+		if (other.name == "player")
+			GUIManager.endOfGame ();
+	}
 }

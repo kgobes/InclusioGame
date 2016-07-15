@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
 		StartCoroutine(BeginGame());
 	}
 	private void Update () {
-		if (Input.GetKeyDown(KeyCode.Space)) {
+		if (Input.GetKeyDown(KeyCode.X)) {
 			RestartGame();
 		}
 	}
@@ -24,17 +24,12 @@ public class GameManager : MonoBehaviour {
 		mazeInstance = Instantiate(mazePrefab) as Maze;
 		yield return StartCoroutine(mazeInstance.Generate());
 		playerInstance = Instantiate(playerPrefab) as Player;
-		MazeCell temp = mazeInstance.GetCell (mazeInstance.RandomCoordinates);
-		Debug.Log (temp);
-		string name = temp.name;
-		//while (temp is Maze) {
-		Debug.Log ("name: "+ name);
+		playerInstance.name = "player";
+		//MazeCell temp = mazeInstance.GetCell (mazeInstance.RandomCoordinates);
 
-		while(name.Contains ("MazeWall")){
-			Debug.Log ("it was a darn wall");
-			temp = mazeInstance.GetCell (mazeInstance.RandomCoordinates);
-		}
-		playerInstance.SetLocation(temp);
+		//temp = mazeInstance.GetCell (mazeInstance.RandomCoordinates);
+		Vector3 sLoc = new Vector3 (0.5f, 0.5f, 0.5f);
+		playerInstance.SetLocation(sLoc);
 		//playerInstance.SetLocation(mazeInstance.GetCell(mazeInstance.RandomCoordinates));
 		//Camera.main.enabled = false;
 		Camera.main.clearFlags = CameraClearFlags.Depth;
