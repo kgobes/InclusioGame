@@ -34,6 +34,9 @@ public class ScenarioManager : MonoBehaviour {
 	public void StartGame(){
 		Application.LoadLevel ("MazeScene");
 	}
+	public void exitStartScreenButton(){
+		Application.LoadLevel ("ChooseCharacter");
+	}
 	public void loadNextScenario(){
 		score++;
 		scenCount++;

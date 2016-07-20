@@ -45,9 +45,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Old\ScenarioManager.cs" />
      <Compile Include="Assets\Old\textChange.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\ChallengeManager.cs" />
+     <Compile Include="Assets\Scripts\ChallengeTemplate.cs" />
      <Compile Include="Assets\Scripts\EndGame.cs" />
      <Compile Include="Assets\Scripts\GUIManager.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -60,6 +61,7 @@
      <Compile Include="Assets\Scripts\MazePassage.cs" />
      <Compile Include="Assets\Scripts\MazeWall.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\ScenarioManager.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

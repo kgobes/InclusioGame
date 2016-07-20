@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MazeDoor : MazePassage {
+public class Challenge : MazePassage {
 	//public Transform hinge;
 
 	// Use this for initialization

@@ -8,7 +8,7 @@ public class Maze : MonoBehaviour {
 	//public int sizeZ;
 	public MazeCell cellPrefab;
 	private MazeCell[,] cells;
-	public MazeDoor doorPrefab;
+	public ChallengeManager chalPrefab;
 	[Range(0f, 1f)]
 	public float doorProbability; //how many intersections do you want?
 
@@ -108,11 +108,22 @@ public class Maze : MonoBehaviour {
 
 
 	private void CreatePassage (MazeCell cell, MazeCell otherCell, MazeDirection direction) {
-		MazePassage prefab = Random.value < doorProbability ? doorPrefab : passagePrefab;
-		MazePassage passage = Instantiate(prefab) as MazePassage;
-		passage.Initialize(cell, otherCell, direction);
-		passage = Instantiate(prefab) as MazePassage;
-		passage.Initialize(otherCell, cell, direction.GetOpposite());
+		MazePassage prefab;
+		if (Random.value < doorProbability) {
+			prefab = chalPrefab;
+			MazePassage passage = Instantiate (prefab) as MazePassage;
+			passage.Initialize (cell, otherCell, direction);
+			passage = Instantiate (prefab) as MazePassage;
+			passage.Initialize (otherCell, cell, direction.GetOpposite ());
+		}
+		else {
+			prefab = passagePrefab;
+			//MazePassage prefab = Random.value < doorProbability ? doorPrefab : passagePrefab;
+			MazePassage passage = Instantiate (prefab) as MazePassage;
+			passage.Initialize (cell, otherCell, direction);
+			passage = Instantiate (prefab) as MazePassage;
+			passage.Initialize (otherCell, cell, direction.GetOpposite ());
+		}
 	}
 	
 	private void CreateWall (MazeCell cell, MazeCell otherCell, MazeDirection direction) {
