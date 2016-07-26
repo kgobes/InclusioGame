@@ -2,7 +2,7 @@
 using System.Collections;
 //template for all challenges
 
-public class ChallengeTemplate {
+public class ChallengeTemplate: MazePassage {
 	public int number;
 	public string story;
 	public string question;

@@ -1,29 +1,38 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GUIManager : MonoBehaviour {
-	static GUIText finished;
-	public GUIText story;
-	public int timer = 0;
-	public int partTime = 0;
-	public int score;
+
+	public static Text eventText;
+	public static Image textPanel;
+
 	// Use this for initialization
 	void Start () {
 		//finished = GameObject.Find ("Finished").GetComponent<GUIText>();
 		//finished.active = false;
 		//finished = GameObject.Find ("story").GetComponent<GUIText>();
+
+		eventText = GameObject.Find ("EventText").GetComponent<Text>();
+		textPanel = GameObject.Find ("TextPanel").GetComponent <Image>();
+		textPanel.gameObject.SetActive (false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		partTime += 1;
-		if (partTime == 60) {
-			timer += 1;
-			//story = "new";
-			partTime = 0;
-
-		}
+	
 	}
+
+	public static void displayText(string text){
+		textPanel.gameObject.SetActive (true);
+		eventText.text = text;
+	}
+	public void clickContinue(){
+		Player p = GameObject.Find ("player").GetComponent<Player>();
+		textPanel.gameObject.SetActive (false);
+		//p.canMove (true);
+	}
+
 	public static void endOfGame(){
 		Debug.Log ("in eog");
 		Application.LoadLevel ("StartScreen");

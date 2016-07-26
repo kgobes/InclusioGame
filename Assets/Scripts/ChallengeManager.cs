@@ -5,10 +5,17 @@ using System.Collections;
 public class ChallengeManager : MazePassage {
 	//public Challenge chal;
 	//public Transform hinge;
+	//public Text eventText;
+	//public Image textPanel;
 
 	// Use this for initialization
 	void Start () {
+		/*eventText = GameObject.Find ("EventText").GetComponent<Text>();
+		textPanel = GameObject.Find ("TextPanel").GetComponent <Image>();
+		textPanel.gameObject.SetActive (false);*/
 		initializeChallenges ();
+
+
 	}
 	
 	// Update is called once per frame
@@ -20,13 +27,21 @@ public class ChallengeManager : MazePassage {
 	}
 	void OnTriggerEnter(Collider other){
 		if (other.name == "player") {
-			displayNextChallenge ();
+			Debug.Log ("Collision with player and event");
+			Player p = GameObject.Find ("player").GetComponent <Player>();
+			//p.canMove (false);
+			GUIManager.displayText("Heyo");
+			Destroy (this.gameObject);
+			//textPanel.gameObject.SetActive (true);
+			//eventText.text = "Yooo this will be some interesting scenario thing";
 		}
 	}
+
 	void displayNextChallenge(){
 		//Panel panel = new Panel ();
-	//	CreateButton 
 	}
+
+
 	/*public void CreateButton(Transform panel ,Vector3 position, Vector2 size, UnityEngine.Events.UnityAction method)
 	{
 		GameObject button = new GameObject();

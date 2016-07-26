@@ -8,7 +8,7 @@ public class Maze : MonoBehaviour {
 	//public int sizeZ;
 	public MazeCell cellPrefab;
 	private MazeCell[,] cells;
-	public ChallengeManager chalPrefab;
+	public ChallengeManager eventPrefab;
 	[Range(0f, 1f)]
 	public float doorProbability; //how many intersections do you want?
 
@@ -110,7 +110,7 @@ public class Maze : MonoBehaviour {
 	private void CreatePassage (MazeCell cell, MazeCell otherCell, MazeDirection direction) {
 		MazePassage prefab;
 		if (Random.value < doorProbability) {
-			prefab = chalPrefab;
+			prefab = eventPrefab;
 			MazePassage passage = Instantiate (prefab) as MazePassage;
 			passage.Initialize (cell, otherCell, direction);
 			passage = Instantiate (prefab) as MazePassage;

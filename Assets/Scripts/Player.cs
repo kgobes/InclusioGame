@@ -4,11 +4,13 @@ public class Player : MonoBehaviour {
 	
 	private MazeCell currentCell;
 	private MazeDirection currentDirection;
+	CharacterController controller;
 
 	//attempt to implement character controller
 	//public CameraFollow camPrefab;
 	public float acceleration=1f;
 	public float jumpHeight = 10f;
+	public bool canMoveAround = true;
 //	Vector3 newPos = new Vector3 (0f,0f,0f); 
 	public float TerminalVelocity = -20f;
 	public float speed = 4.0F;
@@ -45,7 +47,7 @@ public class Player : MonoBehaviour {
 	}*/
 	void Update() {
 
-		CharacterController controller = GetComponent<CharacterController> ();
+		controller = GetComponent<CharacterController> ();
 		//if (controller.isGrounded) { //*FIX DISSSSS**
 		//	Debug.Log ("In grounded");
 			
@@ -69,36 +71,18 @@ public class Player : MonoBehaviour {
 				Rotate (currentDirection.GetNextClockwise ());
 			}
 			moveDirection.y -= gravity * Time.deltaTime;
+			if (!canMoveAround) {
+				//moveDirection = new Vector3 (0, 0, 0);
+			}
 			controller.Move (moveDirection * Time.deltaTime);
 		//}
 	}
 
 	
-		/*private void Update () {//Q and E for rotate, WASD for moving
-		if (Input.GetKeyDown (KeyCode.W) || Input.GetKeyDown (KeyCode.UpArrow)) {
-			//Move (currentDirection);
-			newPos.y += gravity*Time.deltaTime;
-		} else if (Input.GetKeyDown (KeyCode.D) || Input.GetKeyDown (KeyCode.RightArrow)) {
-			Move (currentDirection.GetNextClockwise ());
-		} else if (Input.GetKeyDown (KeyCode.S) || Input.GetKeyDown (KeyCode.DownArrow)) {
-			Move (currentDirection.GetOpposite ());
-		} else if (Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.LeftArrow)) {
-			Move (currentDirection.GetNextCounterclockwise ());
-		} else if (Input.GetKeyDown (KeyCode.Q)) {
-			Rotate(currentDirection.GetNextCounterclockwise ());
-		} else if (Input.GetKeyDown (KeyCode.E)) {
-			Rotate(currentDirection.GetNextClockwise ());
-		}
-		Move (newPos);
-	} */
-		//TRIGGER
-	/*void OnCollisionColliderHit(Collider other){
-		Debug.Log ("In on trigger enter for player");
-		if (other.name == "Maze End") {
-			Debug.Log ("In end game! Yay!");
-		}
-	}*/
-
+		
+	public void canMove(bool canMoveAround){
+		this.canMoveAround = canMoveAround;
+	}
 
 
 
