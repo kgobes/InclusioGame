@@ -111,10 +111,11 @@ public class Maze : MonoBehaviour {
 		MazePassage prefab;
 		if (Random.value < doorProbability) {
 			prefab = eventPrefab;
-			MazePassage passage = Instantiate (prefab) as MazePassage;
-			passage.Initialize (cell, otherCell, direction);
-			passage = Instantiate (prefab) as MazePassage;
-			passage.Initialize (otherCell, cell, direction.GetOpposite ());
+			MazePassage chal = Instantiate (prefab) as ChallengeManager;
+			chal.Initialize (cell, otherCell, direction);
+			prefab = passagePrefab;
+			chal = Instantiate (prefab) as MazePassage;
+			chal.Initialize (otherCell, cell, direction.GetOpposite ());
 		}
 		else {
 			prefab = passagePrefab;

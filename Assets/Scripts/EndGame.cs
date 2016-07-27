@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class EndGame : MazeCell {
+	public int myTime;
 	// Use this for initialization
 	void Start () {
 	
@@ -11,9 +13,31 @@ public class EndGame : MazeCell {
 	void Update () {
 	
 	}
-	void OnTriggerEnter(Collider other){
+	public void OnTriggerEnter(Collider other){
 		Debug.Log ("hey");
-		if (other.name == "player")
-			GUIManager.endOfGame ();
+		if (other.name == "player") {
+			//GUIManager.endOfGame ();
+			GameManager.pauseTime ();
+			myTime = GameManager.getTime ();
+			setTime (myTime);
+			Application.LoadLevel ("EndScene");
+
+		}
 	}
+	public void OnLevelWasLoaded(int level) {
+		if (level == 5) {
+			Debug.Log ("time: " + getTime ());
+			Text timeText = GameObject.Find ("endTime").GetComponent<Text>();
+			timeText.text = "" + getTime ();
+		}
+	}
+	public void setTime(int t){
+		myTime = t;
+	}
+	public int getTime(){
+		return myTime;
+	}
+
+
+
 }

@@ -6,10 +6,12 @@ public class GameManager : MonoBehaviour {
 	public Maze mazePrefab;
 	private Maze mazeInstance;
 
-	public int timer = 0;
+	public static int timer = 0;
 	public int partTime = 0;
-	public bool gameStarted;
+	public static bool gameStarted;
 	public Text timeText;
+
+	public Image textPanel;
 
 	//player
 	public Player playerPrefab;
@@ -21,6 +23,8 @@ public class GameManager : MonoBehaviour {
 		partTime = 0;
 		gameStarted = false;
 		StartCoroutine(BeginGame());
+		textPanel = GameObject.Find ("TextPanel").GetComponent <Image>();
+		textPanel.gameObject.SetActive (false);
 	}
 	private void Update () {
 		if (Input.GetKeyDown(KeyCode.X)) {
@@ -35,7 +39,13 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 	}
-	
+
+	public static void pauseTime(){
+		gameStarted = false;
+	}
+	public static void continueTime(){
+		gameStarted = true;
+	}
 	private IEnumerator BeginGame () {
 		Camera.main.clearFlags = CameraClearFlags.Skybox;
 		Camera.main.rect = new Rect(0f, 0f, 1f, 1f);
@@ -67,7 +77,7 @@ public class GameManager : MonoBehaviour {
 	public void setGameStarted(bool s){
 		gameStarted = s;
 	}
-	public int getTime(){
+	public static int getTime(){
 		return timer;
 	}
 }

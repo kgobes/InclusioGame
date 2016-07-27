@@ -9,27 +9,26 @@ public class GUIManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//finished = GameObject.Find ("Finished").GetComponent<GUIText>();
-		//finished.active = false;
-		//finished = GameObject.Find ("story").GetComponent<GUIText>();
-
 		eventText = GameObject.Find ("EventText").GetComponent<Text>();
 		textPanel = GameObject.Find ("TextPanel").GetComponent <Image>();
-		textPanel.gameObject.SetActive (false);
+		//textPanel.gameObject.SetActive (false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
 
+	}
+	public static Rect windowRect = new Rect(20, 20, 120, 50);
 	public static void displayText(string text){
+		Debug.Log ("in Display Text");
 		textPanel.gameObject.SetActive (true);
 		eventText.text = text;
 	}
 	public void clickContinue(){
 		Player p = GameObject.Find ("player").GetComponent<Player>();
+		p.canMove (true);
 		textPanel.gameObject.SetActive (false);
+		GameManager.continueTime ();
 		//p.canMove (true);
 	}
 

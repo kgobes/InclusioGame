@@ -51,31 +51,26 @@ public class Player : MonoBehaviour {
 		//if (controller.isGrounded) { //*FIX DISSSSS**
 		//	Debug.Log ("In grounded");
 			
-			moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
-			moveDirection = transform.TransformDirection (moveDirection);
-			moveDirection *= speed;
-			if(controller.isGrounded){
+		moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
+		moveDirection = transform.TransformDirection (moveDirection);
+		moveDirection *= speed;
+		if(controller.isGrounded){
 			if (Input.GetButton ("Jump")) {
 				Debug.Log("In Jump");
 				moveDirection.y += jumpHeight;
-				}}
-			if (Input.GetKeyDown (KeyCode.Q)) {
-				Debug.Log ("In Key Q");
-				//transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
-				Rotate (currentDirection.GetNextCounterclockwise ());
-			} 
-			if (Input.GetKeyDown (KeyCode.E)) {
-				Debug.Log("In Key E");
-				//transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
-
-				Rotate (currentDirection.GetNextClockwise ());
-			}
-			moveDirection.y -= gravity * Time.deltaTime;
-			if (!canMoveAround) {
-				//moveDirection = new Vector3 (0, 0, 0);
-			}
+				}
+		}
+		if (Input.GetKeyDown (KeyCode.Q)) {
+			//transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
+			Rotate (currentDirection.GetNextCounterclockwise ());
+		} 
+		if (Input.GetKeyDown (KeyCode.E)) {
+			//transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
+			Rotate (currentDirection.GetNextClockwise ());
+		}
+		moveDirection.y -= gravity * Time.deltaTime;
+		//if (canMoveAround)
 			controller.Move (moveDirection * Time.deltaTime);
-		//}
 	}
 
 	
