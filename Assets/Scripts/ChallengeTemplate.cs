@@ -3,22 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 //template for all challenges
 
-public class ChallengeTemplate {
+public class ChallengeTemplate { 
 	public int number;
 	public string story;
-	public string question;
-	public string op1;
-	public string op2;
-	public string op3;
-	public List<string> options = new List<string> ();
+	public bool dependent; 
 
-	public ChallengeTemplate(int number, string story){
+	public List<Option> options = new List<Option> ();
+
+	public ChallengeTemplate(int number, string story, bool dep){
 		this.number = number;
 		this.story = story;
-		/*this.question = question;
-		this.op1 = op1;
-		this.op2 = op2;
-		this.op3 = op3;*/
+		dependent = dep;
+
 	}
 
 	public int getNumber(){
@@ -27,7 +23,11 @@ public class ChallengeTemplate {
 	public string getStory(){
 		return story;
 	}
-	public void addOption(string op){
-		options.Add(op);
+	public void addOption(string buttonText, int num){
+		Option x = new Option (buttonText, num);
+		options.Add (x);
+	}
+	public List<Option> getOptionList(){
+		return options;
 	}
 }

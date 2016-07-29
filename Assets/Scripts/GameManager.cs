@@ -46,6 +46,9 @@ public class GameManager : MonoBehaviour {
 	public static void continueTime(){
 		gameStarted = true;
 	}
+	public static void changeTime(int increment){
+		timer += increment;
+	}
 	private IEnumerator BeginGame () {
 		Camera.main.clearFlags = CameraClearFlags.Skybox;
 		Camera.main.rect = new Rect(0f, 0f, 1f, 1f);
@@ -56,7 +59,10 @@ public class GameManager : MonoBehaviour {
 		//MazeCell temp = mazeInstance.GetCell (mazeInstance.RandomCoordinates);
 
 		//temp = mazeInstance.GetCell (mazeInstance.RandomCoordinates);
-		Vector3 sLoc = new Vector3 (0.5f, 0.5f, 0.5f);
+		//Vector3 sLoc = new Vector3 (0.5f, 0.5f, 0.5f);
+		Vector3 sLoc = new Vector3 (-(Maze.size.x-1)/2, 0.5f, -(Maze.size.z-1)/2);
+		//Vector3 sLoc = new Vector3 (-2f, 0f, -2f);
+		//Debug.Log (-(mazeInstance.size.x - 1) + " and " + -(mazeInstance.size.z-1));
 		playerInstance.SetLocation(sLoc);
 		//playerInstance.SetLocation(mazeInstance.GetCell(mazeInstance.RandomCoordinates));
 		//Camera.main.enabled = false;

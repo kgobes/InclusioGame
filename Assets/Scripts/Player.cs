@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
 //	Vector3 newPos = new Vector3 (0f,0f,0f); 
 	public float TerminalVelocity = -20f;
 	public float speed = 4.0F;
+	public float rotateSpeed = 16.0f;
 	public float jumpSpeed = 8.0F;
 	public float gravity = -9.8F;
 	private Vector3 moveDirection = Vector3.zero;
@@ -37,22 +38,16 @@ public class Player : MonoBehaviour {
 		transform.localPosition = sLoc;
 
 	}
-	
-	/*private void Move (MazeDirection direction) {
-		MazeCellEdge edge = currentCell.GetEdge(direction);
-		if (edge is MazePassage) {
-			controller.Move ();
-//			SetLocation(edge.otherCell);
-		}
-	}*/
-	void Update() {
 
+	void Update() {
+		//Vector2 v3 = new Vector3(0.0f, Input.GetAxis("Horizontal"), 0.0f);//put in y instead
+		//transform.Rotate(v3 * rotateSpeed * Time.deltaTime);
 		controller = GetComponent<CharacterController> ();
 		//if (controller.isGrounded) { //*FIX DISSSSS**
 		//	Debug.Log ("In grounded");
 			
-		moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
-		moveDirection = transform.TransformDirection (moveDirection);
+		moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0.0f, Input.GetAxis ("Vertical"));
+		moveDirection = transform.TransformDirection (moveDirection); 
 		moveDirection *= speed;
 		if(controller.isGrounded){
 			if (Input.GetButton ("Jump")) {
@@ -71,6 +66,7 @@ public class Player : MonoBehaviour {
 		moveDirection.y -= gravity * Time.deltaTime;
 		//if (canMoveAround)
 			controller.Move (moveDirection * Time.deltaTime);
+
 	}
 
 	

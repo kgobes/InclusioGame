@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class EndGame : MazeCell {
-	public int myTime;
+	public static int myTime;
 	// Use this for initialization
 	void Start () {
 	
@@ -36,6 +36,9 @@ public class EndGame : MazeCell {
 	}
 	public int getTime(){
 		return myTime;
+	}
+	public void returnToMenu(){
+		Application.LoadLevel ("StartScreen");
 	}
 
 
