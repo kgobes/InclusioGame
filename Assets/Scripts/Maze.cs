@@ -19,7 +19,7 @@ public class Maze : MonoBehaviour {
 	public MazeWall wallPrefab;
 
 	public float generationStepDelay;
-	public static IntVector2 size = new IntVector2 (5, 5);
+	public static IntVector2 size = new IntVector2 (10, 10);
 	// Use this for initialization
 	void Start () {
 		//size = new IntVector2 (5, 5);
