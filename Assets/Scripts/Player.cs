@@ -20,6 +20,9 @@ public class Player : MonoBehaviour {
 	private Vector3 moveDirection = Vector3.zero;
 	//private CharacterController controller;
 
+    private bool isTurning = false; // true while turning, used to restrict input while this is happening
+    private float turnSpeed = 8f; // coefficient for the speed the player will rotate when turning
+
 	void Start(){
 		//controller = GetComponent<CharacterController>();
 		//camPrefab = Instantiate (camPrefab) as CameraFollow;
@@ -27,8 +30,9 @@ public class Player : MonoBehaviour {
 	}
 	
 	private void Rotate (MazeDirection direction) {
-		transform.localRotation = direction.ToRotation();
+        Debug.Log("starting rotation");
 		currentDirection = direction;
+        isTurning = true;
 	}
 	
 	public void SetLocation (Vector3 sLoc) {
@@ -45,31 +49,57 @@ public class Player : MonoBehaviour {
 		controller = GetComponent<CharacterController> ();
 		//if (controller.isGrounded) { //*FIX DISSSSS**
 		//	Debug.Log ("In grounded");
-			
-		moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0.0f, Input.GetAxis ("Vertical"));
-		moveDirection = transform.TransformDirection (moveDirection); 
-		moveDirection *= speed;
-		if(controller.isGrounded){
-			if (Input.GetButton ("Jump")) {
-				Debug.Log("In Jump");
-				moveDirection.y += jumpHeight;
-				}
-		}
-		if (Input.GetKeyDown (KeyCode.Q)) {
-			//transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
-			Rotate (currentDirection.GetNextCounterclockwise ());
-		} 
-		if (Input.GetKeyDown (KeyCode.E)) {
-			//transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
-			Rotate (currentDirection.GetNextClockwise ());
-		}
-		moveDirection.y -= gravity * Time.deltaTime;
-		//if (canMoveAround)
-			controller.Move (moveDirection * Time.deltaTime);
+
+        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+        moveDirection = transform.TransformDirection(moveDirection);
+        moveDirection *= speed;
+        if (controller.isGrounded)
+        {
+            if (Input.GetButton("Jump"))
+            {
+                Debug.Log("In Jump");
+                moveDirection.y += jumpHeight;
+            }
+        }
+
+        moveDirection.y -= gravity * Time.deltaTime;
+        //if (canMoveAround)
+        controller.Move(moveDirection * Time.deltaTime);
+
+        if(isTurning)
+        {
+            UpdateTurning();
+        }
+        else    // ignore additional input to turn if a turn is already in progress
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                //transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
+                Rotate(currentDirection.GetNextCounterclockwise());
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                //transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
+                Rotate(currentDirection.GetNextClockwise());
+            }
+        }
 
 	}
 
-	
+	public void UpdateTurning()
+    {
+        float _margin = 0.5f; // if the rotation is this close to the desired rotation, the turn is complete. Expressed in degrees
+        if (transform.localRotation.eulerAngles.y > (currentDirection.ToRotation().eulerAngles.y - _margin) && transform.localRotation.eulerAngles.y < (currentDirection.ToRotation().eulerAngles.y + _margin))   // check if current rotation is very close to desired rotation
+        {
+            Debug.Log("Turn Complete!");
+            transform.localRotation = currentDirection.ToRotation();    // set localRotation to EXACTLY the rotation we want to ensure accuracy
+            isTurning = false;
+        }
+        else
+        {
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, currentDirection.ToRotation(), Time.deltaTime * turnSpeed);
+        }
+    }
 		
 	public void canMove(bool canMoveAround){
 		this.canMoveAround = canMoveAround;
