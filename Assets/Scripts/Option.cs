@@ -25,15 +25,17 @@ public class Option{
 	public int getOpNum(){
 		return num;
 	}
+
 	public void executeResult(){
+		//ChallengeManager cm = GameObject.Find ("Challenge Manager").GetComponent <ChallengeManager>();
 		if (num == 1) {
 			resultText = "The other elves angrily leave, but the troll is safe and is thankful for your help and joins you.";
 			ResourceBar.addResource ("troll");
-			ChallengeManager.next = 2;
+			ChallengeManager.setNext (2);
 		}
 		if (num == 2) {
 			resultText = "The troll is captured under a net and the other elves thank you for taking their side.";
-			ChallengeManager.next = 2;
+			ChallengeManager.setNext (2);
 		}
 		if (num == 3) {
 			if(ResourceBar.checkResource ("troll")){
@@ -58,14 +60,17 @@ public class Option{
 			if(rand == 1){
 				resultText = "You lose 2 points of your own health.";
 				ResourceBar.incrementHealth (-5);
+				ChallengeManager.setNext (4);
 			}
 			else if(rand == 2){
 				resultText = "The pixie is so grateful that he asks to join your team.";
 				ResourceBar.addResource ("pixie");
+				ChallengeManager.setNext (4);
 			}
 		}
 		if (num == 6) {
 			resultText = "You leave the pixie laying on the ground with it’s torn wing and continue on your journey.";
+			ChallengeManager.setNext (4);
 		}
 		if (num == 7) {
 			resultText = "You lost some time going around.";

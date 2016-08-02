@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -8,9 +8,10 @@ public class Maze : MonoBehaviour {
 	//public int sizeZ;
 	public MazeCell cellPrefab;
 	private MazeCell[,] cells;
-	public ChallengeManager eventPrefab;
+	public EventTrigger eventPrefab;
+	public int eventCounter = 3;
 	[Range(0f, 1f)]
-	public float doorProbability; //how many intersections do you want?
+	public float eventProbability; //how many intersections do you want?
 
 	public EndGame endPrefab;
 
@@ -19,7 +20,7 @@ public class Maze : MonoBehaviour {
 	public MazeWall wallPrefab;
 
 	public float generationStepDelay;
-	public static IntVector2 size = new IntVector2 (10, 10);
+	public static IntVector2 size = new IntVector2 (5, 5);
 	// Use this for initialization
 	void Start () {
 		//size = new IntVector2 (5, 5);
@@ -109,9 +110,11 @@ public class Maze : MonoBehaviour {
 
 	private void CreatePassage (MazeCell cell, MazeCell otherCell, MazeDirection direction) {
 		MazePassage prefab;
-		if (Random.value < doorProbability) {
+		//if (Random.value < eventProbability) {
+		if(eventCounter > 0){
+			eventCounter--;
 			prefab = eventPrefab;
-			MazePassage chal = Instantiate (prefab) as ChallengeManager;
+			MazePassage chal = Instantiate (prefab) as EventTrigger;
 			chal.Initialize (cell, otherCell, direction);
 			prefab = passagePrefab;
 			chal = Instantiate (prefab) as MazePassage;

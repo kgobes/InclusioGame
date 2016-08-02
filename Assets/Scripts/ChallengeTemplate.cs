@@ -30,4 +30,7 @@ public class ChallengeTemplate {
 	public List<Option> getOptionList(){
 		return options;
 	}
+	public bool getDependent(){
+		return dependent;
+	}
 }

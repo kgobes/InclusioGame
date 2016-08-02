@@ -97,6 +97,7 @@ public class GUIManager : MonoBehaviour {
 		resultPanel.gameObject.SetActive(false);
         playerRef = GameObject.Find("player").GetComponent<Player>();
         playerRef.canMove(true);
+		GameManager.continueTime ();
 	}
 	public static void showResult(string resultText){
 		resultPanel.gameObject.SetActive (true);

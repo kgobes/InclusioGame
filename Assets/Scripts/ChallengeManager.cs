@@ -3,15 +3,15 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class ChallengeManager : MazePassage {
+public class ChallengeManager : MonoBehaviour {
 	//public Challenge chal;
 	//public Transform hinge;
 	//public Text eventText;
 	//public Image textPanel;
-	public int numOfChal = 12;
+	public int numOfChal = 3;
 	public static int next = -1;
-	public List<ChallengeTemplate> challenges = new List<ChallengeTemplate>();
-	public ChallengeTemplate current; 
+	public static List<ChallengeTemplate> challenges = new List<ChallengeTemplate>();
+	public static ChallengeTemplate current; 
 
 	// Use this for initialization
 	void Start () {
@@ -21,13 +21,17 @@ public class ChallengeManager : MazePassage {
 		checkPosition ();
 
 		initializeChallenges ();
-
+		Debug.Log ("In CM start");
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+	}
+	public static void setNext(int n){
+		next = n;
+		Debug.Log ("next set to " + next);
 	}
 	void checkPosition(){
 		Vector3 sLoc = new Vector3 (-(Maze.size.x-1)/2, 0.5f, -(Maze.size.z-1)/2);
@@ -38,28 +42,28 @@ public class ChallengeManager : MazePassage {
 		}
 
 	}
-	void OnTriggerEnter(Collider other){
-		if (other.name == "player") {
-			Debug.Log ("Collision with player and event");
-			Player p = GameObject.Find ("player").GetComponent <Player>();
-			p.canMove (false);
-			GameManager.pauseTime ();
-			chooseNextScen();
-			GUIManager.displayText(current.getStory ());
-			GUIManager.displayOptions (current.getOptionList ());
-			Destroy (this.gameObject);
-
+	public static void chooseNextScen(){
+		Debug.Log ("next scen is " + next);
+		int num = 0;
+		if (next == -1){
+			num = Random.Range (0, challenges.Count);
+			while (challenges[num].getDependent () == true) {
+				num = Random.Range (0, challenges.Count);
+			}
 		}
-	}
-	void chooseNextScen(){
-		int num;
-		if (next == -1)
-			num = Random.Range (0, numOfChal);
-		else {
-			num = next;
+		else{
+			for(int  i = 0; i<challenges.Count; i++){
+				if(next == challenges[i].getNumber ())
+					num = i;
+			}
+			//num = next-1;
 			next = -1;
 		}
+		Debug.Log ("num: " + num);
 		current = challenges [num];
+		GUIManager.displayText(current.getStory ());
+		GUIManager.displayOptions (current.getOptionList ());
+		challenges.Remove (current);
 
 	}
 	void initializeChallenges(){

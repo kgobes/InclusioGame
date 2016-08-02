@@ -93,7 +93,7 @@ public class Player : MonoBehaviour {
         float _margin = 0.5f; // if the rotation is this close to the desired rotation, the turn is complete. Expressed in degrees
         if (transform.localRotation.eulerAngles.y > (currentDirection.ToRotation().eulerAngles.y - _margin) && transform.localRotation.eulerAngles.y < (currentDirection.ToRotation().eulerAngles.y + _margin))   // check if current rotation is very close to desired rotation
         {
-            Debug.Log("Turn Complete!");
+           // Debug.Log("Turn Complete!");
             transform.localRotation = currentDirection.ToRotation();    // set localRotation to EXACTLY the rotation we want to ensure accuracy
             isTurning = false;
         }
@@ -106,7 +106,7 @@ public class Player : MonoBehaviour {
 	public void canMove(bool canMoveAround){
 		this.canMoveAround = canMoveAround;
         GetComponent<Rigidbody>().isKinematic = !canMoveAround;
-        Debug.Log("canMoveAround changed to " + canMoveAround.ToString());
+        //Debug.Log("canMoveAround changed to " + canMoveAround.ToString());
 	}
 
 
