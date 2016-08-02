@@ -25,6 +25,7 @@ public class Player : MonoBehaviour {
 
 	void Start(){
 		//controller = GetComponent<CharacterController>();
+
 		//camPrefab = Instantiate (camPrefab) as CameraFollow;
 
 	}
@@ -63,7 +64,8 @@ public class Player : MonoBehaviour {
         }
 
         moveDirection.y -= gravity * Time.deltaTime;
-        //if (canMoveAround)
+
+        if (canMoveAround)
         controller.Move(moveDirection * Time.deltaTime);
 
         if(isTurning)
@@ -103,6 +105,8 @@ public class Player : MonoBehaviour {
 		
 	public void canMove(bool canMoveAround){
 		this.canMoveAround = canMoveAround;
+        GetComponent<Rigidbody>().isKinematic = !canMoveAround;
+        Debug.Log("canMoveAround changed to " + canMoveAround.ToString());
 	}
 
 

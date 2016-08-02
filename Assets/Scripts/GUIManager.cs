@@ -19,6 +19,9 @@ public class GUIManager : MonoBehaviour {
 	public static Text resText;
 	public static Image resultPanel;
 	public static Button cont;
+
+    private Player playerRef;
+
 	// Use this for initialization
 	void Start () {
 		eventText = GameObject.Find ("EventText").GetComponent<Text>();
@@ -92,6 +95,8 @@ public class GUIManager : MonoBehaviour {
 
 	public void clickContinue(){
 		resultPanel.gameObject.SetActive(false);
+        playerRef = GameObject.Find("player").GetComponent<Player>();
+        playerRef.canMove(true);
 	}
 	public static void showResult(string resultText){
 		resultPanel.gameObject.SetActive (true);
