@@ -8,6 +8,7 @@ public class StoryIntroController : MonoBehaviour
     public Text textFooter;
     public Text textBody1;
     public Text textBody2;
+    public float fadeDurationSeconds = 1f;
 
 	// Use this for initialization
 	void Start ()
@@ -28,77 +29,77 @@ public class StoryIntroController : MonoBehaviour
 
     IEnumerator DisplayStoryText()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         textHeader.CrossFadeAlpha(1f, 2f, false);
 
         yield return new WaitForSeconds(2f);
 
-        textBody1.CrossFadeAlpha(1f, 2f, false);
+        textBody1.CrossFadeAlpha(1f, fadeDurationSeconds, false);
 
         yield return new WaitForSeconds(3f);
 
-        textBody2.CrossFadeAlpha(1f, 2f, false);
+        textBody2.CrossFadeAlpha(1f, fadeDurationSeconds, false);
 
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(4f);
 
-        textHeader.CrossFadeAlpha(0f, 2f, false);
-        textBody1.CrossFadeAlpha(0f, 2f, false);
-        textBody2.CrossFadeAlpha(0f, 2f, false);
+        textHeader.CrossFadeAlpha(0f, fadeDurationSeconds, false);
+        textBody1.CrossFadeAlpha(0f, fadeDurationSeconds, false);
+        textBody2.CrossFadeAlpha(0f, fadeDurationSeconds, false);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         textBody1.text = "Your mission is to get Elf back through the maze.";
         textBody2.text = "Along the way, you'll face doors you can't fit through, characters who won't let you pass, traps set by others, and diminishing health.";
 
-        textBody1.CrossFadeAlpha(1f, 2f, false);
+        textBody1.CrossFadeAlpha(1f, fadeDurationSeconds, false);
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
 
-        textBody2.CrossFadeAlpha(1f, 2f, false);
+        textBody2.CrossFadeAlpha(1f, fadeDurationSeconds, false);
 
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(5f);
 
-        textBody1.CrossFadeAlpha(0f, 2f, false);
-        textBody2.CrossFadeAlpha(0f, 2f, false);
+        textBody1.CrossFadeAlpha(0f, fadeDurationSeconds, false);
+        textBody2.CrossFadeAlpha(0f, fadeDurationSeconds, false);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         textBody1.text = "You'll have the help of other characters that you befriend throughout the game.";
         textBody2.text = "But take caution...Some might be a friendly face hiding evil, and others might be a friend wearing an evil face.";
 
-        textBody1.CrossFadeAlpha(1f, 2f, false);
+        textBody1.CrossFadeAlpha(1f, fadeDurationSeconds, false);
 
         yield return new WaitForSeconds(3f);
 
-        textBody2.CrossFadeAlpha(1f, 2f, false);
+        textBody2.CrossFadeAlpha(1f, fadeDurationSeconds, false);
 
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(4f);
 
-        textBody1.CrossFadeAlpha(0f, 2f, false);
-        textBody2.CrossFadeAlpha(0f, 2f, false);
+        textBody1.CrossFadeAlpha(0f, fadeDurationSeconds, false);
+        textBody2.CrossFadeAlpha(0f, fadeDurationSeconds, false);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         textBody1.text = "Elf needs you to see past stereotypes and think critically to get back into place.";
         textBody2.text = "The fate of Elf, and all the characters of the book, rests with you.";
 
-        textBody1.CrossFadeAlpha(1f, 2f, false);
+        textBody1.CrossFadeAlpha(1f, fadeDurationSeconds, false);
 
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(3f);
 
-        textBody2.CrossFadeAlpha(1f, 2f, false);
+        textBody2.CrossFadeAlpha(1f, fadeDurationSeconds, false);
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4f);
 
-        textFooter.CrossFadeAlpha(1f, 2f, false);
+        textFooter.CrossFadeAlpha(1f, fadeDurationSeconds, false);
 
         yield return new WaitForSeconds(2f);
 
-        textBody1.CrossFadeAlpha(0f, 2f, false);
-        textBody2.CrossFadeAlpha(0f, 2f, false);
+        textBody1.CrossFadeAlpha(0f, fadeDurationSeconds, false);
+        textBody2.CrossFadeAlpha(0f, fadeDurationSeconds, false);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         textFooter.CrossFadeAlpha(0f, 2f, false);
 
