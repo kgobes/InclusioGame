@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour {
 	// Update is called once per frame
 	//#pragma strict
 	
-	float speed = 75.0f;
+	//float speed = 75.0f;
 	
 	void Update() {
 		//Vector3 v3 = new Vector3(Input.GetAxis (KeyCode.Q), 0.0f, Input.GetAxis (KeyCode.E));

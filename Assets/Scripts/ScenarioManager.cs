@@ -14,6 +14,8 @@ public class ScenarioManager : MonoBehaviour {
 
 	public Text points;
 
+    public Image faderImage;
+
 	// Use this for initialization
 	void Start () {
 //		title = GameObject.Find ("scenTitle").GetComponent<Text>();
@@ -37,9 +39,11 @@ public class ScenarioManager : MonoBehaviour {
 	public void loadSecondStory(){
 		Application.LoadLevel ("SecondStory");
 	}
-	public void exitStartScreenButton(){
-		Application.LoadLevel ("ChooseCharacter");
+	public void exitStartScreenButton()
+    {
+        StartCoroutine(ExitStartScreen());
 	}
+
 	public void loadNextScenario(){
 		score++;
 		scenCount++;
@@ -48,5 +52,17 @@ public class ScenarioManager : MonoBehaviour {
 		opt1.GetComponentInChildren<Text>().text = "new opt1";
 		points.text = "Points: " + score;
 	}
+
+    IEnumerator ExitStartScreen()
+    {
+        faderImage.gameObject.SetActive(true);
+        faderImage.canvasRenderer.SetAlpha(0f);
+        faderImage.CrossFadeAlpha(1f, 1f, false);
+
+        yield return new WaitForSeconds(1.5f);
+
+        StopCoroutine(ExitStartScreen());
+        Application.LoadLevel("ChooseCharacter");
+    }
 }
 	
