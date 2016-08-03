@@ -94,8 +94,87 @@ public class Option{
 				GameManager.changeTime (20);
 		}
 
+		if (num == 11) {
+			resultText = "A unicorn set this pot of gold as a test. By not stealing it, you gained its trust and he offers to split the pot with you in exchange for some food.";
+			//ADD COINSSSSS ***
+			
+		}
+		if (num == 12) {
+			int rand = Random.Range (1, 2);
+			if(rand == 1){
+				resultText = "You now have loads of coins.";
+				//ADD COINSSS*****
+			}
+			if(rand == 2){
+				resultText = "A unicorn placed the pot as a trick and you fell for it. He takes the gold back and pokes you with his horn.";
+				ResourceBar.incrementHealth (-5);
+			}
+		}
+		if (num == 13) {
+			resultText = "You lost a lot of time making fun of this creature.";
+			GameManager.changeTime (10);
+		}
+		if (num == 14) {
+			resultText = "You continue on your journey.";
+		}
+		if(num == 15){
+			int rand = Random.Range (1, 2);
+			if(rand == 1){
+				resultText = "The elves get mad and continue teasing the pixie anyway. They also insult you! You decide to move on and continue on your journey.";
+			}
+			if(rand == 2){
+				resultText = "You save the pixie! As a token of appreciation it gives you 5 health points and joins your team!";
+				ResourceBar.incrementHealth (5);
+			}
+		}
+		if(num == 16){ //come back to this one
+			//NEED POTION *** 
+			resultText = "You are now a wolf! The other wolves let you pass. But now you are stuck as a wolf for an unknown amount of time.";
+			//LOST POTION **
+			
+		}
+		if(num == 17){ 
+			int rand = Random.Range (1, 2);
+			if(rand == 1){
+				resultText = "The werewolves refuse to listen to you and you must go a different route.";
+				GameManager.changeTime(30);
+			}
+			if(rand == 2){
+				resultText = "The werewolves determine that you are cool and let you through.";
+			}
+		}
+		
+		if(num == 19){
+			int rand = Random.Range (1, 2);
+			if(rand == 1){
+				resultText = "You learn that you can’t solve it by yourself and can’t get around wizard.";
+				GameManager.changeTime (30);
+			}
+			if(rand == 2){
+				resultText = "You get through but have to abandon some of your team.";
+			}
+/*Result 2: You get through but some of your group doesn’t
+Action: You must chose one of these options 
+Option 1: Continue without them
+Option 2: Go back and help them and lose time 
+Result 3: You all get through
+Action: Nothing 
+*/
+		}
+		if(num == 20){
+			resultText = "You solve all three puzzles, but lose more time.";
+			GameManager.changeTime (30);
+		}
+		if(num == 21){
+			resultText = "You run into a different group of ogres, and the one you helped helps you pass their clan.";
+		}
+		if(num == 22){
+			resultText = "You have to take a longer route because you cannot pass through the clan.";
+			GameManager.changeTime (30);
+		}
+		
 		GUIManager.showResult (resultText);
-
+		
 	}
-
+	
 }

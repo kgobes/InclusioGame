@@ -23,9 +23,9 @@ public class ResourceBar : MonoBehaviour {
 		resource1 = GameObject.Find ("Resource1").GetComponent <Image>();
 		resource2 = GameObject.Find ("Resource2").GetComponent <Image>();
 		resource3 = GameObject.Find ("Resource3").GetComponent <Image>();
-		resource1.gameObject.SetActive (false); //use .enabled if this doesn't work
+		/*resource1.gameObject.SetActive (false); //use .enabled if this doesn't work
 		resource2.gameObject.SetActive (false);
-		resource3.gameObject.SetActive (false);
+		resource3.gameObject.SetActive (false);*/
 		r1 = "";
 		r2 = "";
 		r3 = "";

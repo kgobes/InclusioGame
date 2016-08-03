@@ -9,9 +9,9 @@ public class Maze : MonoBehaviour {
 	public MazeCell cellPrefab;
 	private MazeCell[,] cells;
 	public EventTrigger eventPrefab;
-	public int eventCounter = 3;
+	public int eventCounter = 8;
 	[Range(0f, 1f)]
-	public float eventProbability; //how many intersections do you want?
+	public float eventProbability; //how many events do you want?
 
 	public EndGame endPrefab;
 
@@ -110,8 +110,8 @@ public class Maze : MonoBehaviour {
 
 	private void CreatePassage (MazeCell cell, MazeCell otherCell, MazeDirection direction) {
 		MazePassage prefab;
-		//if (Random.value < eventProbability) {
-		if(eventCounter > 0){
+		if (Random.value < eventProbability && eventCounter >0) {
+		//if(eventCounter > 0){
 			eventCounter--;
 			prefab = eventPrefab;
 			MazePassage chal = Instantiate (prefab) as EventTrigger;

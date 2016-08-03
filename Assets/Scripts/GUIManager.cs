@@ -35,7 +35,7 @@ public class GUIManager : MonoBehaviour {
 		resText = GameObject.Find ("ResultText").GetComponent<Text>();
 		resultPanel = GameObject.Find ("ResultPanel").GetComponent <Image> ();
 		cont = GameObject.Find ("Continue").GetComponent <Button>();
-		resultPanel.gameObject.SetActive(false);
+		//resultPanel.gameObject.SetActive(false); ***
 		//textPanel.gameObject.SetActive (false);
 	}
 	

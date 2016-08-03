@@ -90,9 +90,35 @@ public class ChallengeManager : MonoBehaviour {
 	
 
 	
+		
+		ChallengeTemplate f = new ChallengeTemplate (6, "You pass a pot of gold sitting on the side of the road.", false);
+		f.addOption ("Ignore the pot of gold. It isn’t yours and stealing is wrong.", 11);
+		f.addOption ("Take the gold. Who is stupid enough to leave a pot of gold in the middle of the forest anyways?", 12);
+		
+		ChallengeTemplate g = new ChallengeTemplate (7, "You pass by three elves and a pixie. As you get closer, you notice that the elves are teasing the pixie. Elves and pixies have never gotten along.", false);
+		g.addOption ("Join them! Laugh and throw rocks at the pixie.", 13);
+		g.addOption ("Ignore it and keep walking.", 14);
+		g.addOption ("Tell the elves to stop.", 15);
+		
+		//come back to this shit
+		ChallengeTemplate h = new ChallengeTemplate (8, "You encounter a group of werewolves blocking the path. The werewolves refuse to let you through because you are an elf and they do not like elves.", false);
+		h.addOption ("Consume a potion that changes you into a wolf.", 16);
+		h.addOption ("Try to communicate with the werewolves and prove yourself as an elf.", 17);
+		
+		
+		ChallengeTemplate i = new ChallengeTemplate (9, "You meet a wizard on the path. He demands that you solve a riddle to get past him. He says you can either complete one riddle by yourself to get past him or you can work as a group to solve three riddles.", false);
+		i.addOption ("Choose to work by yourself and solve one riddle.", 19);
+		i.addOption ("Work as a group.", 20);
+		
+		ChallengeTemplate j = new ChallengeTemplate (10, "You encounter an ogre stuck under a fallen tree. Ogres are known for being vicious creatures who attack anybody in their way. You don’t know if this ogre is necessarily violent, but that’s how the stereotype goes.", false);
+		j.addOption ("Help the ogre - he turns out to be a nonviolent, pleasant being.", 21);
+		j.addOption ("Don’t help the ogre and continue along your path.", 22);
+		
+		
+		
 
-
-
+		
+		
 		//ADD CHALLENGES TO CHALLENGE LIST
 		challenges.Add (a);
 		challenges.Add (b);
@@ -100,25 +126,12 @@ public class ChallengeManager : MonoBehaviour {
 		challenges.Add (d);
 		challenges.Add (e);
 
-
-
-
-
-		/*ChallengeTemplate f = new ChallengeTemplate (6, "You pass by three elves and a pixie. As you get closer, you notice that the elves are teasing the pixie. Elves and pixies have never gotten along.");
-		ChallengeTemplate g = new ChallengeTemplate (7, "You encounter a group of werewolves blocking the path. The werewolves refuse to let you through because you are an elf and they do not like elves.");
-		ChallengeTemplate h = new ChallengeTemplate (8, "You meet a wizard on the path. He demands that you solve a riddle to get past him. He says you can either complete one riddle by yourself to get past him or you can work as a group, but will need to solve three riddles.");
-		ChallengeTemplate i = new ChallengeTemplate (9, "You encounter an ogre in the middle of the forest, stuck under a fallen tree. Ogres are known for being large, vicious creatures who attack anybody in their way. You don’t know if this ogre is necessarily violent, but that’s how the stereotype goes. ");
-		ChallengeTemplate j = new ChallengeTemplate (10, "You encounter a fairy who comes across as pleasant and sweet. You saw her take advantage of an ogre, but because ogres are typically seen as violent creatures, you assume she had no other choice. She asks to accompany you and claims she can cut through the maze (i.e., cheating).");
-		ChallengeTemplate k = new ChallengeTemplate (11, "You come across a group of your fellow elves stealing food from a pixie.");
-		ChallengeTemplate l = new ChallengeTemplate (12, "You find yourself lost and see a sign that points directions but it’s in dwarfish language and you can’t read it. You need to ask for help from a dwarf but you are reminded that someone told you they are lower on the social ladder and have the tendency to lie.");
-
 		challenges.Add (f);
 		challenges.Add (g);
 		challenges.Add (h);
 		challenges.Add (i);
 		challenges.Add (j);
-		challenges.Add (k);
-		challenges.Add (l);
-		*/
+
+
 	}
 }
