@@ -41,7 +41,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellPrefab: {fileID: 11400010, guid: 738c8e12cd3a74346b9cc6b7b8017d62, type: 2}
   eventPrefab: {fileID: 11401016, guid: c68a88727bb2c4b0dbdbe50c857ef8db, type: 2}
-  doorProbability: .200000003
+  eventCounter: 8
+  eventProbability: .270000011
   endPrefab: {fileID: 11422756, guid: abc574841ae1048c0b5f676ccbd7d702, type: 2}
   passagePrefab: {fileID: 11480734, guid: cc96c8882ef28417683aadac1a408ff0, type: 2}
   wallPrefab: {fileID: 11417134, guid: 88d2b9053ad84479d921c5693da86d95, type: 2}
@@ -123,6 +124,14 @@ Prefab:
       value: 
       objectReference: {fileID: 11401016, guid: c68a88727bb2c4b0dbdbe50c857ef8db,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: eventProbability
+      value: .270000011
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: eventCounter
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 146694}

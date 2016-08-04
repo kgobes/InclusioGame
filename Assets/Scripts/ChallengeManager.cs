@@ -13,6 +13,7 @@ public class ChallengeManager : MonoBehaviour {
 	public static List<ChallengeTemplate> challenges = new List<ChallengeTemplate>();
 	public static ChallengeTemplate current; 
 
+
 	// Use this for initialization
 	void Start () {
 		/*eventText = GameObject.Find ("EventText").GetComponent<Text>();
@@ -43,6 +44,7 @@ public class ChallengeManager : MonoBehaviour {
 
 	}
 	public static void chooseNextScen(){
+
 		Debug.Log ("next scen is " + next);
 		int num = 0;
 		if (next == -1){
@@ -62,7 +64,9 @@ public class ChallengeManager : MonoBehaviour {
 		Debug.Log ("num: " + num);
 		current = challenges [num];
 		GUIManager.displayText(current.getStory ());
+		//gm.displayText(current.getStory ());
 		GUIManager.displayOptions (current.getOptionList ());
+		//gm.displayOptions (current.getOptionList ());
 		challenges.Remove (current);
 
 	}

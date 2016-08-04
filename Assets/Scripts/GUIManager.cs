@@ -19,11 +19,29 @@ public class GUIManager : MonoBehaviour {
 	public static Text resText;
 	public static Image resultPanel;
 	public static Button cont;
+	/*
+	public Text eventText;
+	public Image textPanel;
+	public Button opt1;
+	public Button opt2;
+	public Button opt3;
+	
+	public Option optObject1;
+	public Option optObject2;
+	public Option optObject3;
+	
+	
+	public Text resText;
+	public Image resultPanel;
+	public Button cont;*/
 
-    private Player playerRef;
+    private static Player playerRef;
 
 	// Use this for initialization
 	void Start () {
+
+		Debug.Log ("GUI MANAG my name is " + this.name);
+
 		eventText = GameObject.Find ("EventText").GetComponent<Text>();
 		textPanel = GameObject.Find ("TextPanel").GetComponent <Image>();
 		opt1 = GameObject.Find ("option1").GetComponent <Button>();
@@ -31,21 +49,34 @@ public class GUIManager : MonoBehaviour {
 		opt3 = GameObject.Find ("option3").GetComponent <Button>();
 
 	
+		/*eventText.enabled = false;
+		opt1.enabled = false;
+		opt2.enabled = false;
+		opt3.enabled = false;*/
 
-		resText = GameObject.Find ("ResultText").GetComponent<Text>();
+
 		resultPanel = GameObject.Find ("ResultPanel").GetComponent <Image> ();
+		resText = GameObject.Find ("ResultText").GetComponent<Text>();
 		cont = GameObject.Find ("Continue").GetComponent <Button>();
-		//resultPanel.gameObject.SetActive(false); ***
+		//resultPanel.gameObject.SetActive(false);
 		//textPanel.gameObject.SetActive (false);
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		//resultPanel.gameObject.SetActive(false);
+		//textPanel.gameObject.SetActive (false);
 	}
-	public static Rect windowRect = new Rect(20, 20, 120, 50);
+	public static void disablePanels(){
+		resultPanel.gameObject.SetActive(false);
+		textPanel.gameObject.SetActive (false);
+		//resultPanel.enabled = false;
+		//textPanel.enabled = false;
+	}
+
+	//public static Rect windowRect = new Rect(20, 20, 120, 50);
 	public static void displayText(string text){
-		Debug.Log ("in Display Text");
 		textPanel.gameObject.SetActive (true);
 		eventText.text = text;
 	}
@@ -73,15 +104,18 @@ public class GUIManager : MonoBehaviour {
 		}
 
 	}
-	public void clickOption1(){
+	public static void clickOption1(){
+
 		optObject1.executeResult ();
 		textPanel.gameObject.SetActive (false);
 	}
-	public void clickOption2(){
+	public static void clickOption2(){
+
 		optObject2.executeResult ();
 		textPanel.gameObject.SetActive (false);
 	}
-	public void clickOption3(){
+	public static void clickOption3(){
+
 		optObject3.executeResult ();
 		textPanel.gameObject.SetActive (false);
 	}
@@ -93,13 +127,14 @@ public class GUIManager : MonoBehaviour {
 		//p.canMove (true);
 	}*/
 
-	public void clickContinue(){
+	public static void clickContinue(){
 		resultPanel.gameObject.SetActive(false);
         playerRef = GameObject.Find("player").GetComponent<Player>();
         playerRef.canMove(true);
 		GameManager.continueTime ();
 	}
 	public static void showResult(string resultText){
+
 		resultPanel.gameObject.SetActive (true);
 		resText.text = resultText;
 	}

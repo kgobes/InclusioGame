@@ -2,10 +2,11 @@
 using System.Collections;
 
 public class EventTrigger : MazePassage {
-
+	//public ChallengeManager cm;
 	// Use this for initialization
 	void Start () {
 		Debug.Log ("event trigger start");
+		//cm = GameObject.Find("Challenge Manager").GetComponent<ChallengeManager>();
 	}
 	
 	// Update is called once per frame

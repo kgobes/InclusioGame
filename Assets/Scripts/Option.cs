@@ -12,7 +12,7 @@ public class Option{
 	public Option(string b, int n){
 		buttonText = b;
 		num = n;
-	
+
 	}
 
 

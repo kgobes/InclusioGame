@@ -18,13 +18,18 @@ public class GameManager : MonoBehaviour {
 	private Player playerInstance;
 
 	private void Start () {
+		Debug.Log ("Game MANAG my name is " + this.name);
 		timeText = GameObject.Find ("Timer").GetComponent<Text>();
 		timer = 0;
 		partTime = 0;
 		gameStarted = false;
+
 		StartCoroutine(BeginGame());
-		textPanel = GameObject.Find ("TextPanel").GetComponent <Image>();
-		textPanel.gameObject.SetActive (false);
+		GUIManager.disablePanels ();
+		//
+		//textPanel = GameObject.Find ("TextPanel").GetComponent <Image>();
+		//textPanel.gameObject.SetActive (false);
+
 	}
 	private void Update () {
 		if (Input.GetKeyDown(KeyCode.X)) {
