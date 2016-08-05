@@ -30,7 +30,7 @@ public class Option{
 		//ChallengeManager cm = GameObject.Find ("Challenge Manager").GetComponent <ChallengeManager>();
 		if (num == 1) {
 			resultText = "The other elves angrily leave, but the troll is safe and is thankful for your help and joins you.";
-			ResourceBar.addResource ("spr_troll");
+			ResourceBar.addResource ("troll");
 			ChallengeManager.setNext (2);
 		}
 		if (num == 2) {
@@ -38,9 +38,9 @@ public class Option{
 			ChallengeManager.setNext (2);
 		}
 		if (num == 3) {
-			if(ResourceBar.checkResource ("spr_troll")){
+			if(ResourceBar.checkResource ("troll")){
 				resultText = "You make it through the gate and the troll is reunited with his family.";
-				ResourceBar.useResource ("spr_troll");
+				ResourceBar.useResource ("troll");
 			}
 			else
 				resultText = "Hmmm doesn't look like you have a troll here to help you. Maybe you should see if you can find one...";
@@ -64,7 +64,7 @@ public class Option{
 			}
 			else if(rand == 2){
 				resultText = "The pixie is so grateful that he asks to join your team.";
-				ResourceBar.addResource ("spr_pixie");
+				ResourceBar.addResource ("pixie");
 				ChallengeManager.setNext (4);
 			}
 		}
@@ -79,7 +79,7 @@ public class Option{
 		if (num == 8) {
 			if(ResourceBar.checkResource ("pixie")){
 				resultText = "You make it through the wall.";
-				ResourceBar.useResource ("spr_pixie");
+				ResourceBar.useResource ("pixie");
 			}
 			else{
 				resultText = "Hmmm doesn't look like you have a pixie here to help you. Maybe you should see if you can find one...";
@@ -172,50 +172,8 @@ Action: Nothing
 			resultText = "You have to take a longer route because you cannot pass through the clan.";
 			GameManager.changeTime (30);
 		}
-		if(num == 23){
-			resultText = "She sneaks away with all your resources.";
-			/*
-Action: All resources are gone 
-Action: You get sent back to the start.--will implement if time
-Action: Fairy gets added to resources.
-*/
-		}
-		if(num == 24){
-			resultText = "Turns out she was a wanted fairy who often conned travelers - you get coin reward.";
-			/*Result 2: Turns out she was a wanted fairy who often conned travelers - you get coin reward.
-				Action: Coins added to resources*/
-		}
-		if(num == 25){
-			resultText = "This takes time, but the pixie is so grateful that it rewards you with 5 health points.";
-			/*Result 1: This takes time, but the pixie is so grateful that it rewards you with 5 health points. 
-Action: Health increases by 5 points 
-Result 2: You anger the elves and they steal your food too and you also lose 30 seconds of time. 
-Action: Time decreases by 30 seconds 
-*/
-		}
-		if (num == 26) {
-			resultText = "You continue on your way.";
-		}
-		if(num == 27){
-			resultText = "Pixie looks angry, but you got some sweet snacks that make you feel better and continue on your way.";
-			/*Result 1: You get more food
-Action: Health increases by 1 points
-Result 2: The pixie uses magic to take away 5 health points. 
-Action: Health decreases by 5 points
-*/
-		}
-		if (num == 28) {
-			resultText = "The dwarf is helpful and points you in the right direction, which saves you some time";
-			GameManager.changeTime (-20);
-
-		}
-		if(num == 29){
-			resultText = "You’re in an enchanted maze, why would you think you know where you are going? You get lost and it takes you a while to get back on the path."; 
-			GameManager.changeTime (20);
-		}
-
-        // TO DO store a ref so Find isn't called every time we need to call GUIManager
-        GameObject.Find("TextPanel").GetComponent<GUIManager>().showResult(resultText);
+		
+		GUIManager.showResult (resultText);
 		
 	}
 	
