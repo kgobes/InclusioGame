@@ -76,11 +76,11 @@ public class GUIManager : MonoBehaviour {
 	}
 
 	//public static Rect windowRect = new Rect(20, 20, 120, 50);
-	public static void displayText(string text){
+	public void displayText(string text){
 		textPanel.gameObject.SetActive (true);
 		eventText.text = text;
 	}
-	public static void displayOptions(List<Option> optionList){
+	public void displayOptions(List<Option> optionList){
 		if (optionList.Count == 2) {
 			opt1.gameObject.SetActive (true);
 			opt2.gameObject.SetActive (true);
@@ -104,17 +104,17 @@ public class GUIManager : MonoBehaviour {
 		}
 
 	}
-	public static void clickOption1(){
+	public void clickOption1(){
 
 		optObject1.executeResult ();
 		textPanel.gameObject.SetActive (false);
 	}
-	public static void clickOption2(){
+	public void clickOption2(){
 
 		optObject2.executeResult ();
 		textPanel.gameObject.SetActive (false);
 	}
-	public static void clickOption3(){
+	public void clickOption3(){
 
 		optObject3.executeResult ();
 		textPanel.gameObject.SetActive (false);
@@ -127,13 +127,13 @@ public class GUIManager : MonoBehaviour {
 		//p.canMove (true);
 	}*/
 
-	public static void clickContinue(){
+	public void clickContinue(){
 		resultPanel.gameObject.SetActive(false);
         playerRef = GameObject.Find("player").GetComponent<Player>();
         playerRef.canMove(true);
 		GameManager.continueTime ();
 	}
-	public static void showResult(string resultText){
+	public void showResult(string resultText){
 
 		resultPanel.gameObject.SetActive (true);
 		resText.text = resultText;

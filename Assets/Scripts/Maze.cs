@@ -21,11 +21,17 @@ public class Maze : MonoBehaviour {
 
 	public float generationStepDelay;
 	public static IntVector2 size = new IntVector2 (5, 5);
+    public ChallengeManager challengeManagerInst;
+
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		//size = new IntVector2 (5, 5);
 
-	
+        challengeManagerInst = GameObject.Find("Challenge Manager").GetComponent<ChallengeManager>();
+
+        if (!challengeManagerInst)
+            Debug.LogError("Challenge Manager object not found in scene! Unable to store reference");
 	}
 	
 	// Update is called once per frame
@@ -116,6 +122,7 @@ public class Maze : MonoBehaviour {
 			prefab = eventPrefab;
 			MazePassage chal = Instantiate (prefab) as EventTrigger;
 			chal.Initialize (cell, otherCell, direction);
+            chal.GetComponent<EventTrigger>().SetChallengeManagerRef(challengeManagerInst);
 			prefab = passagePrefab;
 			chal = Instantiate (prefab) as MazePassage;
 			chal.Initialize (otherCell, cell, direction.GetOpposite ());

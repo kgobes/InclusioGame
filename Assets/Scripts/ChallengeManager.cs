@@ -11,14 +11,21 @@ public class ChallengeManager : MonoBehaviour {
 	public int numOfChal = 3;
 	public static int next = -1;
 	public static List<ChallengeTemplate> challenges = new List<ChallengeTemplate>();
-	public static ChallengeTemplate current; 
+	public static ChallengeTemplate current;
 
+    private GUIManager GUIManagerInst;
 
 	// Use this for initialization
 	void Start () {
 		/*eventText = GameObject.Find ("EventText").GetComponent<Text>();
 		textPanel = GameObject.Find ("TextPanel").GetComponent <Image>();
 		textPanel.gameObject.SetActive (false);*/
+
+        GUIManagerInst = GameObject.Find("TextPanel").GetComponent<GUIManager>();
+
+        if (!GUIManagerInst)
+            Debug.LogError("GUI Manager/TextPanel object not found in scene! Unable to store reference");
+
 		checkPosition ();
 
 		initializeChallenges ();
@@ -43,7 +50,7 @@ public class ChallengeManager : MonoBehaviour {
 		}
 
 	}
-	public static void chooseNextScen(){
+	public void chooseNextScen(){
 
 		Debug.Log ("next scen is " + next);
 		int num = 0;
@@ -63,9 +70,9 @@ public class ChallengeManager : MonoBehaviour {
 		}
 		Debug.Log ("num: " + num);
 		current = challenges [num];
-		GUIManager.displayText(current.getStory ());
+        GUIManagerInst.displayText(current.getStory());
 		//gm.displayText(current.getStory ());
-		GUIManager.displayOptions (current.getOptionList ());
+        GUIManagerInst.displayOptions(current.getOptionList());
 		//gm.displayOptions (current.getOptionList ());
 		challenges.Remove (current);
 

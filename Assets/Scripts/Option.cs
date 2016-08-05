@@ -214,8 +214,8 @@ Action: Health decreases by 5 points
 			GameManager.changeTime (20);
 		}
 
-		
-		GUIManager.showResult (resultText);
+        // TO DO store a ref so Find isn't called every time we need to call GUIManager
+        GameObject.Find("TextPanel").GetComponent<GUIManager>().showResult(resultText);
 		
 	}
 	

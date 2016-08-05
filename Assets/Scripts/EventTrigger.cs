@@ -4,6 +4,9 @@ using System.Collections;
 public class EventTrigger : MazePassage {
 	//public ChallengeManager cm;
 	// Use this for initialization
+
+    private ChallengeManager challengeManagerInst;
+
 	void Start () {
 		Debug.Log ("event trigger start");
 		//cm = GameObject.Find("Challenge Manager").GetComponent<ChallengeManager>();
@@ -21,9 +24,14 @@ public class EventTrigger : MazePassage {
 			//GameObject cm = GameObject.Find ("Challenge Manager").GetComponent <ChallengeManager>();
 			GameManager.pauseTime ();
 			//cm.chooseNextScen();
-			ChallengeManager.chooseNextScen();
+            challengeManagerInst.chooseNextScen();
 			Destroy (this.gameObject);
 			
 		}
 	}
+
+    public void SetChallengeManagerRef(ChallengeManager inCMRef)
+    {
+        challengeManagerInst = inCMRef;
+    }
 }
