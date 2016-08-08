@@ -191,13 +191,11 @@ public class Maze : MonoBehaviour {
             {
                 if (_hit.transform.parent.transform.rotation == walls[i].transform.rotation)
                 {
-                    Debug.LogWarning("Match!");
                     _raycastColor = Color.green;
                     _right = WallNeighbor.Parallel;
                 }
                 else
                 {
-                    Debug.Log("Nope!");
                     _raycastColor = Color.yellow;
                     _right = WallNeighbor.Perpendicular;
                 }
@@ -208,12 +206,10 @@ public class Maze : MonoBehaviour {
             {
                 if (_hit.transform.parent.transform.rotation == walls[i].transform.rotation)
                 {
-                    Debug.LogWarning("Match!");
                     _left = WallNeighbor.Parallel;
                 }
                 else
                 {
-                    Debug.Log("Nope!");
                     _left = WallNeighbor.Perpendicular;
                 }
             }
