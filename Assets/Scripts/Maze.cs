@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 
 public class Maze : MonoBehaviour {
@@ -23,9 +24,31 @@ public class Maze : MonoBehaviour {
 	public static IntVector2 size = new IntVector2 (5, 5);
     public ChallengeManager challengeManagerInst;
 
+    public float mazeMeshScale = 2;
+
+    private List<MazeWall> walls;
+
+    public GameObject[] wallPiecesDoubleOpen;
+    public GameObject[] wallPiecesDoublePerp;
+    public GameObject[] wallPiecesDoublePar;
+    public GameObject[] wallPiecesParPerp;
+    public GameObject[] wallPiecesPerpPar;
+    public GameObject[] wallPiecesOpenPar;
+    public GameObject[] wallPiecesParOpen;
+    public GameObject[] wallPiecesOpenPerp;
+    public GameObject[] wallPiecesPerpOpen;
+
+    enum WallNeighbor
+    {
+        None = 0,
+        Parallel = 1,
+        Perpendicular = 2
+    };
+
 	// Use this for initialization
 	void Start ()
     {
+        walls = new List<MazeWall>();
 		//size = new IntVector2 (5, 5);
 
         challengeManagerInst = GameObject.Find("Challenge Manager").GetComponent<ChallengeManager>();
@@ -49,6 +72,7 @@ public class Maze : MonoBehaviour {
 			DoNextGenerationStep(activeCells);
 		}
 		createEndLoc ();
+        GenerateWallPieces();
 	}
 	
 	private MazeCell CreateCell (IntVector2 coordinates, bool end) {
@@ -64,7 +88,7 @@ public class Maze : MonoBehaviour {
 		newCell.coordinates = coordinates;
 
 		newCell.transform.parent = transform;
-		newCell.transform.localPosition = new Vector3(coordinates.x - size.x * 0.5f + 0.5f, 0f, coordinates.z - size.z * 0.5f + 0.5f);
+        newCell.transform.localPosition = new Vector3((coordinates.x - size.x * 0.5f + 0.5f) * mazeMeshScale, 0f, (coordinates.z - size.z * 0.5f + 0.5f) * mazeMeshScale);
 		return newCell;
 	}
 
@@ -144,10 +168,171 @@ public class Maze : MonoBehaviour {
 			wall = Instantiate(wallPrefab) as MazeWall;
 			wall.Initialize(otherCell, cell, direction.GetOpposite());
 		}
+        walls.Add(wall);
 	}
 
 	public void createEndLoc(){
 		IntVector2 endSpot = new IntVector2 (size.x-1, size.z-1); //creates in top right corner
 		CreateCell (endSpot, true);
 	}
+
+    private void GenerateWallPieces()
+    {
+        for (int i = 0; i < walls.Count; ++i)
+        {
+            walls[i].transform.GetChild(0).GetComponent<Collider>().enabled = false;
+
+            RaycastHit _hit;
+            Color _raycastColor = Color.red;
+            WallNeighbor _right = WallNeighbor.None;
+            WallNeighbor _left = WallNeighbor.None;
+
+            if (Physics.Raycast(walls[i].transform.GetChild(0).position, walls[i].transform.GetChild(0).right, out _hit, mazeMeshScale))
+            {
+                if (_hit.transform.parent.transform.rotation == walls[i].transform.rotation)
+                {
+                    Debug.LogWarning("Match!");
+                    _raycastColor = Color.green;
+                    _right = WallNeighbor.Parallel;
+                }
+                else
+                {
+                    Debug.Log("Nope!");
+                    _raycastColor = Color.yellow;
+                    _right = WallNeighbor.Perpendicular;
+                }
+            }
+            //Debug.DrawLine(walls[i].transform.GetChild(0).position, walls[i].transform.GetChild(0).position + (walls[i].transform.GetChild(0).right * mazeMeshScale), _raycastColor, 60f, false);
+
+            if (Physics.Raycast(walls[i].transform.GetChild(0).position, -walls[i].transform.GetChild(0).right, out _hit, mazeMeshScale))
+            {
+                if (_hit.transform.parent.transform.rotation == walls[i].transform.rotation)
+                {
+                    Debug.LogWarning("Match!");
+                    _left = WallNeighbor.Parallel;
+                }
+                else
+                {
+                    Debug.Log("Nope!");
+                    _left = WallNeighbor.Perpendicular;
+                }
+            }
+            
+            walls[i].transform.GetChild(0).GetComponent<Collider>().enabled = true;
+
+            Text _text = walls[i].GetComponentInChildren<Text>();
+
+            GameObject _wallPiece;
+
+            switch(_right)
+            {
+                case WallNeighbor.None:
+                    {
+                        switch (_left)
+                        {
+                            case WallNeighbor.None:
+                                {
+                                    _text.text = "No Neighbors";
+                                    _wallPiece = Instantiate(wallPiecesDoubleOpen[0]) as GameObject;
+                                    _wallPiece.transform.SetParent(walls[i].transform, false);
+                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
+                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    break;
+                                }
+                            case WallNeighbor.Parallel:
+                                {
+                                    _text.text = "< Parallel";
+                                    _wallPiece = Instantiate(wallPiecesParOpen[0]) as GameObject;
+                                    _wallPiece.transform.SetParent(walls[i].transform, false);
+                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
+                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    break;
+                                }
+                            case WallNeighbor.Perpendicular:
+                                {
+                                    _text.text = "< Perpendicular";
+                                    _wallPiece = Instantiate(wallPiecesPerpOpen[0]) as GameObject;
+                                    _wallPiece.transform.SetParent(walls[i].transform, false);
+                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
+                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    break;
+                                }
+                        }
+                        break;
+                    }
+
+                case WallNeighbor.Parallel:
+                    {
+                        switch (_left)
+                        {
+                            case WallNeighbor.None:
+                                {
+                                    _text.text = "Parallel >";
+                                    _wallPiece = Instantiate(wallPiecesOpenPar[0]) as GameObject;
+                                    _wallPiece.transform.SetParent(walls[i].transform, false);
+                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
+                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    break;
+                                }
+                            case WallNeighbor.Parallel:
+                                {
+                                    _text.text = " < Parallel >";
+                                    _wallPiece = Instantiate(wallPiecesDoublePar[0]) as GameObject;
+                                    _wallPiece.transform.SetParent(walls[i].transform, false);
+                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
+                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    break;
+                                }
+                            case WallNeighbor.Perpendicular:
+                                {
+                                    _text.text = "< Perp - Par >";
+                                    _wallPiece = Instantiate(wallPiecesPerpPar[0]) as GameObject;
+                                    _wallPiece.transform.SetParent(walls[i].transform, false);
+                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
+                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    break;
+                                }
+                        }
+                        break;
+                    }
+
+                case WallNeighbor.Perpendicular:
+                    {
+                        switch (_left)
+                        {
+                            case WallNeighbor.None:
+                                {
+                                    _text.text = "Perpendicular >";
+                                    _wallPiece = Instantiate(wallPiecesOpenPerp[0]) as GameObject;
+                                    _wallPiece.transform.SetParent(walls[i].transform, false);
+                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
+                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    break;
+                                }
+                            case WallNeighbor.Parallel:
+                                {
+                                    _text.text = "< Par - Perp >";
+                                    _wallPiece = Instantiate(wallPiecesParPerp[0]) as GameObject;
+                                    _wallPiece.transform.SetParent(walls[i].transform, false);
+                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
+                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    break;
+                                }
+                            case WallNeighbor.Perpendicular:
+                                {
+                                    _text.text = "< Perpendicular >";
+                                    _wallPiece = Instantiate(wallPiecesDoublePerp[0]) as GameObject;
+                                    _wallPiece.transform.SetParent(walls[i].transform, false);
+                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
+                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    break;
+                                }
+                        }
+                        break;
+                    }
+            }
+
+            
+        }
+    }
 }

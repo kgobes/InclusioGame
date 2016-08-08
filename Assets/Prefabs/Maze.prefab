@@ -47,6 +47,26 @@ MonoBehaviour:
   passagePrefab: {fileID: 11480734, guid: cc96c8882ef28417683aadac1a408ff0, type: 2}
   wallPrefab: {fileID: 11417134, guid: 88d2b9053ad84479d921c5693da86d95, type: 2}
   generationStepDelay: 9.99999975e-06
+  challengeManagerInst: {fileID: 0}
+  mazeMeshScale: 4
+  wallPiecesDoubleOpen:
+  - {fileID: 139752, guid: e71014e28bda9314a9fd5c10b135d801, type: 2}
+  wallPiecesDoublePerp:
+  - {fileID: 177672, guid: e6f34f7076209ce48a99ae3624b10cf6, type: 2}
+  wallPiecesDoublePar:
+  - {fileID: 158952, guid: a6ef3403f973c6243b5ac33481c4a7bb, type: 2}
+  wallPiecesParPerp:
+  - {fileID: 187490, guid: a854f21dd531a0c4ca07b2c545f418ed, type: 2}
+  wallPiecesPerpPar:
+  - {fileID: 190170, guid: f5a57870fff2da74aace8515b06c4d4a, type: 2}
+  wallPiecesOpenPar:
+  - {fileID: 116976, guid: b687b2b3e07b4d84d8480f984e01da15, type: 2}
+  wallPiecesParOpen:
+  - {fileID: 158500, guid: f1fdbbbd07fb8cb40b8919ab6999163a, type: 2}
+  wallPiecesOpenPerp:
+  - {fileID: 109994, guid: ceac0d472fd847f47a129cb10dab25da, type: 2}
+  wallPiecesPerpOpen:
+  - {fileID: 102560, guid: b10150626838a684da2013c7dfd56b95, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -54,6 +74,42 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: wallPiecesPerpPar.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: wallPiecesParPerp.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: wallPiecesParOpen.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: wallPiecesOpenPar.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: wallPiecesPerpOpen.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: wallPiecesOpenPerp.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: wallPiecesDoublePar.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: wallPiecesDoublePerp.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: wallPiecesDoubleOpen.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cellPrefab
       value: 
@@ -132,6 +188,46 @@ Prefab:
       propertyPath: eventCounter
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: mazeMeshScale
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: wallPiecesDoublePerp.Array.data[0]
+      value: 
+      objectReference: {fileID: 177672, guid: e6f34f7076209ce48a99ae3624b10cf6, type: 2}
+    - target: {fileID: 0}
+      propertyPath: wallPiecesDoublePar.Array.data[0]
+      value: 
+      objectReference: {fileID: 158952, guid: a6ef3403f973c6243b5ac33481c4a7bb, type: 2}
+    - target: {fileID: 0}
+      propertyPath: wallPiecesParPerp.Array.data[0]
+      value: 
+      objectReference: {fileID: 187490, guid: a854f21dd531a0c4ca07b2c545f418ed, type: 2}
+    - target: {fileID: 0}
+      propertyPath: wallPiecesPerpPar.Array.data[0]
+      value: 
+      objectReference: {fileID: 190170, guid: f5a57870fff2da74aace8515b06c4d4a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: wallPiecesOpenPar.Array.data[0]
+      value: 
+      objectReference: {fileID: 116976, guid: b687b2b3e07b4d84d8480f984e01da15, type: 2}
+    - target: {fileID: 0}
+      propertyPath: wallPiecesParOpen.Array.data[0]
+      value: 
+      objectReference: {fileID: 158500, guid: f1fdbbbd07fb8cb40b8919ab6999163a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: wallPiecesOpenPerp.Array.data[0]
+      value: 
+      objectReference: {fileID: 109994, guid: ceac0d472fd847f47a129cb10dab25da, type: 2}
+    - target: {fileID: 0}
+      propertyPath: wallPiecesPerpOpen.Array.data[0]
+      value: 
+      objectReference: {fileID: 102560, guid: b10150626838a684da2013c7dfd56b95, type: 2}
+    - target: {fileID: 0}
+      propertyPath: wallPiecesDoubleOpen.Array.data[0]
+      value: 
+      objectReference: {fileID: 139752, guid: e71014e28bda9314a9fd5c10b135d801, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 146694}
