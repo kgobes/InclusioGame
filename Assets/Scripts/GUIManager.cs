@@ -48,8 +48,6 @@ public class GUIManager : MonoBehaviour {
 		opt2 = GameObject.Find ("option2").GetComponent <Button>();
 		opt3 = GameObject.Find ("option3").GetComponent <Button>();
 
-        //Debug.LogWarning("Running Start() on GUIManager on " + gameObject.name);
-
 	
 		/*eventText.enabled = false;
 		opt1.enabled = false;
@@ -82,11 +80,7 @@ public class GUIManager : MonoBehaviour {
 		textPanel.gameObject.SetActive (true);
 		eventText.text = text;
 	}
-	public void displayOptions(List<Option> optionList)
-    {
-
-        Debug.LogWarning(optionList.Count);
-
+	public void displayOptions(List<Option> optionList){
 		if (optionList.Count == 2) {
 			opt1.gameObject.SetActive (true);
 			opt2.gameObject.SetActive (true);

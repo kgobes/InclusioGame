@@ -11,14 +11,21 @@ public class ChallengeManager : MonoBehaviour {
 	public int numOfChal = 3;
 	public static int next = -1;
 	public static List<ChallengeTemplate> challenges = new List<ChallengeTemplate>();
-	public static ChallengeTemplate current; 
+	public static ChallengeTemplate current;
 
+    private GUIManager GUIManagerInst;
 
 	// Use this for initialization
 	void Start () {
 		/*eventText = GameObject.Find ("EventText").GetComponent<Text>();
 		textPanel = GameObject.Find ("TextPanel").GetComponent <Image>();
 		textPanel.gameObject.SetActive (false);*/
+
+        GUIManagerInst = GameObject.Find("TextPanel").GetComponent<GUIManager>();
+
+        if (!GUIManagerInst)
+            Debug.LogError("GUI Manager/TextPanel object not found in scene! Unable to store reference");
+
 		checkPosition ();
 
 		initializeChallenges ();
@@ -43,7 +50,7 @@ public class ChallengeManager : MonoBehaviour {
 		}
 
 	}
-	public static void chooseNextScen(){
+	public void chooseNextScen(){
 
 		Debug.Log ("next scen is " + next);
 		int num = 0;
@@ -63,9 +70,9 @@ public class ChallengeManager : MonoBehaviour {
 		}
 		Debug.Log ("num: " + num);
 		current = challenges [num];
-		GUIManager.displayText(current.getStory ());
+        GUIManagerInst.displayText(current.getStory());
 		//gm.displayText(current.getStory ());
-		GUIManager.displayOptions (current.getOptionList ());
+        GUIManagerInst.displayOptions(current.getOptionList());
 		//gm.displayOptions (current.getOptionList ());
 		challenges.Remove (current);
 
@@ -117,8 +124,20 @@ public class ChallengeManager : MonoBehaviour {
 		ChallengeTemplate j = new ChallengeTemplate (10, "You encounter an ogre stuck under a fallen tree. Ogres are known for being vicious creatures who attack anybody in their way. You don’t know if this ogre is necessarily violent, but that’s how the stereotype goes.", false);
 		j.addOption ("Help the ogre - he turns out to be a nonviolent, pleasant being.", 21);
 		j.addOption ("Don’t help the ogre and continue along your path.", 22);
+
+		ChallengeTemplate k = new ChallengeTemplate(11, "You encounter a fairy who appears pleasant and sweet. You watched her manipulate an ogre into giving her food, but because ogres are typically viewed as violent creatures, you assume she had no other choice. She asks to accompany you and claims she knows secret shortcuts through the maze. ", false);
+		k.addOption ("Let the fairy join you, you could use someone who is clever.", 23);
+		k.addOption ("Call out the fairy for being a cheater and report her to the fairy chief.", 24);
+	
 		
-		
+		ChallengeTemplate l = new ChallengeTemplate (12, "You come across a group of your fellow elves stealing food from a pixie.", false);
+		l.addOption ("Intervene and try stop the elves.", 25);
+		l.addOption ("Ignore them and continue on your journey.", 26);
+		l.addOption ("Join the elves and steal the food.", 27);
+
+		ChallengeTemplate m = new ChallengeTemplate (13, " You find yourself lost and see a sign that points directions but it’s in dwarvish language and you can’t read it. You need to ask for help from a dwarf but you remember that someone told you that they have the tendency to lie.", false);
+		m.addOption ("Suck it up and ask for help.", 28);
+		m.addOption ("You think you have a good sense of direction and don’t want to waste your time getting potentially incorrect advice.", 29);
 		
 
 		
