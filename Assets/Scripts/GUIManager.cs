@@ -44,9 +44,9 @@ public class GUIManager : MonoBehaviour {
 
 		eventText = GameObject.Find ("EventText").GetComponent<Text>();
 		textPanel = GameObject.Find ("TextPanel").GetComponent <Image>();
-		opt1 = GameObject.Find ("option1").GetComponent <Button>();
-		opt2 = GameObject.Find ("option2").GetComponent <Button>();
-		opt3 = GameObject.Find ("option3").GetComponent <Button>();
+		opt1 = GameObject.Find ("Option Button 1").GetComponent <Button>();
+        opt2 = GameObject.Find("Option Button 2").GetComponent<Button>();
+        opt3 = GameObject.Find("Option Button 3").GetComponent<Button>();
 
 	
 		/*eventText.enabled = false;
@@ -57,7 +57,7 @@ public class GUIManager : MonoBehaviour {
 
 		resultPanel = GameObject.Find ("ResultPanel").GetComponent <Image> ();
 		resText = GameObject.Find ("ResultText").GetComponent<Text>();
-		cont = GameObject.Find ("Continue").GetComponent <Button>();
+		cont = GameObject.Find ("Continue Button").GetComponent <Button>();
 		//resultPanel.gameObject.SetActive(false);
 		//textPanel.gameObject.SetActive (false);
 
