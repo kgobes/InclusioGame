@@ -215,7 +215,7 @@ Action: Health decreases by 5 points
 		}
 
         // TO DO store a ref so Find isn't called every time we need to call GUIManager
-        GameObject.Find("TextPanel").GetComponent<GUIManager>().showResult(resultText);
+        GameObject.Find("Canvas").GetComponent<GUIManager>().showResult(resultText);
 		
 	}
 	

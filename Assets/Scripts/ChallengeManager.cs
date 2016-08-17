@@ -21,7 +21,7 @@ public class ChallengeManager : MonoBehaviour {
 		textPanel = GameObject.Find ("TextPanel").GetComponent <Image>();
 		textPanel.gameObject.SetActive (false);*/
 
-        GUIManagerInst = GameObject.Find("TextPanel").GetComponent<GUIManager>();
+        GUIManagerInst = GameObject.Find("Canvas").GetComponent<GUIManager>();
 
         if (!GUIManagerInst)
             Debug.LogError("GUI Manager/TextPanel object not found in scene! Unable to store reference");
@@ -70,10 +70,7 @@ public class ChallengeManager : MonoBehaviour {
 		}
 		Debug.Log ("num: " + num);
 		current = challenges [num];
-        GUIManagerInst.displayText(current.getStory());
-		//gm.displayText(current.getStory ());
-        GUIManagerInst.displayOptions(current.getOptionList());
-		//gm.displayOptions (current.getOptionList ());
+        GUIManagerInst.DisplayEventUI(current.getStory(), current.getOptionList());
 		challenges.Remove (current);
 
 	}

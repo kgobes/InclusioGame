@@ -75,6 +75,37 @@ public class GUIManager : MonoBehaviour {
 		//textPanel.enabled = false;
 	}
 
+    public void DisplayEventUI(string inStoryText, List <Option> inOptionList)
+    {
+        displayText(inStoryText);
+        displayOptions(inOptionList);
+
+        
+
+        StartCoroutine(FadeInEventUI());
+    }
+
+    IEnumerator FadeInEventUI()
+    {
+        textPanel.canvasRenderer.SetAlpha(0f);
+        foreach (Transform _child in textPanel.transform)
+        {
+            _child.GetComponent<CanvasRenderer>().SetAlpha(0f);
+        }
+
+        textPanel.CrossFadeAlpha(1f, 1f, false);
+        textPanel.transform.GetChild(0).GetComponent<Graphic>().CrossFadeAlpha(1f, 1f, false);
+
+        yield return new WaitForSeconds(1f);
+
+        foreach(Transform _child in textPanel.transform)
+        {
+            _child.GetComponent<Graphic>().CrossFadeAlpha(1f, 1f, false);
+        }
+
+        StopCoroutine(FadeInEventUI());
+    }
+
 	//public static Rect windowRect = new Rect(20, 20, 120, 50);
 	public void displayText(string text){
 		textPanel.gameObject.SetActive (true);
@@ -127,12 +158,37 @@ public class GUIManager : MonoBehaviour {
 		//p.canMove (true);
 	}*/
 
-	public void clickContinue(){
-		resultPanel.gameObject.SetActive(false);
+	public void clickContinue()
+    {
+        StartCoroutine(HideResultUI());
+        Debug.Log("Click Continue!");
+	}
+
+    IEnumerator HideResultUI()
+    {
+        resultPanel.canvasRenderer.SetAlpha(1f);
+        foreach (Transform _child in resultPanel.transform)
+        {
+            _child.GetComponent<CanvasRenderer>().SetAlpha(1f);
+        }
+
+        resultPanel.CrossFadeAlpha(0f, 1f, false);
+
+        foreach (Transform _child in resultPanel.transform)
+        {
+            _child.GetComponent<Graphic>().CrossFadeAlpha(0f, 1f, false);
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        resultPanel.gameObject.SetActive(false);
         playerRef = GameObject.Find("player").GetComponent<Player>();
         playerRef.canMove(true);
-		GameManager.continueTime ();
-	}
+        GameManager.continueTime();
+
+        StopCoroutine(HideResultUI());
+    }
+
 	public void showResult(string resultText){
 
 		resultPanel.gameObject.SetActive (true);
