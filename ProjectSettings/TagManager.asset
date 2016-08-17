@@ -14,7 +14,7 @@ TagManager:
   - 
   - 
   - Wall
-  - 
+  - Minimap
   - 
   - 
   - 
@@ -40,4 +40,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI Particles
+    uniqueID: 1276951769
     locked: 0

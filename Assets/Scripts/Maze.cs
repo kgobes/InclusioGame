@@ -183,7 +183,6 @@ public class Maze : MonoBehaviour {
             walls[i].transform.GetChild(0).GetComponent<Collider>().enabled = false;
 
             RaycastHit _hit;
-            Color _raycastColor = Color.red;
             WallNeighbor _right = WallNeighbor.None;
             WallNeighbor _left = WallNeighbor.None;
 
@@ -191,12 +190,10 @@ public class Maze : MonoBehaviour {
             {
                 if (_hit.transform.parent.transform.rotation == walls[i].transform.rotation)
                 {
-                    _raycastColor = Color.green;
                     _right = WallNeighbor.Parallel;
                 }
                 else
                 {
-                    _raycastColor = Color.yellow;
                     _right = WallNeighbor.Perpendicular;
                 }
             }

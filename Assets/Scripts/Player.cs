@@ -23,10 +23,17 @@ public class Player : MonoBehaviour {
     private bool isTurning = false; // true while turning, used to restrict input while this is happening
     private float turnSpeed = 8f; // coefficient for the speed the player will rotate when turning
 
+    ParticleSystem UIFogLeft;
+    ParticleSystem UIFogRight;
+
 	void Start(){
 		//controller = GetComponent<CharacterController>();
 
 		//camPrefab = Instantiate (camPrefab) as CameraFollow;
+        UIFogLeft = transform.FindChild("UIFog_left").gameObject.GetComponent<ParticleSystem>();
+        UIFogRight = transform.FindChild("UIFog_right").gameObject.GetComponent<ParticleSystem>();
+        UIFogLeft.Stop();
+        UIFogRight.Stop();
 
 	}
 	
@@ -106,7 +113,17 @@ public class Player : MonoBehaviour {
 	public void canMove(bool canMoveAround){
 		this.canMoveAround = canMoveAround;
         GetComponent<Rigidbody>().isKinematic = !canMoveAround;
-        //Debug.Log("canMoveAround changed to " + canMoveAround.ToString());
+
+        if(canMoveAround)
+        {
+            UIFogLeft.Stop();
+            UIFogRight.Stop();
+        }
+        else
+        {
+            UIFogLeft.Play();
+            UIFogRight.Play();
+        }
 	}
 
 
