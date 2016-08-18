@@ -52,7 +52,9 @@ public class GameManager : MonoBehaviour {
 		gameStarted = true;
 	}
 	public static void changeTime(int increment){
-		timer += increment;
+		if (timer + increment >= 0) {
+			timer += increment;
+		}
 	}
 	private IEnumerator BeginGame () {
 		Camera.main.clearFlags = CameraClearFlags.Skybox;

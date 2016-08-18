@@ -136,8 +136,28 @@ public class ChallengeManager : MonoBehaviour {
 		m.addOption ("Suck it up and ask for help.", 28);
 		m.addOption ("You think you have a good sense of direction and don’t want to waste your time getting potentially incorrect advice.", 29);
 		
+		ChallengeTemplate n = new ChallengeTemplate (14, " A giant stops you to ask for directions. You are much smaller than she is and have heard rumors that giants are thieves. You are scared and want to quickly continue on your journey.", false);
+		n.addOption ("Take the time to help the giant find her way regardless.", 30);
+		n.addOption ("Mumble a white lie about not being sure where you are anyway, and hurry on your way.", 31);
 
-		
+		ChallengeTemplate o = new ChallengeTemplate(15, "A group of elves is singing about their fairy godmother. They ask you to join in their singing, but you don’t believe in fairy godmothers...although it does look like they are having fun", false);
+		o.addOption ("Ask questions to learn more.", 32);
+		o.addOption("Ignore them and keep going... no time for fun right now.", 33);
+
+		ChallengeTemplate p = new ChallengeTemplate(16, "There is a gate ahead with a lock on it. What is the password?", true);
+		p.addOption ("You know this! It’s the secret to life from the singing elves!", 34);
+		p.addOption ("A gate is no match for you! You break down the gate using force.", 35);
+		p.addOption (" Oh no! You realize you should have talked with the singing elves. You go back to find them.", 36);
+
+		ChallengeTemplate q = new ChallengeTemplate(19, "You spot an old woman struggling on the ground. You recognize her immediately as the evil witch from another story. As you get closer, she says she fell and can’t get back up. She asks for your help.", false);
+		q.addOption ("Keep going down the path. She doesn’t sound trustworthy.", 37);
+		q.addOption ("Help her up, maybe the rumors aren't true.", 38);
+
+		ChallengeTemplate r = new ChallengeTemplate(21, "You are so busy texting your mom that you don’t notice the tree in the path.", false);
+		r.addOption ("You run straight into it. Ow.", 39);
+		r.addOption ("Trip over the roots and slam into the groud. Embarrassing.", 40);
+
+
 		
 		//ADD CHALLENGES TO CHALLENGE LIST
 		challenges.Add (a);
@@ -151,6 +171,15 @@ public class ChallengeManager : MonoBehaviour {
 		challenges.Add (h);
 		challenges.Add (i);
 		challenges.Add (j);
+
+		challenges.Add (k);
+		challenges.Add (l);
+		challenges.Add (m);
+		challenges.Add (n);
+		challenges.Add (o);
+		challenges.Add (p);
+		challenges.Add (q);
+		challenges.Add (r);
 
 
 	}

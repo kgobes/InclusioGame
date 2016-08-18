@@ -213,6 +213,51 @@ Action: Health decreases by 5 points
 			resultText = "You’re in an enchanted maze, why would you think you know where you are going? You get lost and it takes you a while to get back on the path."; 
 			GameManager.changeTime (20);
 		}
+		if (num == 30) {
+			resultText = "That was nice of you. You don't even lose any time, becuase talking through the directions with the giant helped you decide faster which way you wanted to go.";
+		}
+		if (num == 31) {
+			resultText = "The giant looks disappointed, but you nervously scamper down the path.";
+		}
+		if (num == 32) {
+			resultText = "The elves are thrilled to have more company! The song is interesting- you note a line that curiously says that the secret is 'Hans Christian Anderson'. Hmm.";
+			GameManager.changeTime (20);
+			ChallengeManager.setNext (16);
+		}
+		if (num == 33) {
+			resultText = "You continue on your way.";
+			ChallengeManager.setNext(16);
+		}
+		if (num == 34) {
+			resultText = "You enter the correct password Hans Christian Anderson and make it through!";
+		}
+		if (num == 35) {
+			resultText = "You run into the gate until it breaks. Ouch.";
+			ResourceBar.incrementHealth(-5);
+		}
+		/*if (num == 36) { //CAN I DO thisss?
+			/*Result 3: You turn around to find the singing elves and ask them about their fairy godmother.
+Action 3: You cannot pass through, but can go back to places you have already been.
+		}*/
+
+		if (num == 37) {
+			resultText = "You continue down the path.";
+		}
+		if (num == 38) {
+			int rand = Random.Range (1, 2);
+			if(rand == 1){
+				resultText = "The witch is so grateful that she gives you a potion as a thank you. Sweet!";
+				//add potion
+			}
+			if(rand == 2){
+				resultText = "The witch pulls you down with her in an attempt to steal all of your stuff. Thankfully you escape with only a small loss to your health.";
+				ResourceBar.incrementHealth (-5);
+			}
+		}
+		if (num == 39 || num == 40) {
+			resultText = "Hopefully no one saw that!";
+			ResourceBar.incrementHealth(5);
+		}
 
         // TO DO store a ref so Find isn't called every time we need to call GUIManager
         GameObject.Find("Canvas").GetComponent<GUIManager>().showResult(resultText);
