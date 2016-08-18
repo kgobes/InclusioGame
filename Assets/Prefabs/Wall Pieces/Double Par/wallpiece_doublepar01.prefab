@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 403700}
   - 33: {fileID: 3379872}
   - 23: {fileID: 2335888}
-  - 95: {fileID: 9519246}
   m_Layer: 0
   m_Name: foliageprefab_doublepar001
   m_TagString: Untagged
@@ -28,7 +27,6 @@ GameObject:
   - 4: {fileID: 442884}
   - 33: {fileID: 3387226}
   - 23: {fileID: 2368574}
-  - 95: {fileID: 9518984}
   - 65: {fileID: 6572886}
   m_Layer: 0
   m_Name: wallpiece_doublepar01
@@ -56,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.90898848, y: -3.89551353, z: -18.1885147}
+  m_LocalPosition: {x: -7.2123003, y: .813772678, z: 3.73817015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 403700}
@@ -143,40 +141,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 1, z: 1.5}
   m_Center: {x: 2, y: .5, z: -.75}
---- !u!95 &9518984
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 158952}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b0a4a29cf28016642ad34d2600f67998, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &9519246
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 115110}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ec929dab6a93bcf4fb57317b4895eec9, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour {
 
 		//temp = mazeInstance.GetCell (mazeInstance.RandomCoordinates);
 		//Vector3 sLoc = new Vector3 (0.5f, 0.5f, 0.5f);
-		Vector3 sLoc = new Vector3 (-(Maze.size.x-1)/2, 0.5f, -(Maze.size.z-1)/2);
+		Vector3 sLoc = new Vector3 (-((Maze.size.x-1) * mazeInstance.mazeMeshScale) / 2, 0.5f, -((Maze.size.z-1) * mazeInstance.mazeMeshScale) / 2);
 		//Vector3 sLoc = new Vector3 (-2f, 0f, -2f);
 		//Debug.Log (-(mazeInstance.size.x - 1) + " and " + -(mazeInstance.size.z-1));
 		playerInstance.SetLocation(sLoc);
