@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: fern_basecolor
-  m_Shader: {fileID: 10511, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 09a1bd2b320321f4dacbfb8a49e3633c, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 2901
+  m_CustomRenderQueue: 2200
   stringTagMap:
     RenderType: TransparentCutout
   m_SavedProperties:
@@ -33,13 +33,6 @@ Material:
       data:
         first:
           name: _DetailNormalMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _MetallicGlossMap
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -79,6 +72,13 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MetallicGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -94,6 +94,14 @@ Material:
         second: .5
       data:
         first:
+          name: _Cutoff2
+        second: .5
+      data:
+        first:
+          name: _Parallax
+        second: .0199999996
+      data:
+        first:
           name: _ZWrite
         second: 1
       data:
@@ -102,16 +110,8 @@ Material:
         second: .5
       data:
         first:
-          name: _Metallic
-        second: 0
-      data:
-        first:
           name: _BumpScale
         second: 1
-      data:
-        first:
-          name: _Parallax
-        second: .0199999996
       data:
         first:
           name: _OcclusionStrength
@@ -130,20 +130,24 @@ Material:
         second: 1
       data:
         first:
-          name: _Occlusion
-        second: 0
-      data:
-        first:
-          name: _BaseLight
-        second: .200000003
-      data:
-        first:
-          name: _AO
+          name: _Metallic
         second: 0
       data:
         first:
           name: _SquashAmount
         second: 1
+      data:
+        first:
+          name: _Occlusion
+        second: 3.79999995
+      data:
+        first:
+          name: _BaseLight
+        second: .584999979
+      data:
+        first:
+          name: _AO
+        second: 0
     m_Colors:
       data:
         first:
@@ -153,6 +157,14 @@ Material:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _WaveAndDistance
+        second: {r: 12, g: 3.5999999, b: 1, a: 1}
+      data:
+        first:
+          name: _WavingTint
+        second: {r: .699999988, g: .600000024, b: .5, a: 0}
       data:
         first:
           name: _TreeInstanceColor
