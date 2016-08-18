@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour {
 			partTime += 1;
 			if(partTime == 30){
 				timer += 1;
-				timeText.text = "Time: " + timer;
+                timeText.text = "Time: " + (timer / 60).ToString("00") + ":" + (timer % 60).ToString("00");
 				partTime = 0;
 			}
 		}
@@ -48,10 +48,12 @@ public class GameManager : MonoBehaviour {
 	public static void pauseTime(){
 		gameStarted = false;
 	}
-	public static void continueTime(){
+	public static void continueTime()
+    {
 		gameStarted = true;
 	}
-	public static void changeTime(int increment){
+	public static void changeTime(int increment)
+    {
 		if (timer + increment >= 0) {
 			timer += increment;
 		}

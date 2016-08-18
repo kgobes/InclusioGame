@@ -16,7 +16,9 @@ public class ResourceBar : MonoBehaviour {
 
 	//Health
 	public static Text healthText;
-	public static int health;
+	public static float health;
+    public Slider healthBar;
+    float targetHealth;
 
 	// Use this for initialization
 	void Start () {
@@ -30,16 +32,21 @@ public class ResourceBar : MonoBehaviour {
 		r2 = "";
 		r3 = "";
 
-		healthText = GameObject.Find ("Health").GetComponent <Text>();
+		healthText = GameObject.Find ("Health Text").GetComponent <Text>();
 		health = 100;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
+        if(Input.GetKeyDown(KeyCode.F10))
+        {
+            incrementHealth(-10f);
+        }
 	
 	}
 
-	public static bool addResource(string imgName){
+	public bool addResource(string imgName){
 		if (r1.Equals ("")) {
 			r1 = imgName;
 			temp = Resources.Load <Sprite>(imgName);
@@ -69,7 +76,7 @@ public class ResourceBar : MonoBehaviour {
 		} else
 			return false;
 	}
-	public static bool useResource(string imgName){
+	public bool useResource(string imgName){
 		if (r1.Equals (imgName)) {
 			resource1.gameObject.SetActive (false);
 			r1 = "";
@@ -87,17 +94,53 @@ public class ResourceBar : MonoBehaviour {
 		} else
 			return false;
 	}
-	public static bool checkResource(string imgName){
+	public bool checkResource(string imgName){
 		if (r1.Equals (imgName) || r2.Equals (imgName) || r3.Equals (imgName))
 			return true;
 		else
 			return false;
 	}
 
-	public static void incrementHealth(int inc){
-		health += inc;
-		healthText.text = "Health: " + health;
+	public void incrementHealth(float inc){
+        targetHealth = health + inc;
+        healthBar.GetComponent<Animator>().SetTrigger("startflash");
+        StartCoroutine(HealthBarSlideEffect());
 	}
+
+    IEnumerator HealthBarSlideEffect()
+    {
+        Debug.Log("Target Health: " + targetHealth);
+
+        if(health > targetHealth)
+        {
+            while (health > targetHealth)
+            {
+                yield return new WaitForEndOfFrame();
+                health -= 0.2f;
+                healthBar.value = health;
+                healthText.text = "Health: " + (int)health;
+                
+            }
+        }
+        else
+        {
+            while (health < targetHealth)
+            {
+                yield return new WaitForEndOfFrame();
+                health += 0.2f;
+                healthBar.value = health;
+                healthText.text = "Health: " + (int)health;
+                
+            }
+        }
+
+        health = targetHealth;
+        healthText.text = "Health: " + (int)health;
+
+        healthBar.GetComponent<Animator>().SetTrigger("stopflash");
+
+        StopCoroutine(HealthBarSlideEffect());
+    }
 
 
 }

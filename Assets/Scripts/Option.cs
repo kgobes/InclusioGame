@@ -26,11 +26,11 @@ public class Option{
 		return num;
 	}
 
-	public void executeResult(){
+	public void executeResult(ResourceBar inResourceBar){
 		//ChallengeManager cm = GameObject.Find ("Challenge Manager").GetComponent <ChallengeManager>();
 		if (num == 1) {
 			resultText = "The other elves angrily leave, but the troll is safe and is thankful for your help and joins you.";
-			ResourceBar.addResource ("spr_troll");
+            inResourceBar.addResource("spr_troll");
 			ChallengeManager.setNext (2);
 		}
 		if (num == 2) {
@@ -38,9 +38,10 @@ public class Option{
 			ChallengeManager.setNext (2);
 		}
 		if (num == 3) {
-			if(ResourceBar.checkResource ("spr_troll")){
+            if (inResourceBar.checkResource("spr_troll"))
+            {
 				resultText = "You make it through the gate and the troll is reunited with his family.";
-				ResourceBar.useResource ("spr_troll");
+                inResourceBar.useResource("spr_troll");
 			}
 			else
 				resultText = "Hmmm doesn't look like you have a troll here to help you. Maybe you should see if you can find one...";
@@ -48,8 +49,8 @@ public class Option{
 		if (num == 4) {
 			int rand = Random.Range (1, 2);
 			if(rand == 1){
-				resultText = "Unintentionally offend them and they whack you with their club. You lose 5 health points."; 
-				ResourceBar.incrementHealth (-5);
+				resultText = "Unintentionally offend them and they whack you with their club. You lose 5 health points.";
+                inResourceBar.incrementHealth(-5);
 			}
 			else if(rand == 2){
 				resultText = "You got lucky! The trolls let you through the gate.";
@@ -59,12 +60,12 @@ public class Option{
 			int rand = Random.Range (1, 2);
 			if(rand == 1){
 				resultText = "You lose 2 points of your own health.";
-				ResourceBar.incrementHealth (-5);
+                inResourceBar.incrementHealth(-5);
 				ChallengeManager.setNext (4);
 			}
 			else if(rand == 2){
 				resultText = "The pixie is so grateful that he asks to join your team.";
-				ResourceBar.addResource ("spr_pixie");
+				inResourceBar.addResource ("spr_pixie");
 				ChallengeManager.setNext (4);
 			}
 		}
@@ -77,9 +78,10 @@ public class Option{
 			GameManager.changeTime (20);
 		}
 		if (num == 8) {
-			if(ResourceBar.checkResource ("pixie")){
+            if (inResourceBar.checkResource("pixie"))
+            {
 				resultText = "You make it through the wall.";
-				ResourceBar.useResource ("spr_pixie");
+                inResourceBar.useResource("spr_pixie");
 			}
 			else{
 				resultText = "Hmmm doesn't look like you have a pixie here to help you. Maybe you should see if you can find one...";
@@ -87,7 +89,7 @@ public class Option{
 		}
 		if (num == 9) {
 			resultText = "The unicorn refuses to join based on your team’s negative response towards it. Some of your team is furious and insult you for it, which makes you feel bad.";
-				ResourceBar.incrementHealth (-10);
+            inResourceBar.incrementHealth(-10);
 		}
 		if (num == 10) {
 			resultText = "Your team is happy, but the unicorn blocks your path.";
@@ -107,7 +109,7 @@ public class Option{
 			}
 			if(rand == 2){
 				resultText = "A unicorn placed the pot as a trick and you fell for it. He takes the gold back and pokes you with his horn.";
-				ResourceBar.incrementHealth (-5);
+                inResourceBar.incrementHealth(-5);
 			}
 		}
 		if (num == 13) {
@@ -124,7 +126,7 @@ public class Option{
 			}
 			if(rand == 2){
 				resultText = "You save the pixie! As a token of appreciation it gives you 5 health points and joins your team!";
-				ResourceBar.incrementHealth (5);
+                inResourceBar.incrementHealth(5);
 			}
 		}
 		if(num == 16){ //come back to this one
@@ -233,7 +235,7 @@ Action: Health decreases by 5 points
 		}
 		if (num == 35) {
 			resultText = "You run into the gate until it breaks. Ouch.";
-			ResourceBar.incrementHealth(-5);
+            inResourceBar.incrementHealth(-5);
 		}
 		/*if (num == 36) { //CAN I DO thisss?
 			/*Result 3: You turn around to find the singing elves and ask them about their fairy godmother.
@@ -251,12 +253,12 @@ Action 3: You cannot pass through, but can go back to places you have already be
 			}
 			if(rand == 2){
 				resultText = "The witch pulls you down with her in an attempt to steal all of your stuff. Thankfully you escape with only a small loss to your health.";
-				ResourceBar.incrementHealth (-5);
+                inResourceBar.incrementHealth(-5);
 			}
 		}
 		if (num == 39 || num == 40) {
 			resultText = "Hopefully no one saw that!";
-			ResourceBar.incrementHealth(5);
+            inResourceBar.incrementHealth(5);
 		}
 
         // TO DO store a ref so Find isn't called every time we need to call GUIManager

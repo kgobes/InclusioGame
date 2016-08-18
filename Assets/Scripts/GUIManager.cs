@@ -37,6 +37,8 @@ public class GUIManager : MonoBehaviour {
 
     private static Player playerRef;
 
+    public ResourceBar resourceBar;
+
 	// Use this for initialization
 	void Start () {
 
@@ -137,17 +139,17 @@ public class GUIManager : MonoBehaviour {
 	}
 	public void clickOption1(){
 
-		optObject1.executeResult ();
+		optObject1.executeResult(resourceBar);
 		textPanel.gameObject.SetActive (false);
 	}
 	public void clickOption2(){
 
-		optObject2.executeResult ();
+        optObject2.executeResult(resourceBar);
 		textPanel.gameObject.SetActive (false);
 	}
 	public void clickOption3(){
 
-		optObject3.executeResult ();
+        optObject3.executeResult(resourceBar);
 		textPanel.gameObject.SetActive (false);
 	}
 	/*public void clickContinue(){
