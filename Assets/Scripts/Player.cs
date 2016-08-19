@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 	
@@ -34,7 +35,6 @@ public class Player : MonoBehaviour {
         UIFogRight = transform.FindChild("UIFog_right").gameObject.GetComponent<ParticleSystem>();
         UIFogLeft.Stop();
         UIFogRight.Stop();
-
 	}
 	
 	private void Rotate (MazeDirection direction) {

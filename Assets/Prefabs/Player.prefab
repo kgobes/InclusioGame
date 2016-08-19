@@ -134,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.34904933, y: 3.39528275, z: -5.7853446}
+  m_LocalPosition: {x: 105.359703, y: 623.987366, z: -161.85144}
   m_LocalScale: {x: .25, y: 1, z: .25}
   m_Children:
   - {fileID: 476766}
@@ -311,7 +311,7 @@ MonoBehaviour:
   jumpHeight: 8
   canMoveAround: 1
   TerminalVelocity: -20
-  speed: 10
+  speed: 3
   rotateSpeed: 8
   jumpSpeed: 8
   gravity: 9.80000019
@@ -2544,6 +2544,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -780,6 +780,7 @@ GameObject:
   - 222: {fileID: 633403182}
   - 114: {fileID: 633403181}
   - 114: {fileID: 633403183}
+  - 95: {fileID: 633403184}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -854,6 +855,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceBar: {fileID: 0}
+--- !u!95 &633403184
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 633403179}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e1636f79ca7f8514099f66212aad64a3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &683408201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,8 +1351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mazePrefab: {fileID: 11420138, guid: 050c04f2ce67642c88003414b92713c0, type: 2}
   partTime: 0
-  timeText: {fileID: 633403181}
-  textPanel: {fileID: 0}
+  resourceBar: {fileID: 1962613125}
   playerPrefab: {fileID: 11471264, guid: 3a3e51d4dbeec4fc09987cbcfc2bb907, type: 2}
 --- !u!4 &1170311596
 Transform:
@@ -2142,6 +2159,7 @@ GameObject:
   - 222: {fileID: 1962613124}
   - 114: {fileID: 1962613123}
   - 114: {fileID: 1962613125}
+  - 225: {fileID: 1962613126}
   m_Layer: 5
   m_Name: ResourceBar
   m_TagString: Untagged
@@ -2214,3 +2232,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1116471124}
+--- !u!225 &1962613126
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1962613121}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

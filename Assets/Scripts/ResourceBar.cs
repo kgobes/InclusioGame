@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 public class ResourceBar : MonoBehaviour {
 	public static Image resource1;
@@ -21,7 +22,8 @@ public class ResourceBar : MonoBehaviour {
     float targetHealth;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		resource1 = GameObject.Find ("Resource1").GetComponent <Image>();
 		resource2 = GameObject.Find ("Resource2").GetComponent <Image>();
 		resource3 = GameObject.Find ("Resource3").GetComponent <Image>();
@@ -34,6 +36,8 @@ public class ResourceBar : MonoBehaviour {
 
 		healthText = GameObject.Find ("Health Text").GetComponent <Text>();
 		health = 100;
+
+        SetResourceBarVisibility(false);
 	}
 	
 	// Update is called once per frame
@@ -140,6 +144,12 @@ public class ResourceBar : MonoBehaviour {
         healthBar.GetComponent<Animator>().SetTrigger("stopflash");
 
         StopCoroutine(HealthBarSlideEffect());
+    }
+
+    public void SetResourceBarVisibility(bool inIsVisible)
+    {
+        if (inIsVisible) GetComponent<CanvasGroup>().alpha = 1;
+        else GetComponent<CanvasGroup>().alpha = 0;
     }
 
 

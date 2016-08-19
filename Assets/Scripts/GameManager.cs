@@ -9,9 +9,9 @@ public class GameManager : MonoBehaviour {
 	public static int timer = 0;
 	public int partTime = 0;
 	public static bool gameStarted;
-	public Text timeText;
+	public static Text timeText;
 
-	public Image textPanel;
+    public ResourceBar resourceBar;
 
 	//player
 	public Player playerPrefab;
@@ -26,16 +26,16 @@ public class GameManager : MonoBehaviour {
 
 		StartCoroutine(BeginGame());
 		GUIManager.disablePanels ();
-		//
-		//textPanel = GameObject.Find ("TextPanel").GetComponent <Image>();
-		//textPanel.gameObject.SetActive (false);
 
 	}
-	private void Update () {
-		if (Input.GetKeyDown(KeyCode.X)) {
-			RestartGame();
-		}
-		if (gameStarted) {
+	private void Update ()
+    {
+        if (Input.GetKeyDown(KeyCode.F11)) changeTime(-5);
+
+        if (Input.GetKeyDown(KeyCode.X)) RestartGame();
+
+		if (gameStarted)
+        {
 			partTime += 1;
 			if(partTime == 30){
 				timer += 1;
@@ -54,10 +54,13 @@ public class GameManager : MonoBehaviour {
 	}
 	public static void changeTime(int increment)
     {
-		if (timer + increment >= 0) {
+		if (timer + increment >= 0)
+        {
 			timer += increment;
+            timeText.gameObject.GetComponent<Animator>().SetTrigger("startflash");
 		}
 	}
+
 	private IEnumerator BeginGame () {
 		Camera.main.clearFlags = CameraClearFlags.Skybox;
 		Camera.main.rect = new Rect(0f, 0f, 1f, 1f);
@@ -77,6 +80,9 @@ public class GameManager : MonoBehaviour {
 		//Camera.main.enabled = false;
 		Camera.main.clearFlags = CameraClearFlags.Depth;
 		Camera.main.rect = new Rect(0f, 0f, 0.5f, 0.5f);
+
+        resourceBar.SetResourceBarVisibility(true);
+
 		gameStarted = true;
 	}
 	
