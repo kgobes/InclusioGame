@@ -17,7 +17,6 @@ public class GUIManager : MonoBehaviour
 
     Text resText;
     Image resultPanel;
-    Button cont;
 
     private static Player playerRef;
 
@@ -26,11 +25,21 @@ public class GUIManager : MonoBehaviour
     bool eventUIActive;
 
     CanvasGroup inGameUI;
+    CanvasGroup pauseMenu;
+    CanvasGroup pauseButton;
+
+    GameManager gameManager;
 
 	// Use this for initialization
 
     void Awake()
     {
+        inGameUI = GameObject.Find("InGameUIPanel").GetComponent<CanvasGroup>();
+        pauseMenu = GameObject.Find("PausePanel").GetComponent<CanvasGroup>();
+        pauseButton = GameObject.Find("Pause Button").GetComponent<CanvasGroup>();
+
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
         eventText = GameObject.Find("EventText").GetComponent<Text>();
         textPanel = GameObject.Find("TextPanel").GetComponent<Image>();
         opt1 = GameObject.Find("Option Button 1").GetComponent<Button>();
@@ -39,13 +48,14 @@ public class GUIManager : MonoBehaviour
 
         resultPanel = GameObject.Find("ResultPanel").GetComponent<Image>();
         resText = GameObject.Find("ResultText").GetComponent<Text>();
-        cont = GameObject.Find("Continue Button").GetComponent<Button>();
     }
 
 	void Start ()
     {
-
 		Debug.Log ("GUI MANAG my name is " + this.name);
+
+        DisplayGameUI();
+        SetPauseButtonVisibility(false);
 	}
 	
 	// Update is called once per frame
@@ -183,11 +193,49 @@ public class GUIManager : MonoBehaviour
 
     public bool GetEventUIActive() { return eventUIActive; }
 
-    public void SetInGameUIVisibility(bool inIsVisible)
+    public void DisplayPauseMenu()
     {
-        GetComponent<CanvasGroup>().interactable = inIsVisible;
+        inGameUI.interactable = false;
+        pauseMenu.interactable = true;
 
-        if (inIsVisible) GetComponent<CanvasGroup>().alpha = 1;
-        else GetComponent<CanvasGroup>().alpha = 0;
+        inGameUI.blocksRaycasts = false;
+        pauseMenu.blocksRaycasts = true;
+
+        inGameUI.alpha = 0;
+        pauseMenu.alpha = 1;        
+    }
+
+    public void DisplayGameUI()
+    {
+        inGameUI.interactable = true;
+        pauseMenu.interactable = false;
+
+        inGameUI.blocksRaycasts = true;
+        pauseMenu.blocksRaycasts = false;
+
+        inGameUI.alpha = 1;
+        pauseMenu.alpha = 0;  
+    }
+
+    public void SetPauseButtonVisibility(bool inIsVisible)
+    {
+        if (inIsVisible) pauseButton.alpha = 1;
+        else pauseButton.alpha = 0;
+    }
+
+    public void OnPressPauseButton()
+    {
+        gameManager.PauseGame();
+    }
+
+    public void OnPressPlayButton()
+    {
+        gameManager.UnPauseGame();
+    }
+
+    public void OnPressReturnToMenuButton()
+    {
+        StopAllCoroutines();
+        Application.LoadLevel(1);
     }
 }

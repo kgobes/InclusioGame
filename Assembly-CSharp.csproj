@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\MazeDoor.cs" />
      <Compile Include="Assets\Scripts\MazePassage.cs" />
      <Compile Include="Assets\Scripts\MazeWall.cs" />
+     <Compile Include="Assets\Scripts\MouseIgnoreAlphaOnUIElement.cs" />
      <Compile Include="Assets\Scripts\Option.cs" />
      <Compile Include="Assets\Scripts\PlayAudioWhenEnabled.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />

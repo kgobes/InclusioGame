@@ -62,16 +62,16 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-    void PauseGame()
+    public void PauseGame()
     {
         gamePaused = true;
         pauseTime();
         playerInstance.canMove(false);
 
-        guiManager.SetInGameUIVisibility(false);
+        guiManager.DisplayPauseMenu();
     }
 
-    void UnPauseGame()
+    public void UnPauseGame()
     {
         gamePaused = false;
 
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour {
             playerInstance.canMove(true);
         }
 
-        guiManager.SetInGameUIVisibility(true);
+        guiManager.DisplayGameUI();
     }
 
 	public static void pauseTime(){
@@ -121,6 +121,7 @@ public class GameManager : MonoBehaviour {
 		Camera.main.rect = new Rect(0f, 0f, 0.5f, 0.5f);
 
         resourceBar.SetResourceBarVisibility(true);
+        guiManager.SetPauseButtonVisibility(true);
 
 		gameStarted = true;
 	}
