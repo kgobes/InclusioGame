@@ -39,6 +39,10 @@ public class GUIManager : MonoBehaviour {
 
     public ResourceBar resourceBar;
 
+    bool eventUIActive;
+
+    CanvasGroup inGameUI;
+
 	// Use this for initialization
 	void Start () {
 
@@ -50,6 +54,7 @@ public class GUIManager : MonoBehaviour {
         opt2 = GameObject.Find("Option Button 2").GetComponent<Button>();
         opt3 = GameObject.Find("Option Button 3").GetComponent<Button>();
 
+        //inGameUI = transform.FindChild("InGameUI").gameObject.GetComponent<CanvasGroup>();
 	
 		/*eventText.enabled = false;
 		opt1.enabled = false;
@@ -79,11 +84,10 @@ public class GUIManager : MonoBehaviour {
 
     public void DisplayEventUI(string inStoryText, List <Option> inOptionList)
     {
+        eventUIActive = true;
+
         displayText(inStoryText);
         displayOptions(inOptionList);
-
-        
-
         StartCoroutine(FadeInEventUI());
     }
 
@@ -188,6 +192,8 @@ public class GUIManager : MonoBehaviour {
         playerRef.canMove(true);
         GameManager.continueTime();
 
+        eventUIActive = false;
+
         StopCoroutine(HideResultUI());
     }
 
@@ -196,4 +202,14 @@ public class GUIManager : MonoBehaviour {
 		resultPanel.gameObject.SetActive (true);
 		resText.text = resultText;
 	}
+
+    public bool GetEventUIActive() { return eventUIActive; }
+
+    public void SetInGameUIVisibility(bool inIsVisible)
+    {
+        GetComponent<CanvasGroup>().interactable = inIsVisible;
+
+        if (inIsVisible) GetComponent<CanvasGroup>().alpha = 1;
+        else GetComponent<CanvasGroup>().alpha = 0;
+    }
 }

@@ -1353,6 +1353,7 @@ MonoBehaviour:
   partTime: 0
   resourceBar: {fileID: 1962613125}
   playerPrefab: {fileID: 11471264, guid: 3a3e51d4dbeec4fc09987cbcfc2bb907, type: 2}
+  guiManager: {fileID: 1698430699}
 --- !u!4 &1170311596
 Transform:
   m_ObjectHideFlags: 0
@@ -1793,6 +1794,7 @@ GameObject:
   - 114: {fileID: 1698430696}
   - 114: {fileID: 1698430695}
   - 114: {fileID: 1698430699}
+  - 225: {fileID: 1698430700}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1886,6 +1888,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceBar: {fileID: 1962613125}
+--- !u!225 &1698430700
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1698430694}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1708017571
 Prefab:
   m_ObjectHideFlags: 0

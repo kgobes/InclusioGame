@@ -13,9 +13,13 @@ public class GameManager : MonoBehaviour {
 
     public ResourceBar resourceBar;
 
+    bool gamePaused = false;
+
 	//player
 	public Player playerPrefab;
 	private Player playerInstance;
+
+    public GUIManager guiManager;
 
 	private void Start () {
 		Debug.Log ("Game MANAG my name is " + this.name);
@@ -32,6 +36,19 @@ public class GameManager : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.F11)) changeTime(-5);
 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log("P pressed");
+            if (gamePaused)
+            {
+                UnPauseGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.X)) RestartGame();
 
 		if (gameStarted)
@@ -44,6 +61,28 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 	}
+
+    void PauseGame()
+    {
+        gamePaused = true;
+        pauseTime();
+        playerInstance.canMove(false);
+
+        guiManager.SetInGameUIVisibility(false);
+    }
+
+    void UnPauseGame()
+    {
+        gamePaused = false;
+
+        if(!guiManager.GetEventUIActive())
+        {
+            continueTime();
+            playerInstance.canMove(true);
+        }
+
+        guiManager.SetInGameUIVisibility(true);
+    }
 
 	public static void pauseTime(){
 		gameStarted = false;

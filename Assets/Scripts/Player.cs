@@ -81,15 +81,18 @@ public class Player : MonoBehaviour {
         }
         else    // ignore additional input to turn if a turn is already in progress
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (canMoveAround)
             {
-                //transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
-                Rotate(currentDirection.GetNextCounterclockwise());
-            }
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                //transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
-                Rotate(currentDirection.GetNextClockwise());
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    //transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
+                    Rotate(currentDirection.GetNextCounterclockwise());
+                }
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    //transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
+                    Rotate(currentDirection.GetNextClockwise());
+                }
             }
         }
 
@@ -114,16 +117,16 @@ public class Player : MonoBehaviour {
 		this.canMoveAround = canMoveAround;
         GetComponent<Rigidbody>().isKinematic = !canMoveAround;
 
-        if(canMoveAround)
-        {
-            UIFogLeft.Stop();
-            UIFogRight.Stop();
-        }
-        else
-        {
-            UIFogLeft.Play();
-            UIFogRight.Play();
-        }
+        //if(canMoveAround)
+        //{
+        //    UIFogLeft.Stop();
+        //    UIFogRight.Stop();
+        //}
+        //else
+        //{
+        //    UIFogLeft.Play();
+        //    UIFogRight.Play();
+        //}
 	}
 
 
