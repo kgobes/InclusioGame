@@ -3,37 +3,21 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class GUIManager : MonoBehaviour {
+public class GUIManager : MonoBehaviour
+{
+    Text eventText;
+    Image textPanel;
+    Button opt1;
+    Button opt2;
+    Button opt3;
 
-	public static Text eventText;
-	public static Image textPanel;
-	public static Button opt1;
-	public static Button opt2;
-	public static Button opt3;
+    Option optObject1;
+    Option optObject2;
+    Option optObject3;
 
-	public static Option optObject1;
-	public static Option optObject2;
-	public static Option optObject3;
-
-
-	public static Text resText;
-	public static Image resultPanel;
-	public static Button cont;
-	/*
-	public Text eventText;
-	public Image textPanel;
-	public Button opt1;
-	public Button opt2;
-	public Button opt3;
-	
-	public Option optObject1;
-	public Option optObject2;
-	public Option optObject3;
-	
-	
-	public Text resText;
-	public Image resultPanel;
-	public Button cont;*/
+    Text resText;
+    Image resultPanel;
+    Button cont;
 
     private static Player playerRef;
 
@@ -44,30 +28,24 @@ public class GUIManager : MonoBehaviour {
     CanvasGroup inGameUI;
 
 	// Use this for initialization
-	void Start () {
 
-		Debug.Log ("GUI MANAG my name is " + this.name);
-
-		eventText = GameObject.Find ("EventText").GetComponent<Text>();
-		textPanel = GameObject.Find ("TextPanel").GetComponent <Image>();
-		opt1 = GameObject.Find ("Option Button 1").GetComponent <Button>();
+    void Awake()
+    {
+        eventText = GameObject.Find("EventText").GetComponent<Text>();
+        textPanel = GameObject.Find("TextPanel").GetComponent<Image>();
+        opt1 = GameObject.Find("Option Button 1").GetComponent<Button>();
         opt2 = GameObject.Find("Option Button 2").GetComponent<Button>();
         opt3 = GameObject.Find("Option Button 3").GetComponent<Button>();
 
-        //inGameUI = transform.FindChild("InGameUI").gameObject.GetComponent<CanvasGroup>();
-	
-		/*eventText.enabled = false;
-		opt1.enabled = false;
-		opt2.enabled = false;
-		opt3.enabled = false;*/
+        resultPanel = GameObject.Find("ResultPanel").GetComponent<Image>();
+        resText = GameObject.Find("ResultText").GetComponent<Text>();
+        cont = GameObject.Find("Continue Button").GetComponent<Button>();
+    }
 
+	void Start ()
+    {
 
-		resultPanel = GameObject.Find ("ResultPanel").GetComponent <Image> ();
-		resText = GameObject.Find ("ResultText").GetComponent<Text>();
-		cont = GameObject.Find ("Continue Button").GetComponent <Button>();
-		//resultPanel.gameObject.SetActive(false);
-		//textPanel.gameObject.SetActive (false);
-
+		Debug.Log ("GUI MANAG my name is " + this.name);
 	}
 	
 	// Update is called once per frame
@@ -75,7 +53,7 @@ public class GUIManager : MonoBehaviour {
 		//resultPanel.gameObject.SetActive(false);
 		//textPanel.gameObject.SetActive (false);
 	}
-	public static void disablePanels(){
+	public void disablePanels(){
 		resultPanel.gameObject.SetActive(false);
 		textPanel.gameObject.SetActive (false);
 		//resultPanel.enabled = false;

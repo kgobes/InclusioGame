@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
 		gameStarted = false;
 
 		StartCoroutine(BeginGame());
-		GUIManager.disablePanels ();
+		guiManager.disablePanels ();
 
 	}
 	private void Update ()

@@ -779,7 +779,6 @@ GameObject:
   - 224: {fileID: 633403180}
   - 222: {fileID: 633403182}
   - 114: {fileID: 633403181}
-  - 114: {fileID: 633403183}
   - 95: {fileID: 633403184}
   m_Layer: 5
   m_Name: Timer
@@ -843,18 +842,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 633403179}
---- !u!114 &633403183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 633403179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 889f82e4be6954fd8a0a2c0d0fd94485, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resourceBar: {fileID: 0}
 --- !u!95 &633403184
 Animator:
   serializedVersion: 3
@@ -882,7 +869,6 @@ GameObject:
   - 224: {fileID: 683408202}
   - 222: {fileID: 683408205}
   - 114: {fileID: 683408204}
-  - 114: {fileID: 683408203}
   m_Layer: 5
   m_Name: EventText
   m_TagString: Untagged
@@ -908,19 +894,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: -100, y: 400}
   m_Pivot: {x: .5, y: 1}
---- !u!114 &683408203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11409490, guid: 635bc4b9249cc45668deadf4080707a6,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 683408201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 889f82e4be6954fd8a0a2c0d0fd94485, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resourceBar: {fileID: 0}
 --- !u!114 &683408204
 MonoBehaviour:
   m_ObjectHideFlags: 0
