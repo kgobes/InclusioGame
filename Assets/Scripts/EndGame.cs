@@ -28,7 +28,7 @@ public class EndGame : MazeCell {
 		if (level == 5) {
 			Debug.Log ("time: " + getTime ());
 			Text timeText = GameObject.Find ("endTime").GetComponent<Text>();
-			timeText.text = "" + getTime ();
+            timeText.text = (getTime() / 60).ToString("00") + ":" + (getTime() % 60).ToString("00");
 		}
 	}
 	public void setTime(int t){

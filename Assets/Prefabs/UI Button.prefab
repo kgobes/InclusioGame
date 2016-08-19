@@ -270,8 +270,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: f9bb50064213f324db8498559217b741, type: 3}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: f065cf0a33d52c2409c494efd5599ca9, type: 3}
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
@@ -420,7 +420,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: f9bb50064213f324db8498559217b741,
+      objectReference: {fileID: 12800000, guid: f065cf0a33d52c2409c494efd5599ca9,
         type: 3}
     - target: {fileID: 0}
       propertyPath: m_AnchoredPosition.y
@@ -429,6 +429,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Pivot.y
       value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_FontData.m_FontSize
+      value: 24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
