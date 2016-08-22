@@ -28,6 +28,7 @@ public class GUIManager : MonoBehaviour
     CanvasGroup pauseMenu;
     CanvasGroup pauseButton;
     CanvasGroup instructionsPanel;
+    CanvasGroup navPanel;
 
     GameManager gameManager;
 
@@ -39,6 +40,7 @@ public class GUIManager : MonoBehaviour
         pauseMenu = GameObject.Find("PausePanel").GetComponent<CanvasGroup>();
         pauseButton = GameObject.Find("Pause Button").GetComponent<CanvasGroup>();
         instructionsPanel = GameObject.Find("InstructionsPanel").GetComponent<CanvasGroup>();
+        navPanel = GameObject.Find("NavPanel").GetComponent<CanvasGroup>();
 
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
@@ -80,6 +82,10 @@ public class GUIManager : MonoBehaviour
         _textPanelGroup.alpha = 1f;
         _textPanelGroup.interactable = true;
         _textPanelGroup.blocksRaycasts = true;
+
+        navPanel.alpha = 0f;
+        navPanel.interactable = false;
+        navPanel.blocksRaycasts = false;
 
         displayText(inStoryText);
         displayOptions(inOptionList);
@@ -179,6 +185,10 @@ public class GUIManager : MonoBehaviour
         _resultPanelGroup.alpha = 0f;
         _resultPanelGroup.interactable = false;
         _resultPanelGroup.blocksRaycasts = false;
+
+        navPanel.alpha = 1f;
+        navPanel.interactable = true;
+        navPanel.blocksRaycasts = true;
     }
 
     IEnumerator FadeResultUI()
