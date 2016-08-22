@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
 		gameStarted = false;
 
 		StartCoroutine(BeginGame());
-		guiManager.disablePanels ();
+		
 
 	}
 	private void Update ()

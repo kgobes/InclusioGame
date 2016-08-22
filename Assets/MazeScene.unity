@@ -743,6 +743,7 @@ GameObject:
   - 224: {fileID: 463233819}
   - 222: {fileID: 463233821}
   - 114: {fileID: 463233820}
+  - 225: {fileID: 463233822}
   m_Layer: 5
   m_Name: ResultPanel
   m_TagString: Untagged
@@ -802,6 +803,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 463233818}
+--- !u!225 &463233822
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 463233818}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &502376336
 GameObject:
   m_ObjectHideFlags: 0
@@ -2491,6 +2503,7 @@ GameObject:
   - 224: {fileID: 1079950855}
   - 222: {fileID: 1528896350}
   - 114: {fileID: 1528896349}
+  - 225: {fileID: 1528896348}
   m_Layer: 5
   m_Name: TextPanel
   m_TagString: Untagged
@@ -2498,6 +2511,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!225 &1528896348
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1528896347}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &1528896349
 MonoBehaviour:
   m_ObjectHideFlags: 0

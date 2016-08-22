@@ -56,6 +56,7 @@ public class GUIManager : MonoBehaviour
 
         DisplayGameUI();
         SetPauseButtonVisibility(false);
+        disablePanels();
 	}
 	
 	// Update is called once per frame
@@ -63,20 +64,32 @@ public class GUIManager : MonoBehaviour
 		//resultPanel.gameObject.SetActive(false);
 		//textPanel.gameObject.SetActive (false);
 	}
-	public void disablePanels(){
-		resultPanel.gameObject.SetActive(false);
-		textPanel.gameObject.SetActive (false);
-		//resultPanel.enabled = false;
-		//textPanel.enabled = false;
+	public void disablePanels()
+    {
+        HideEventUI();
+        HideResultUI();
 	}
 
     public void DisplayEventUI(string inStoryText, List <Option> inOptionList)
     {
         eventUIActive = true;
 
+        CanvasGroup _textPanelGroup = textPanel.GetComponent<CanvasGroup>();
+        _textPanelGroup.alpha = 1f;
+        _textPanelGroup.interactable = true;
+        _textPanelGroup.blocksRaycasts = true;
+
         displayText(inStoryText);
         displayOptions(inOptionList);
         StartCoroutine(FadeInEventUI());
+    }
+
+    void HideEventUI()
+    {
+        CanvasGroup _textPanelGroup = textPanel.GetComponent<CanvasGroup>();
+        _textPanelGroup.alpha = 0f;
+        _textPanelGroup.interactable = false;
+        _textPanelGroup.blocksRaycasts = false;
     }
 
     IEnumerator FadeInEventUI()
@@ -101,8 +114,8 @@ public class GUIManager : MonoBehaviour
     }
 
 	//public static Rect windowRect = new Rect(20, 20, 120, 50);
-	public void displayText(string text){
-		textPanel.gameObject.SetActive (true);
+	public void displayText(string text)
+    {
 		eventText.text = text;
 	}
 	public void displayOptions(List<Option> optionList){
@@ -132,17 +145,17 @@ public class GUIManager : MonoBehaviour
 	public void clickOption1(){
 
 		optObject1.executeResult(resourceBar);
-		textPanel.gameObject.SetActive (false);
+        HideEventUI();
 	}
 	public void clickOption2(){
 
         optObject2.executeResult(resourceBar);
-		textPanel.gameObject.SetActive (false);
+        HideEventUI();
 	}
 	public void clickOption3(){
 
         optObject3.executeResult(resourceBar);
-		textPanel.gameObject.SetActive (false);
+        HideEventUI();
 	}
 	/*public void clickContinue(){
 		Player p = GameObject.Find ("player").GetComponent<Player>();
@@ -154,11 +167,19 @@ public class GUIManager : MonoBehaviour
 
 	public void clickContinue()
     {
-        StartCoroutine(HideResultUI());
+        StartCoroutine(FadeResultUI());
         Debug.Log("Click Continue!");
 	}
 
-    IEnumerator HideResultUI()
+    void HideResultUI()
+    {
+        CanvasGroup _resultPanelGroup = resultPanel.GetComponent<CanvasGroup>();
+        _resultPanelGroup.alpha = 0f;
+        _resultPanelGroup.interactable = false;
+        _resultPanelGroup.blocksRaycasts = false;
+    }
+
+    IEnumerator FadeResultUI()
     {
         resultPanel.canvasRenderer.SetAlpha(1f);
         foreach (Transform _child in resultPanel.transform)
@@ -175,19 +196,30 @@ public class GUIManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        resultPanel.gameObject.SetActive(false);
+        HideResultUI();
+
         playerRef = GameObject.Find("player").GetComponent<Player>();
         playerRef.canMove(true);
         GameManager.continueTime();
 
         eventUIActive = false;
 
-        StopCoroutine(HideResultUI());
+        StopCoroutine(FadeResultUI());
     }
 
 	public void showResult(string resultText){
 
-		resultPanel.gameObject.SetActive (true);
+        CanvasGroup _resultPanelGroup = resultPanel.GetComponent<CanvasGroup>();
+        _resultPanelGroup.alpha = 1f;
+        _resultPanelGroup.interactable = true;
+        _resultPanelGroup.blocksRaycasts = true;
+
+        resultPanel.canvasRenderer.SetAlpha(1f);
+        foreach (Transform _child in resultPanel.transform)
+        {
+            _child.GetComponent<CanvasRenderer>().SetAlpha(1f);
+        }
+
 		resText.text = resultText;
 	}
 
