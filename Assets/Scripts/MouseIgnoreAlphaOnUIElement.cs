@@ -9,6 +9,6 @@ public class MouseIgnoreAlphaOnUIElement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        GetComponent<Image>().eventAlphaThreshold = 0.5f;
+        GetComponent<Image>().alphaHitTestMinimumThreshold = 0.5f;
     }
 }

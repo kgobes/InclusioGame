@@ -12,6 +12,7 @@ public class ChallengeManager : MonoBehaviour {
 	public static int next = -1;
 	public static List<ChallengeTemplate> challenges = new List<ChallengeTemplate>();
 	public static ChallengeTemplate current;
+	public static bool correct = false;
 
     private GUIManager GUIManagerInst;
 
@@ -29,7 +30,6 @@ public class ChallengeManager : MonoBehaviour {
 		checkPosition ();
 
 		initializeChallenges ();
-		Debug.Log ("In CM start");
 
 	}
 	
@@ -40,6 +40,12 @@ public class ChallengeManager : MonoBehaviour {
 	public static void setNext(int n){
 		next = n;
 		Debug.Log ("next set to " + next);
+	}
+	public static bool getCorrect(){
+		return correct;
+	}
+	public static void setCorrect (bool b){
+		correct = b;
 	}
 	void checkPosition(){
 		Vector3 sLoc = new Vector3 (-(Maze.size.x-1)/2, 0.5f, -(Maze.size.z-1)/2);
@@ -92,9 +98,9 @@ public class ChallengeManager : MonoBehaviour {
 		d.addOption ("Go around the door.", 7);
 		d.addOption ("The pixie who joined you goes through the door and then uses magic to get you through", 8);
 
-		ChallengeTemplate e = new ChallengeTemplate (5, "You encounter a unicorn. Some members of your team are very vocal about their distrust for unicorns and threaten to leave your group if you allow the unicorn to join..", false);
+		/*ChallengeTemplate e = new ChallengeTemplate (5, "You encounter a unicorn who asks if he can join you on your way.. Some members of your team are very vocal about their distrust for unicorns", false);
 		e.addOption ("Accept the unicorn into your group", 9);
-		e.addOption ("Deny the unicorn entrance.", 10);
+		e.addOption ("Deny the unicorn entrance.", 10);*/
 	
 
 	
@@ -114,15 +120,15 @@ public class ChallengeManager : MonoBehaviour {
 		h.addOption ("Try to communicate with the werewolves and prove yourself as an elf.", 17);
 		
 		
-		ChallengeTemplate i = new ChallengeTemplate (9, "You meet a wizard on the path. He demands that you solve a riddle to get past him. He says you can either complete one riddle by yourself to get past him or you can work as a group to solve three riddles.", false);
-		i.addOption ("Choose to work by yourself and solve one riddle.", 19);
-		i.addOption ("Work as a group.", 20);
+		//ChallengeTemplate i = new ChallengeTemplate (9, "You meet a wizard on the path. He demands that you solve a riddle to get past him. He says you can either complete one riddle by yourself to get past him or you can work as a group to solve three riddles.", false);
+		//i.addOption ("Choose to work by yourself and solve one riddle.", 19);
+		//i.addOption ("Work as a group.", 20);
 		
 		ChallengeTemplate j = new ChallengeTemplate (10, "You encounter an ogre stuck under a fallen tree. Ogres are known for being vicious creatures who attack anybody in their way. You don’t know if this ogre is necessarily violent, but that’s how the stereotype goes.", false);
-		j.addOption ("Help the ogre - he turns out to be a nonviolent, pleasant being.", 21);
-		j.addOption ("Don’t help the ogre and continue along your path.", 22);
+		j.addOption ("Help the ogre - he could be a pleasant fellow.", 21);
+		j.addOption ("Too risky...continue down the path.", 22);
 
-		ChallengeTemplate k = new ChallengeTemplate(11, "You encounter a fairy who appears pleasant and sweet. You watched her manipulate an ogre into giving her food, but because ogres are typically viewed as violent creatures, you assume she had no other choice. She asks to accompany you and claims she knows secret shortcuts through the maze. ", false);
+		ChallengeTemplate k = new ChallengeTemplate(11, "You see a fairy who appears pleasant and sweet. As you approach, you watch her manipulate an ogre into giving her food, but because ogres are typically violent creatures, maybe she had no other choice. She asks to accompany you and claims she knows secret shortcuts through the maze. ", false);
 		k.addOption ("Let the fairy join you, you could use someone who is clever.", 23);
 		k.addOption ("Call out the fairy for being a cheater and report her to the fairy chief.", 24);
 	
@@ -133,7 +139,7 @@ public class ChallengeManager : MonoBehaviour {
 		l.addOption ("Join the elves and steal the food.", 27);
 
 		ChallengeTemplate m = new ChallengeTemplate (13, " You find yourself lost and see a sign that points directions but it’s in dwarvish language and you can’t read it. You need to ask for help from a dwarf but you remember that someone told you that they have the tendency to lie.", false);
-		m.addOption ("Suck it up and ask for help.", 28);
+		m.addOption ("Ask for help, it's worth a try.", 28);
 		m.addOption ("You think you have a good sense of direction and don’t want to waste your time getting potentially incorrect advice.", 29);
 		
 		ChallengeTemplate n = new ChallengeTemplate (14, " A giant stops you to ask for directions. You are much smaller than she is and have heard rumors that giants are thieves. You are scared and want to quickly continue on your journey.", false);
@@ -153,10 +159,18 @@ public class ChallengeManager : MonoBehaviour {
 		q.addOption ("Keep going down the path. She doesn’t sound trustworthy.", 37);
 		q.addOption ("Help her up, maybe the rumors aren't true.", 38);
 
-		ChallengeTemplate r = new ChallengeTemplate(21, "You are so busy texting your mom that you don’t notice the tree in the path.", false);
+		ChallengeTemplate r = new ChallengeTemplate(21, "You are so busy texting your mom that you don’t notice a tree in the path.", false);
 		r.addOption ("You run straight into it. Ow.", 39);
 		r.addOption ("Trip over the roots and slam into the groud. Embarrassing.", 40);
 
+		ChallengeTemplate s = new ChallengeTemplate (24, "You encounter another character wearing a necklace with a pendant representing the era of oppression of elves. The character argues that it is a symbol of pride amongst his people and it makes him feel close to home on this long and treacherous journey. What do you do?", false);
+		s.addOption ("Tell him that the pendant is offensive and ask him to throw it into the forest.", 41);
+		s.addOption ("Ask the character to keep the pendant hidden where no one can see it.", 42);
+		s.addOption ("Tell the character to continue wearing the pendant.", 43);
+
+		ChallengeTemplate t = new ChallengeTemplate (23, "You discover a natural hot spring.", false);
+		t.addOption ("Jump in!", 44);
+		t.addOption ("No time for hanging around.", 45);
 
 		
 		//ADD CHALLENGES TO CHALLENGE LIST
@@ -164,12 +178,12 @@ public class ChallengeManager : MonoBehaviour {
 		challenges.Add (b);
 		challenges.Add (c);
 		challenges.Add (d);
-		challenges.Add (e);
+		//challenges.Add (e);
 
 		challenges.Add (f);
 		challenges.Add (g);
 		challenges.Add (h);
-		challenges.Add (i);
+		//challenges.Add (i);
 		challenges.Add (j);
 
 		challenges.Add (k);

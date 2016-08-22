@@ -9,6 +9,7 @@ public class Option{
 
 
 
+
 	public Option(string b, int n){
 		buttonText = b;
 		num = n;
@@ -49,7 +50,7 @@ public class Option{
 		if (num == 4) {
 			int rand = Random.Range (1, 2);
 			if(rand == 1){
-				resultText = "Unintentionally offend them and they whack you with their club. You lose 5 health points.";
+				resultText = "You unintentionally offend them and they whack you with their club. You lose 5 health points.";
                 inResourceBar.incrementHealth(-5);
 			}
 			else if(rand == 2){
@@ -57,17 +58,9 @@ public class Option{
 			}
 		}
 		if (num == 5) {
-			int rand = Random.Range (1, 2);
-			if(rand == 1){
-				resultText = "You lose 2 points of your own health.";
-                inResourceBar.incrementHealth(-5);
-				ChallengeManager.setNext (4);
-			}
-			else if(rand == 2){
-				resultText = "The pixie is so grateful that he asks to join your team.";
+				resultText = "The pixie is grateful and asks if he can hang out with you for a bit. You let him tag along, why not?";
 				inResourceBar.addResource ("spr_pixie");
 				ChallengeManager.setNext (4);
-			}
 		}
 		if (num == 6) {
 			resultText = "You leave the pixie laying on the ground with it’s torn wing and continue on your journey.";
@@ -78,7 +71,7 @@ public class Option{
 			GameManager.changeTime (20);
 		}
 		if (num == 8) {
-            if (inResourceBar.checkResource("pixie"))
+            if (inResourceBar.checkResource("spr_pixie"))
             {
 				resultText = "You make it through the wall.";
                 inResourceBar.useResource("spr_pixie");
@@ -98,14 +91,14 @@ public class Option{
 
 		if (num == 11) {
 			resultText = "A unicorn set this pot of gold as a test. By not stealing it, you gained its trust and he offers to split the pot with you in exchange for some food.";
-			//ADD COINSSSSS ***
+			inResourceBar.addResource("PotofGold");
 			
 		}
 		if (num == 12) {
 			int rand = Random.Range (1, 2);
 			if(rand == 1){
 				resultText = "You now have loads of coins.";
-				//ADD COINSSS*****
+				inResourceBar.addResource("PotofGold");
 			}
 			if(rand == 2){
 				resultText = "A unicorn placed the pot as a trick and you fell for it. He takes the gold back and pokes you with his horn.";
@@ -130,9 +123,10 @@ public class Option{
 			}
 		}
 		if(num == 16){ //come back to this one
-			//NEED POTION *** 
+			inResourceBar.checkResource("potion");
 			resultText = "You are now a wolf! The other wolves let you pass. But now you are stuck as a wolf for an unknown amount of time.";
-			//LOST POTION **
+			inResourceBar.useResource ("potion");
+
 			
 		}
 		if(num == 17){ 
@@ -155,13 +149,6 @@ public class Option{
 			if(rand == 2){
 				resultText = "You get through but have to abandon some of your team.";
 			}
-/*Result 2: You get through but some of your group doesn’t
-Action: You must chose one of these options 
-Option 1: Continue without them
-Option 2: Go back and help them and lose time 
-Result 3: You all get through
-Action: Nothing 
-*/
 		}
 		if(num == 20){
 			resultText = "You solve all three puzzles, but lose more time.";
@@ -175,36 +162,23 @@ Action: Nothing
 			GameManager.changeTime (30);
 		}
 		if(num == 23){
-			resultText = "She sneaks away with all your resources.";
-			/*
-Action: All resources are gone 
-Action: You get sent back to the start.--will implement if time
-Action: Fairy gets added to resources.
-*/
+			resultText = "She sneaks away with some of your food, which causes you to go hungry.";
+			inResourceBar.incrementHealth (-10);
 		}
 		if(num == 24){
 			resultText = "Turns out she was a wanted fairy who often conned travelers - you get coin reward.";
-			/*Result 2: Turns out she was a wanted fairy who often conned travelers - you get coin reward.
-				Action: Coins added to resources*/
+			inResourceBar.addResource("PotofGold");
 		}
 		if(num == 25){
 			resultText = "This takes time, but the pixie is so grateful that it rewards you with 5 health points.";
-			/*Result 1: This takes time, but the pixie is so grateful that it rewards you with 5 health points. 
-Action: Health increases by 5 points 
-Result 2: You anger the elves and they steal your food too and you also lose 30 seconds of time. 
-Action: Time decreases by 30 seconds 
-*/
+			inResourceBar.incrementHealth (5);
 		}
 		if (num == 26) {
 			resultText = "You continue on your way.";
 		}
 		if(num == 27){
-			resultText = "Pixie looks angry, but you got some sweet snacks that make you feel better and continue on your way.";
-			/*Result 1: You get more food
-Action: Health increases by 1 points
-Result 2: The pixie uses magic to take away 5 health points. 
-Action: Health decreases by 5 points
-*/
+			resultText = "The pixie looks angry, but you got some sweet snacks that make you feel better and continue on your way.";
+			inResourceBar.incrementHealth (5);
 		}
 		if (num == 28) {
 			resultText = "The dwarf is helpful and points you in the right direction, which saves you some time";
@@ -225,23 +199,25 @@ Action: Health decreases by 5 points
 			resultText = "The elves are thrilled to have more company! The song is interesting- you note a line that curiously says that the secret is 'Hans Christian Anderson'. Hmm.";
 			GameManager.changeTime (20);
 			ChallengeManager.setNext (16);
+			ChallengeManager.setCorrect (true);
 		}
 		if (num == 33) {
 			resultText = "You continue on your way.";
 			ChallengeManager.setNext(16);
+			ChallengeManager.setCorrect (false);
 		}
 		if (num == 34) {
-			resultText = "You enter the correct password Hans Christian Anderson and make it through!";
+			if(ChallengeManager.getCorrect())
+				resultText = "You enter the correct password Hans Christian Anderson and make it through!";
+			else{
+				resultText = "Maybe you should have listened to those elves, they probably had some useful information in their song. Because you don't have the password, you run into the gate until it breaks. Ouch.";
+				inResourceBar.incrementHealth(-5);
+			}
 		}
 		if (num == 35) {
 			resultText = "You run into the gate until it breaks. Ouch.";
             inResourceBar.incrementHealth(-5);
 		}
-		/*if (num == 36) { //CAN I DO thisss?
-			/*Result 3: You turn around to find the singing elves and ask them about their fairy godmother.
-Action 3: You cannot pass through, but can go back to places you have already been.
-		}*/
-
 		if (num == 37) {
 			resultText = "You continue down the path.";
 		}
@@ -258,8 +234,28 @@ Action 3: You cannot pass through, but can go back to places you have already be
 		}
 		if (num == 39 || num == 40) {
 			resultText = "Hopefully no one saw that!";
-            inResourceBar.incrementHealth(5);
+            inResourceBar.incrementHealth(-5);
 		}
+		if (num == 41) {
+			resultText = "He complies, but is grumpy about it and mutters about your ignorance. You take a new path to avoid contact with him.";
+			GameManager.changeTime (10);
+		}
+		if (num == 42) {
+			resultText = "He complies, but is grumpy about it and mutters about your ignorance. You take a new path to avoid contact with him.";
+			GameManager.changeTime (10);
+		}
+		if (num == 43) {
+			resultText = "Although the argument was uncomforatble, the character appreciates your patience and explains what the pendant means to him. Turns out, it represents something completely different to him than to you. Interesting.";
+		} 
+		if (num == 44) {
+			resultText = "Ahhh.. so relaxing. That was refreshing.";
+			GameManager.changeTime (10);
+			inResourceBar.incrementHealth (5);
+		}
+		if (num == 45) {
+			resultText = "Continue down the path.";
+		}
+
 
         // TO DO store a ref so Find isn't called every time we need to call GUIManager
         GameObject.Find("Canvas").GetComponent<GUIManager>().showResult(resultText);

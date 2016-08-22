@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour {
     public GUIManager guiManager;
 
 	private void Start () {
-		Debug.Log ("Game MANAG my name is " + this.name);
 		timeText = GameObject.Find ("Timer").GetComponent<Text>();
 		timer = 0;
 		partTime = 0;

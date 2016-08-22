@@ -4,16 +4,19 @@ using System.Collections;
 using System;
 
 public class ResourceBar : MonoBehaviour {
-	public static Image resource1;
-	public static Image resource2;
-	public static Image resource3;
+	public Image resource1;
+	public Image resource2;
+	public Image resource3;
 	public static string r1;
 	public static string r2;
 	public static string r3;
 
+	//public Sprite pixie;
+	//public Sprite potOfGold;
+
 
 	//resource options
-	public static Sprite temp;
+	//public Sprite temp;
 
 	//Health
 	public static Text healthText;
@@ -27,6 +30,8 @@ public class ResourceBar : MonoBehaviour {
 		resource1 = GameObject.Find ("Resource1").GetComponent <Image>();
 		resource2 = GameObject.Find ("Resource2").GetComponent <Image>();
 		resource3 = GameObject.Find ("Resource3").GetComponent <Image>();
+		//resource1.sprite = Resources.Load<Sprite> ("PotofGold");
+
 		/*resource1.gameObject.SetActive (false); //use .enabled if this doesn't work
 		resource2.gameObject.SetActive (false);
 		resource3.gameObject.SetActive (false);*/
@@ -51,34 +56,37 @@ public class ResourceBar : MonoBehaviour {
 	}
 
 	public bool addResource(string imgName){
-		if (r1.Equals ("")) {
+		Sprite temp = Resources.Load <Sprite> ("potOfGold");
+		if (r1 == "") {
 			r1 = imgName;
-			temp = Resources.Load <Sprite>(imgName);
-			if(temp)
+			//if (temp) {
 				resource1.sprite = temp;
-			else
-				Debug.LogError ("Sprite not found");
+				Debug.Log ("Sprite should be set");
+			//} else
+			//	Debug.LogError ("Sprite " + r1 + " not found");
 
 			resource1.gameObject.SetActive (true);
 			return true;
-		} else if (r2.Equals ("")) {
+		} else if (r2 =="") {
 			r2 = imgName;
-			if(temp)
+			//if (temp)
 				resource2.sprite = temp;
-			else
-				Debug.LogError ("Sprite not found");
+			//else
+			//	Debug.LogError ("Sprite not found");
 			resource2.gameObject.SetActive (true);
 			return true;
-		} else if (r3.Equals ("")) {
+		} else if (r3 == "") {
 			r3 = imgName;
-			if(temp)
+			//if (temp)
 				resource3.sprite = temp;
-			else
-				Debug.LogError ("Sprite not found");
+			//else
+			//	Debug.LogError ("Sprite not found");
 			resource3.gameObject.SetActive (true);
 			return true;
-		} else
+		} else {
+			Debug.Log ("No avail resource");
 			return false;
+		}
 	}
 	public bool useResource(string imgName){
 		if (r1.Equals (imgName)) {
