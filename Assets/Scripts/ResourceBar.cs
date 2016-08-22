@@ -7,9 +7,9 @@ public class ResourceBar : MonoBehaviour {
 	public Image resource1;
 	public Image resource2;
 	public Image resource3;
-	public static string r1;
-	public static string r2;
-	public static string r3;
+	private string r1;
+    private string r2;
+    private string r3;
 
 	//public Sprite pixie;
 	//public Sprite potOfGold;
@@ -56,7 +56,7 @@ public class ResourceBar : MonoBehaviour {
 	}
 
 	public bool addResource(string imgName){
-		Sprite temp = Resources.Load <Sprite> ("potOfGold");
+		Sprite temp = Resources.Load <Sprite> (imgName);
 		if (r1 == "") {
 			r1 = imgName;
 			//if (temp) {

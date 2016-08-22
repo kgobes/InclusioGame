@@ -31,7 +31,7 @@ public class Option{
 		//ChallengeManager cm = GameObject.Find ("Challenge Manager").GetComponent <ChallengeManager>();
 		if (num == 1) {
 			resultText = "The other elves angrily leave, but the troll is safe and is thankful for your help and joins you.";
-            inResourceBar.addResource("spr_troll");
+            inResourceBar.addResource("sprites/spr_troll");
 			ChallengeManager.setNext (2);
 		}
 		if (num == 2) {
@@ -39,10 +39,10 @@ public class Option{
 			ChallengeManager.setNext (2);
 		}
 		if (num == 3) {
-            if (inResourceBar.checkResource("spr_troll"))
+            if (inResourceBar.checkResource("sprites/spr_troll"))
             {
 				resultText = "You make it through the gate and the troll is reunited with his family.";
-                inResourceBar.useResource("spr_troll");
+                inResourceBar.useResource("sprites/spr_troll");
 			}
 			else
 				resultText = "Hmmm doesn't look like you have a troll here to help you. Maybe you should see if you can find one...";
@@ -59,7 +59,7 @@ public class Option{
 		}
 		if (num == 5) {
 				resultText = "The pixie is grateful and asks if he can hang out with you for a bit. You let him tag along, why not?";
-				inResourceBar.addResource ("spr_pixie");
+                inResourceBar.addResource("sprites/spr_pixie");
 				ChallengeManager.setNext (4);
 		}
 		if (num == 6) {
@@ -71,10 +71,10 @@ public class Option{
 			GameManager.changeTime (20);
 		}
 		if (num == 8) {
-            if (inResourceBar.checkResource("spr_pixie"))
+            if (inResourceBar.checkResource("sprites/spr_pixie"))
             {
 				resultText = "You make it through the wall.";
-                inResourceBar.useResource("spr_pixie");
+                inResourceBar.useResource("sprites/spr_pixie");
 			}
 			else{
 				resultText = "Hmmm doesn't look like you have a pixie here to help you. Maybe you should see if you can find one...";
@@ -91,14 +91,14 @@ public class Option{
 
 		if (num == 11) {
 			resultText = "A unicorn set this pot of gold as a test. By not stealing it, you gained its trust and he offers to split the pot with you in exchange for some food.";
-			inResourceBar.addResource("PotofGold");
+            inResourceBar.addResource("sprites/PotofGold");
 			
 		}
 		if (num == 12) {
 			int rand = Random.Range (1, 2);
 			if(rand == 1){
 				resultText = "You now have loads of coins.";
-				inResourceBar.addResource("PotofGold");
+                inResourceBar.addResource("sprites/PotofGold");
 			}
 			if(rand == 2){
 				resultText = "A unicorn placed the pot as a trick and you fell for it. He takes the gold back and pokes you with his horn.";
@@ -123,9 +123,9 @@ public class Option{
 			}
 		}
 		if(num == 16){ //come back to this one
-			inResourceBar.checkResource("potion");
+            inResourceBar.checkResource("sprites/potion");
 			resultText = "You are now a wolf! The other wolves let you pass. But now you are stuck as a wolf for an unknown amount of time.";
-			inResourceBar.useResource ("potion");
+            inResourceBar.useResource("sprites/potion");
 
 			
 		}
@@ -167,7 +167,7 @@ public class Option{
 		}
 		if(num == 24){
 			resultText = "Turns out she was a wanted fairy who often conned travelers - you get coin reward.";
-			inResourceBar.addResource("PotofGold");
+            inResourceBar.addResource("sprites/PotofGold");
 		}
 		if(num == 25){
 			resultText = "This takes time, but the pixie is so grateful that it rewards you with 5 health points.";
@@ -225,7 +225,7 @@ public class Option{
 			int rand = Random.Range (1, 2);
 			if(rand == 1){
 				resultText = "The witch is so grateful that she gives you a potion as a thank you. Sweet!";
-				//add potion
+                inResourceBar.addResource("sprites/potion");
 			}
 			if(rand == 2){
 				resultText = "The witch pulls you down with her in an attempt to steal all of your stuff. Thankfully you escape with only a small loss to your health.";
