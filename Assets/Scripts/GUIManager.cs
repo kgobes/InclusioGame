@@ -27,6 +27,7 @@ public class GUIManager : MonoBehaviour
     CanvasGroup inGameUI;
     CanvasGroup pauseMenu;
     CanvasGroup pauseButton;
+    CanvasGroup instructionsPanel;
 
     GameManager gameManager;
 
@@ -37,6 +38,7 @@ public class GUIManager : MonoBehaviour
         inGameUI = GameObject.Find("InGameUIPanel").GetComponent<CanvasGroup>();
         pauseMenu = GameObject.Find("PausePanel").GetComponent<CanvasGroup>();
         pauseButton = GameObject.Find("Pause Button").GetComponent<CanvasGroup>();
+        instructionsPanel = GameObject.Find("InstructionsPanel").GetComponent<CanvasGroup>();
 
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
@@ -229,24 +231,45 @@ public class GUIManager : MonoBehaviour
     {
         inGameUI.interactable = false;
         pauseMenu.interactable = true;
+        instructionsPanel.interactable = false;
 
         inGameUI.blocksRaycasts = false;
         pauseMenu.blocksRaycasts = true;
+        instructionsPanel.blocksRaycasts = false;
 
         inGameUI.alpha = 0;
-        pauseMenu.alpha = 1;        
+        pauseMenu.alpha = 1;
+        instructionsPanel.alpha = 0;
     }
 
     public void DisplayGameUI()
     {
         inGameUI.interactable = true;
         pauseMenu.interactable = false;
+        instructionsPanel.interactable = false;
 
         inGameUI.blocksRaycasts = true;
         pauseMenu.blocksRaycasts = false;
+        instructionsPanel.blocksRaycasts = false;
 
         inGameUI.alpha = 1;
-        pauseMenu.alpha = 0;  
+        pauseMenu.alpha = 0;
+        instructionsPanel.alpha = 0;
+    }
+
+    public void DisplayInstructionsMenu()
+    {
+        inGameUI.interactable = false;
+        pauseMenu.interactable = false;
+        instructionsPanel.interactable = true;
+
+        inGameUI.blocksRaycasts = false;
+        pauseMenu.blocksRaycasts = false;
+        instructionsPanel.blocksRaycasts = true;
+
+        inGameUI.alpha = 0;
+        pauseMenu.alpha = 0;
+        instructionsPanel.alpha = 1;
     }
 
     public void SetPauseButtonVisibility(bool inIsVisible)
@@ -263,6 +286,16 @@ public class GUIManager : MonoBehaviour
     public void OnPressPlayButton()
     {
         gameManager.UnPauseGame();
+    }
+
+    public void OnPressInstructionsButton()
+    {
+        DisplayInstructionsMenu();
+    }
+
+    public void OnPressReturnToPauseButton()
+    {
+        DisplayPauseMenu();
     }
 
     public void OnPressReturnToMenuButton()
