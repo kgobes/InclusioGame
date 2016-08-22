@@ -200,7 +200,8 @@ public class GUIManager : MonoBehaviour
 
         HideResultUI();
 
-        playerRef = GameObject.Find("player").GetComponent<Player>();
+
+        if(!playerRef) playerRef = GameObject.Find("player").GetComponent<Player>();
         playerRef.canMove(true);
         GameManager.continueTime();
 
@@ -302,5 +303,29 @@ public class GUIManager : MonoBehaviour
     {
         StopAllCoroutines();
         Application.LoadLevel(1);
+    }
+
+    public void OnMouseDownMoveButton()
+    {
+        if (!playerRef) playerRef = GameObject.Find("player").GetComponent<Player>();
+        playerRef.SetDeltaMoveInput(true);
+    }
+
+    public void OnMouseUpMoveButton()
+    {
+        if (!playerRef) playerRef = GameObject.Find("player").GetComponent<Player>();
+        playerRef.SetDeltaMoveInput(false);
+    }
+
+    public void OnPressTurnLeft()
+    {
+        if (!playerRef) playerRef = GameObject.Find("player").GetComponent<Player>();
+        playerRef.TurnLeft();
+    }
+
+    public void OnPressTurnRight()
+    {
+        if (!playerRef) playerRef = GameObject.Find("player").GetComponent<Player>();
+        playerRef.TurnRight();
     }
 }

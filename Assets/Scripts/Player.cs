@@ -27,6 +27,10 @@ public class Player : MonoBehaviour {
     ParticleSystem UIFogLeft;
     ParticleSystem UIFogRight;
 
+    private bool deltaMoveInput = false;
+    private bool mustTurnLeft = false;
+    private bool mustTurnRight = false;
+
 	void Start(){
 		//controller = GetComponent<CharacterController>();
 
@@ -59,6 +63,12 @@ public class Player : MonoBehaviour {
 		//	Debug.Log ("In grounded");
 
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+
+        if(deltaMoveInput)
+        {
+            moveDirection = new Vector3(0f, 0.0f, 1f);
+        }
+
         moveDirection = transform.TransformDirection(moveDirection);
         moveDirection *= speed;
         if (controller.isGrounded)
@@ -83,19 +93,18 @@ public class Player : MonoBehaviour {
         {
             if (canMoveAround)
             {
-                if (Input.GetKeyDown(KeyCode.Q))
+                if (Input.GetKeyDown(KeyCode.Q) || mustTurnLeft)
                 {
                     //transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
                     Rotate(currentDirection.GetNextCounterclockwise());
                 }
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E) || mustTurnRight)
                 {
                     //transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
                     Rotate(currentDirection.GetNextClockwise());
                 }
             }
         }
-
 	}
 
 	public void UpdateTurning()
@@ -110,6 +119,8 @@ public class Player : MonoBehaviour {
         else
         {
             transform.localRotation = Quaternion.Lerp(transform.localRotation, currentDirection.ToRotation(), Time.deltaTime * turnSpeed);
+            mustTurnLeft = false;
+            mustTurnRight = false;
         }
     }
 		
@@ -129,7 +140,18 @@ public class Player : MonoBehaviour {
         //}
 	}
 
+    public void SetDeltaMoveInput(bool inNewInput)
+    {
+        deltaMoveInput = inNewInput;
+    }
 
+    public void TurnLeft()
+    {
+        mustTurnLeft = true;
+    }
 
-
+    public void TurnRight()
+    {
+        mustTurnRight = true;
+    }
 }
