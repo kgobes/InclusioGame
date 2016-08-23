@@ -6,7 +6,8 @@ using System.Collections.Generic;
 public class ChallengeTemplate { 
 	public int number;
 	public string story;
-	public bool dependent; 
+	public bool dependent;
+    private Sprite image = null;
 
 	public List<Option> options = new List<Option> ();
 
@@ -33,4 +34,8 @@ public class ChallengeTemplate {
 	public bool getDependent(){
 		return dependent;
 	}
+
+    public Sprite GetImage() { return image; }
+
+    public void SetImage(Sprite inImage) { image = inImage; }
 }

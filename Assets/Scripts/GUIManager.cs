@@ -7,6 +7,7 @@ using System;
 public class GUIManager : MonoBehaviour
 {
     Text eventText;
+    Image eventImage;
     Image textPanel;
     Button opt1;
     Button opt2;
@@ -46,6 +47,7 @@ public class GUIManager : MonoBehaviour
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
         eventText = GameObject.Find("EventText").GetComponent<Text>();
+        eventImage = GameObject.Find("EventImage").GetComponent<Image>();
         textPanel = GameObject.Find("TextPanel").GetComponent<Image>();
         opt1 = GameObject.Find("Option Button 1").GetComponent<Button>();
         opt2 = GameObject.Find("Option Button 2").GetComponent<Button>();
@@ -91,9 +93,26 @@ public class GUIManager : MonoBehaviour
         HideResultUI();
 	}
 
-    public void DisplayEventUI(string inStoryText, List <Option> inOptionList)
-    {
+    public void DisplayEventUI(string inStoryText, List<Option> inOptionList, Sprite inImage)   // with image
+    {        
         eventUIActive = true;
+
+        if(!inImage)
+        {
+            Debug.Log("no image");
+            eventText.rectTransform.offsetMax = new Vector2(eventText.rectTransform.offsetMax.x, -10);
+
+            eventImage.sprite = null;
+            eventImage.color = new Color32(255, 255, 255, 0);
+        }
+        else
+        {
+            Debug.Log("has image");
+            eventText.rectTransform.offsetMax = new Vector2(eventText.rectTransform.offsetMax.x, -150);
+
+            eventImage.sprite = inImage;
+            eventImage.color = new Color32(255, 255, 255, 255);
+       }
 
         CanvasGroup _textPanelGroup = textPanel.GetComponent<CanvasGroup>();
         _textPanelGroup.alpha = 1f;

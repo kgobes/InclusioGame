@@ -76,7 +76,7 @@ public class ChallengeManager : MonoBehaviour {
 		}
 		Debug.Log ("num: " + num);
 		current = challenges [num];
-        GUIManagerInst.DisplayEventUI(current.getStory(), current.getOptionList());
+        GUIManagerInst.DisplayEventUI(current.getStory(), current.getOptionList(), current.GetImage());
 		challenges.Remove (current);
 
 	}
@@ -85,14 +85,17 @@ public class ChallengeManager : MonoBehaviour {
 		ChallengeTemplate a = new ChallengeTemplate(1, " You encounter a blind troll being attacked by other elves. It calls out for help. Do you help defend him from your own kind or join the other elves in attacking the troll because you heard trolls love to eat elves?",false);
 		a.addOption ("Defend the troll and go against your own people.",1);
 		a.addOption ("Join in with the other elves attacking the troll",2);
+        a.SetImage(Resources.Load<Sprite>("sprites/spr_troll"));
 
 		ChallengeTemplate b = new ChallengeTemplate(2, "A group of trolls is blocking the entrance to a gate.", true);
 		b.addOption ("Ask your troll teammate to ask the trolls to allow you to pass.", 3);
 		b.addOption ("Use hand gestures to try to communicate.", 4);
+        b.SetImage(Resources.Load<Sprite>("sprites/spr_troll"));
 
 		ChallengeTemplate c = new ChallengeTemplate (3, "You come across a pixie on your path. Pixies are notoriously untrustworthy and you’ve had experiences with them tricking you in the past. This pixie is asking for help to heal his torn wing, but helping him involves losing a little of your own health.", false);
 		c.addOption ("Agree to help the pixie.", 5);
 		c.addOption ("Refuse to help the pixie and continue on with your adventure.", 6);
+        c.SetImage(Resources.Load<Sprite>("sprites/spr_pixie"));
 
 		ChallengeTemplate d = new ChallengeTemplate (4, "There’s a door in your path and you can’t fit through it.", true);
 		d.addOption ("Go around the door.", 7);
@@ -108,6 +111,7 @@ public class ChallengeManager : MonoBehaviour {
 		ChallengeTemplate f = new ChallengeTemplate (6, "You pass a pot of gold sitting on the side of the road.", false);
 		f.addOption ("Ignore the pot of gold. It isn’t yours and stealing is wrong.", 11);
 		f.addOption ("Take the gold. Who is stupid enough to leave a pot of gold in the middle of the forest anyways?", 12);
+        f.SetImage(Resources.Load<Sprite>("sprites/potofgold"));
 		
 		ChallengeTemplate g = new ChallengeTemplate (7, "You pass by three elves and a pixie. As you get closer, you notice that the elves are teasing the pixie. Elves and pixies have never gotten along.", false);
 		g.addOption ("Join them! Laugh and throw rocks at the pixie.", 13);
