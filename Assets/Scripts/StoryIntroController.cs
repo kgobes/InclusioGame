@@ -8,6 +8,7 @@ public class StoryIntroController : MonoBehaviour
     public Text textFooter;
     public Text textBody1;
     public Text textBody2;
+    public Graphic skipButton;
     public float fadeDurationSeconds = 1f;
 
 	// Use this for initialization
@@ -102,14 +103,34 @@ public class StoryIntroController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         textFooter.CrossFadeAlpha(0f, 2f, false);
+        skipButton.CrossFadeAlpha(0f, 2f, false);
 
         yield return new WaitForSeconds(3f);
 
         StopCoroutine(DisplayStoryText());
+        StopCoroutine(SkipIntro());
         LoadNextScene();
     }
 
-    public void OnPressSkip() { LoadNextScene(); }
+    public void OnPressSkip()
+    {
+        StartCoroutine(SkipIntro());
+    }
+
+    IEnumerator SkipIntro()
+    {
+        StopCoroutine(DisplayStoryText());
+
+        textHeader.CrossFadeAlpha(0f, fadeDurationSeconds, false);
+        textBody1.CrossFadeAlpha(0f, fadeDurationSeconds, false);
+        textBody2.CrossFadeAlpha(0f, fadeDurationSeconds, false);
+        textFooter.CrossFadeAlpha(0f, fadeDurationSeconds, false);
+        skipButton.CrossFadeAlpha(0f, fadeDurationSeconds, false);
+
+        yield return new WaitForSeconds(1.2f);
+        StopCoroutine(SkipIntro());
+        LoadNextScene();
+    }
 
     void LoadNextScene()
     {

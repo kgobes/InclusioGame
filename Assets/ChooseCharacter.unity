@@ -354,6 +354,27 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: debc91a3bda16204dbde34cd3b217bb3, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &671009849 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11405722, guid: debc91a3bda16204dbde34cd3b217bb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 671009848}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!1 &671009850 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 179018, guid: debc91a3bda16204dbde34cd3b217bb3, type: 2}
+  m_PrefabInternal: {fileID: 671009848}
+--- !u!225 &671009851
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 671009850}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &695218385
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +488,7 @@ MonoBehaviour:
   textFooter: {fileID: 1321073022}
   textBody1: {fileID: 2117348895}
   textBody2: {fileID: 1571130911}
+  skipButton: {fileID: 671009849}
   fadeDurationSeconds: 1
 --- !u!1 &704909114
 GameObject:
