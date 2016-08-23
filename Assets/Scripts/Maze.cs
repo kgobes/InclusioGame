@@ -21,6 +21,7 @@ public class Maze : MonoBehaviour {
 	public MazeWall wallPrefab;
 
 	public float generationStepDelay;
+    public float postGenerationDelay;
 	public static IntVector2 size = new IntVector2 (5, 5);
     public ChallengeManager challengeManagerInst;
 
@@ -72,7 +73,9 @@ public class Maze : MonoBehaviour {
 			DoNextGenerationStep(activeCells);
 		}
 		createEndLoc ();
+
         GenerateWallPieces();
+
 	}
 	
 	private MazeCell CreateCell (IntVector2 coordinates, bool end) {

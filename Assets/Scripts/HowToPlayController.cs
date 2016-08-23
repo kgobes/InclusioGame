@@ -16,6 +16,6 @@ public class HowToPlayController : MonoBehaviour
 
     public void OnPressPlay()
     {
-        Application.LoadLevel(4);
+        Application.LoadLevel("MazeScene");
     }
 }

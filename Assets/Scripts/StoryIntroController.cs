@@ -106,6 +106,13 @@ public class StoryIntroController : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         StopCoroutine(DisplayStoryText());
-        Application.LoadLevel("MazeScene");
+        LoadNextScene();
+    }
+
+    public void OnPressSkip() { LoadNextScene(); }
+
+    void LoadNextScene()
+    {
+        Application.LoadLevel("HowToPlayScreen");
     }
 }

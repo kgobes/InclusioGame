@@ -2971,7 +2971,6 @@ GameObject:
   - 20: {fileID: 766252130}
   - 124: {fileID: 766252129}
   - 92: {fileID: 766252128}
-  - 81: {fileID: 766252127}
   m_Layer: 0
   m_Name: rendercam_event
   m_TagString: Untagged
@@ -2979,13 +2978,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &766252127
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 766252126}
-  m_Enabled: 1
 --- !u!92 &766252128
 Behaviour:
   m_ObjectHideFlags: 0
@@ -4276,7 +4268,7 @@ GameObject:
   - 124: {fileID: 972984988}
   - 45: {fileID: 972984987}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Minimap Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4328,7 +4320,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967240
+    m_Bits: 512
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -4832,6 +4824,7 @@ MonoBehaviour:
   resourceBar: {fileID: 1962613125}
   playerPrefab: {fileID: 11471264, guid: 3a3e51d4dbeec4fc09987cbcfc2bb907, type: 2}
   guiManager: {fileID: 1698430699}
+  minimapCam: {fileID: 972984990}
 --- !u!4 &1170311596
 Transform:
   m_ObjectHideFlags: 0
@@ -7309,7 +7302,6 @@ GameObject:
   - 20: {fileID: 1942893269}
   - 124: {fileID: 1942893268}
   - 92: {fileID: 1942893267}
-  - 81: {fileID: 1942893266}
   m_Layer: 0
   m_Name: rendercam_end
   m_TagString: Untagged
@@ -7317,13 +7309,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1942893266
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1942893265}
-  m_Enabled: 1
 --- !u!92 &1942893267
 Behaviour:
   m_ObjectHideFlags: 0

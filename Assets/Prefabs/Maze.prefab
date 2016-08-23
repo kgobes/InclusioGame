@@ -47,6 +47,7 @@ MonoBehaviour:
   passagePrefab: {fileID: 11480734, guid: cc96c8882ef28417683aadac1a408ff0, type: 2}
   wallPrefab: {fileID: 11417134, guid: 88d2b9053ad84479d921c5693da86d95, type: 2}
   generationStepDelay: 9.99999975e-06
+  postGenerationDelay: 2
   challengeManagerInst: {fileID: 0}
   mazeMeshScale: 4
   wallPiecesDoubleOpen:
@@ -228,6 +229,10 @@ Prefab:
       propertyPath: wallPiecesDoubleOpen.Array.data[0]
       value: 
       objectReference: {fileID: 139752, guid: e71014e28bda9314a9fd5c10b135d801, type: 2}
+    - target: {fileID: 0}
+      propertyPath: postGenerationDelay
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 146694}

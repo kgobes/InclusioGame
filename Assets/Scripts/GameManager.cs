@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour {
 
     public GUIManager guiManager;
 
+    public Camera minimapCam;
+
 	private void Start () {
 		timeText = GameObject.Find ("Timer").GetComponent<Text>();
 		timer = 0;
@@ -99,7 +101,8 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	private IEnumerator BeginGame () {
+	private IEnumerator BeginGame ()
+    {
 		Camera.main.clearFlags = CameraClearFlags.Skybox;
 		Camera.main.rect = new Rect(0f, 0f, 1f, 1f);
 		mazeInstance = Instantiate(mazePrefab) as Maze;
@@ -121,6 +124,7 @@ public class GameManager : MonoBehaviour {
 
         resourceBar.SetResourceBarVisibility(true);
         guiManager.SetPauseButtonVisibility(true);
+        minimapCam.enabled = false;
 
 		gameStarted = true;
 	}
