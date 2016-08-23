@@ -19,6 +19,8 @@ public class Maze : MonoBehaviour {
 	//edges
 	public MazePassage passagePrefab;
 	public MazeWall wallPrefab;
+    public GameObject perimeterPrefab;
+    public GameObject perimeterCornerPrefab;
 
 	public float generationStepDelay;
     public float postGenerationDelay;
@@ -75,7 +77,7 @@ public class Maze : MonoBehaviour {
 		createEndLoc ();
 
         GenerateWallPieces();
-
+        GeneratePerimeter();
 	}
 	
 	private MazeCell CreateCell (IntVector2 coordinates, bool end) {
@@ -330,5 +332,27 @@ public class Maze : MonoBehaviour {
 
             
         }
+    }
+
+    void GeneratePerimeter()
+    {
+        for (int i = 0; i < cells.GetLength(0); ++i)
+        {
+            Instantiate(perimeterPrefab, new Vector3(cells[i, 0].transform.position.x, 0f, cells[i, 0].transform.position.z - mazeMeshScale * 0.5f), Quaternion.Euler(0,90,0));
+
+            Instantiate(perimeterPrefab, new Vector3(cells[i, cells.GetLength(1) - 1].transform.position.x, 0f, cells[i, cells.GetLength(1) - 1].transform.position.z + mazeMeshScale * 0.5f), Quaternion.Euler(0,-90,0));
+        }
+
+        for (int i = 0; i < cells.GetLength(1); i++)
+        {
+            Instantiate(perimeterPrefab, new Vector3(cells[0, i].transform.position.x  - mazeMeshScale * 0.5f, 0f, cells[0, i].transform.position.z), Quaternion.Euler(0,180,0));
+
+            Instantiate(perimeterPrefab, new Vector3(cells[cells.GetLength(0) - 1, i].transform.position.x + mazeMeshScale * 0.5f, 0f, cells[cells.GetLength(0) - 1, i].transform.position.z), Quaternion.Euler(0, 0, 0));
+        }
+
+        Instantiate(perimeterCornerPrefab, new Vector3(cells[0, 0].transform.position.x - mazeMeshScale * 0.5f, 0f, cells[0, 0].transform.position.z - mazeMeshScale * 0.5f), Quaternion.Euler(0, 180, 0));
+        Instantiate(perimeterCornerPrefab, new Vector3(cells[cells.GetLength(0) - 1, 0].transform.position.x + mazeMeshScale * 0.5f, 0f, cells[0, 0].transform.position.z - mazeMeshScale * 0.5f), Quaternion.Euler(0, 90, 0));
+        Instantiate(perimeterCornerPrefab, new Vector3(cells[cells.GetLength(0) - 1, 0].transform.position.x + mazeMeshScale * 0.5f, 0f, cells[0, cells.GetLength(1) - 1].transform.position.z + mazeMeshScale * 0.5f), Quaternion.Euler(0, 0, 0));
+        Instantiate(perimeterCornerPrefab, new Vector3(cells[0, 0].transform.position.x - mazeMeshScale * 0.5f, 0f, cells[0, cells.GetLength(1) - 1].transform.position.z + mazeMeshScale * 0.5f), Quaternion.Euler(0, 270, 0));
     }
 }

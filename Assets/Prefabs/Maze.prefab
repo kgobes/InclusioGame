@@ -46,6 +46,9 @@ MonoBehaviour:
   endPrefab: {fileID: 11422756, guid: abc574841ae1048c0b5f676ccbd7d702, type: 2}
   passagePrefab: {fileID: 11480734, guid: cc96c8882ef28417683aadac1a408ff0, type: 2}
   wallPrefab: {fileID: 11417134, guid: 88d2b9053ad84479d921c5693da86d95, type: 2}
+  perimeterPrefab: {fileID: 177794, guid: e43df72dea787f54287e0fe73c60d947, type: 2}
+  perimeterCornerPrefab: {fileID: 119582, guid: 152784558fffa2543bd3d99ef7d08fa8,
+    type: 2}
   generationStepDelay: 9.99999975e-06
   postGenerationDelay: 2
   challengeManagerInst: {fileID: 0}
@@ -233,6 +236,18 @@ Prefab:
       propertyPath: postGenerationDelay
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: perimeterPrefab
+      value: 
+      objectReference: {fileID: 177794, guid: e43df72dea787f54287e0fe73c60d947, type: 2}
+    - target: {fileID: 0}
+      propertyPath: perimiterCornerPrefab
+      value: 
+      objectReference: {fileID: 119582, guid: 152784558fffa2543bd3d99ef7d08fa8, type: 2}
+    - target: {fileID: 0}
+      propertyPath: perimeterCornerPrefab
+      value: 
+      objectReference: {fileID: 119582, guid: 152784558fffa2543bd3d99ef7d08fa8, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 146694}
