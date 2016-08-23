@@ -124,6 +124,7 @@ public class GameManager : MonoBehaviour {
 
         resourceBar.SetResourceBarVisibility(true);
         guiManager.SetPauseButtonVisibility(true);
+        guiManager.DisplayGameUI();
         minimapCam.enabled = false;
 
 		gameStarted = true;

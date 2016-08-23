@@ -460,7 +460,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11402336, guid: debc91a3bda16204dbde34cd3b217bb3, type: 2}
       propertyPath: m_Text
-      value: N
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 11402336, guid: debc91a3bda16204dbde34cd3b217bb3, type: 2}
       propertyPath: m_FontData.m_FontStyle
@@ -482,6 +482,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 5b88d9bd4c06459498a93fbd6fc20092, type: 2}
+    - target: {fileID: 11402336, guid: debc91a3bda16204dbde34cd3b217bb3, type: 2}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: debc91a3bda16204dbde34cd3b217bb3, type: 2}
   m_IsPrefabParent: 0
@@ -5254,6 +5258,14 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1698430699}
+    - target: {fileID: 11482218, guid: 1c91f90c409d4f44f97df4d90f2c97e5, type: 2}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11482218, guid: 1c91f90c409d4f44f97df4d90f2c97e5, type: 2}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c91f90c409d4f44f97df4d90f2c97e5, type: 2}
   m_IsPrefabParent: 0

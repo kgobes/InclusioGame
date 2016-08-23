@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class GUIManager : MonoBehaviour
 {
@@ -58,11 +59,27 @@ public class GUIManager : MonoBehaviour
     {
 		Debug.Log ("GUI MANAG my name is " + this.name);
 
-        DisplayGameUI();
+        HideAllUI();
+        
         SetPauseButtonVisibility(false);
         disablePanels();
 	}
-	
+
+    void HideAllUI()
+    {
+        inGameUI.interactable = false;
+        pauseMenu.interactable = false;
+        instructionsPanel.interactable = false;
+
+        inGameUI.blocksRaycasts = false;
+        pauseMenu.blocksRaycasts = false;
+        instructionsPanel.blocksRaycasts = false;
+
+        inGameUI.alpha = 0;
+        pauseMenu.alpha = 0;
+        instructionsPanel.alpha = 0;
+    }
+
 	// Update is called once per frame
 	void Update () {
 		//resultPanel.gameObject.SetActive(false);

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
@@ -46,6 +47,8 @@ public class Player : MonoBehaviour {
 		currentDirection = direction;
         isTurning = true;
 	}
+
+    public MazeDirection GetCurrentDirection() { return currentDirection; }
 	
 	public void SetLocation (Vector3 sLoc) {
 	//public void SetLocation(MazeCell cell){

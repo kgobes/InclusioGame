@@ -160,5 +160,4 @@ public class ResourceBar : MonoBehaviour {
         else GetComponent<CanvasGroup>().alpha = 0;
     }
 
-
 }
