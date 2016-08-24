@@ -92,7 +92,7 @@ public class Maze : MonoBehaviour {
 		cells[coordinates.x, coordinates.z] = newCell;
 		newCell.coordinates = coordinates;
 
-		newCell.transform.parent = transform;
+		//newCell.transform.parent = transform;
         newCell.transform.localPosition = new Vector3((coordinates.x - size.x * 0.5f + 0.5f) * mazeMeshScale, 0f, (coordinates.z - size.z * 0.5f + 0.5f) * mazeMeshScale);
 		return newCell;
 	}

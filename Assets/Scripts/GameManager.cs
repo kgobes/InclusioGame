@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 	public Maze mazePrefab;
 	private Maze mazeInstance;
 
@@ -15,6 +17,8 @@ public class GameManager : MonoBehaviour {
 
     bool gamePaused = false;
 
+    static List<EndItemInfo> survivedCharacters;
+
 	//player
 	public Player playerPrefab;
 	private Player playerInstance;
@@ -23,7 +27,11 @@ public class GameManager : MonoBehaviour {
 
     public Camera minimapCam;
 
-	private void Start () {
+	private void Start ()
+    {
+        survivedCharacters = new List<EndItemInfo>();
+        survivedCharacters.Clear();
+
 		timeText = GameObject.Find ("Timer").GetComponent<Text>();
 		timer = 0;
 		partTime = 0;
@@ -145,4 +153,14 @@ public class GameManager : MonoBehaviour {
 	public static int getTime(){
 		return timer;
 	}
+
+    public static void AddSurvivedCharacter(EndItemInfo inCharacterInfo)
+    {
+        survivedCharacters.Add(inCharacterInfo);
+    }
+
+    public static List<EndItemInfo> GetSurvivedCharactersList()
+    {
+        return survivedCharacters;
+    }
 }

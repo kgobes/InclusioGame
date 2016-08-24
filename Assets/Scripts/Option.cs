@@ -2,7 +2,19 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Option{
+public struct EndItemInfo
+{
+    public EndItemInfo(string inName, Sprite inImage)
+    {
+        this.name = inName;
+        this.image = inImage;
+    }
+    public string name;
+    public Sprite image;
+}
+
+public class Option
+{
 	public string buttonText;
 	public string resultText;
 	public int num;
@@ -32,6 +44,7 @@ public class Option{
 		if (num == 1) {
 			resultText = "The other elves angrily leave, but the troll is safe and is thankful for your help and joins you.";
             inResourceBar.addResource("sprites/spr_troll");
+            GameManager.AddSurvivedCharacter(new EndItemInfo("Troll", Resources.Load<Sprite>("sprites/spr_troll")));
 			ChallengeManager.setNext (2);
 		}
 		if (num == 2) {
