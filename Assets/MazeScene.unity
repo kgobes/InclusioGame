@@ -5539,6 +5539,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1309463133}
+--- !u!1001 &1320555549
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 432830, guid: b9345ba88fff433419066f4dd61ddb77, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -.345720917
+      objectReference: {fileID: 0}
+    - target: {fileID: 432830, guid: b9345ba88fff433419066f4dd61ddb77, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -10.4370337
+      objectReference: {fileID: 0}
+    - target: {fileID: 432830, guid: b9345ba88fff433419066f4dd61ddb77, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1.44693935
+      objectReference: {fileID: 0}
+    - target: {fileID: 432830, guid: b9345ba88fff433419066f4dd61ddb77, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432830, guid: b9345ba88fff433419066f4dd61ddb77, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432830, guid: b9345ba88fff433419066f4dd61ddb77, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432830, guid: b9345ba88fff433419066f4dd61ddb77, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 432830, guid: b9345ba88fff433419066f4dd61ddb77, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b9345ba88fff433419066f4dd61ddb77, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1344846758
 GameObject:
   m_ObjectHideFlags: 0
@@ -5570,7 +5612,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 2
     m_Resolution: -1
     m_Strength: .693000019
     m_Bias: 2

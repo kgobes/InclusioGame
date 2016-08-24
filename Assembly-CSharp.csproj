@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Old\textChange.cs" />
+     <Compile Include="Assets\Scripts\AnimateFoliageMaterials.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\ChallengeManager.cs" />
      <Compile Include="Assets\Scripts\ChallengeTemplate.cs" />

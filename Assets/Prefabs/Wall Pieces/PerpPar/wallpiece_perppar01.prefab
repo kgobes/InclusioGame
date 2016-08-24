@@ -28,7 +28,6 @@ GameObject:
   - 4: {fileID: 434462}
   - 33: {fileID: 3302956}
   - 23: {fileID: 2377656}
-  - 95: {fileID: 9528524}
   - 64: {fileID: 6499300}
   m_Layer: 0
   m_Name: wallpiece_perppar01
@@ -43,8 +42,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190170}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.1122608, y: 1.44000006, z: -.248999998}
+  m_LocalRotation: {x: 0, y: .552224576, z: 0, w: .833695471}
+  m_LocalPosition: {x: 3.44000006, y: 0, z: 9.46000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 489642}
@@ -143,23 +142,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: b49df9df9f14e0543b5f912c74f7a15c, type: 3}
---- !u!95 &9528524
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190170}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b49df9df9f14e0543b5f912c74f7a15c, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &9570290
 Animator:
   serializedVersion: 3

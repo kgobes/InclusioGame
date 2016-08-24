@@ -44,3 +44,9 @@ TagManager:
   - name: UI Particles
     uniqueID: 1276951769
     locked: 0
+  - name: Fog
+    uniqueID: 1514168335
+    locked: 0
+  - name: Sparkles
+    uniqueID: 934241877
+    locked: 0

@@ -144,7 +144,7 @@ Material:
       data:
         first:
           name: _WaveAndDistance
-        second: {r: 0, g: 0, b: 0, a: 0}
+        second: {r: 12, g: .0917569473, b: 1, a: 1}
       data:
         first:
           name: _WavingTint
