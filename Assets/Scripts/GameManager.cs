@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
 	}
 	private void Update ()
     {
+        if (Input.GetKeyDown(KeyCode.F9)) AddSurvivedCharacter(new EndItemInfo("Troll", Resources.Load<Sprite>("sprites/spr_troll")));
+
         if (Input.GetKeyDown(KeyCode.F11)) changeTime(-5);
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -156,6 +158,7 @@ public class GameManager : MonoBehaviour
 
     public static void AddSurvivedCharacter(EndItemInfo inCharacterInfo)
     {
+        Debug.Log("adding survived character: " + inCharacterInfo.name);
         survivedCharacters.Add(inCharacterInfo);
     }
 

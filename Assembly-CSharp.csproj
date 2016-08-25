@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\ResourceBar.cs" />
      <Compile Include="Assets\Scripts\ScenarioManager.cs" />
      <Compile Include="Assets\Scripts\StoryIntroController.cs" />
+     <Compile Include="Assets\Scripts\UITransformTest.cs" />
      <Compile Include="Assets\dontdestroy.cs" />
      <None Include="Assets\BackfaceCullShader.shader" />
      <None Include="Assets\Materials\CustomFoliageShader.shader" />

@@ -44,7 +44,6 @@ public class Option
 		if (num == 1) {
 			resultText = "The other elves angrily leave, but the troll is safe and is thankful for your help and joins you.";
             inResourceBar.addResource("sprites/spr_troll");
-            GameManager.AddSurvivedCharacter(new EndItemInfo("Troll", Resources.Load<Sprite>("sprites/spr_troll")));
 			ChallengeManager.setNext (2);
 		}
 		if (num == 2) {
@@ -55,6 +54,7 @@ public class Option
             if (inResourceBar.checkResource("sprites/spr_troll"))
             {
 				resultText = "You make it through the gate and the troll is reunited with his family.";
+                GameManager.AddSurvivedCharacter(new EndItemInfo("Rojin - Troll", Resources.Load<Sprite>("sprites/spr_troll")));
                 inResourceBar.useResource("sprites/spr_troll");
 			}
 			else
@@ -87,6 +87,7 @@ public class Option
             if (inResourceBar.checkResource("sprites/spr_pixie"))
             {
 				resultText = "You make it through the wall.";
+                GameManager.AddSurvivedCharacter(new EndItemInfo("Solara - Pixie", Resources.Load<Sprite>("sprites/spr_pixie")));
                 inResourceBar.useResource("sprites/spr_pixie");
 			}
 			else{

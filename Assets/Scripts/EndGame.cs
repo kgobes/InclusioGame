@@ -26,7 +26,7 @@ public class EndGame : MazeCell
         Debug.LogWarning("endgame start");
         DontDestroyOnLoad(transform.root.gameObject);
 	}
-    // timeText.text = (getTime() / 60).ToString("00") + ":" + (getTime() % 60).ToString("00");
+    
 	// Update is called once per frame
 	void Update ()
     {
