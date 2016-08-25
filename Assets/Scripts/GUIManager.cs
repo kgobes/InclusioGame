@@ -34,6 +34,8 @@ public class GUIManager : MonoBehaviour
 
     GameManager gameManager;
 
+    
+
 	// Use this for initialization
 
     void Awake()

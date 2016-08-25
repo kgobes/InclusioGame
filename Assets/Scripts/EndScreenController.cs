@@ -15,9 +15,14 @@ public class EndScreenController : MonoBehaviour
     int tempTime = 0;
     float tempHealth = 0f;
 
+    AudioSource audio;
+    public AudioClip tickSound;
+    public AudioClip characterSound;
+
 	// Use this for initialization
 	void Start ()
     {
+        audio = GetComponent<AudioSource>();
         timeText.text = "";
         healthText.text = "";
         GetEndGameInfo();
@@ -51,6 +56,7 @@ public class EndScreenController : MonoBehaviour
         while(tempTime < info.time)
         {
             yield return new WaitForSeconds(0.02f);
+            audio.PlayOneShot(tickSound);
             tempTime += 1;
             timeText.text = (tempTime / 60).ToString("00") + ":" + (tempTime % 60).ToString("00");
         }
@@ -60,6 +66,7 @@ public class EndScreenController : MonoBehaviour
         while (tempHealth < info.health)
         {
             yield return new WaitForSeconds(0.02f);
+            audio.PlayOneShot(tickSound);
             tempHealth += 1;
             healthText.text = ((int)tempHealth).ToString();
         }
@@ -81,12 +88,15 @@ public class EndScreenController : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
 
+            audio.PlayOneShot(characterSound);
+
             GameObject _newImage = Instantiate(endItemImagePrefab) as GameObject;
-            _newImage.transform.parent = survivedPanel;
+            _newImage.transform.SetParent(survivedPanel, false);
             _newImage.GetComponent<RectTransform>().sizeDelta = new Vector2(128f, 128f);
             _newImage.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
-            _newImage.GetComponent<RectTransform>().anchoredPosition = new Vector3((i * 138f), 0f, 0f);
-            _newImage.GetComponent<Image>().sprite = info.survivedCharacters[i].image;            
+            _newImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(64f + (i * 138f), 0f, 0f);
+            _newImage.GetComponent<Image>().sprite = info.survivedCharacters[i].image;
+            _newImage.transform.FindChild("CharacterName").gameObject.GetComponent<Text>().text = info.survivedCharacters[i].name;
         }
 
         StopCoroutine(DisplayEndResults());
