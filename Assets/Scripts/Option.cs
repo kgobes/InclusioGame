@@ -86,7 +86,7 @@ public class Option
 		if (num == 8) {
             if (inResourceBar.checkResource("sprites/spr_pixie"))
             {
-				resultText = "You make it through the wall.";
+				resultText = "You make it through the door.";
                 GameManager.AddSurvivedCharacter(new EndItemInfo("Solara - Pixie", Resources.Load<Sprite>("sprites/spr_pixie")));
                 inResourceBar.useResource("sprites/spr_pixie");
 			}
@@ -182,6 +182,7 @@ public class Option
 		if(num == 24){
 			resultText = "Turns out she was a wanted fairy who often conned travelers - you get coin reward.";
             inResourceBar.addResource("sprites/PotofGold");
+			ChallengeManager.setNext (27);
 		}
 		if(num == 25){
 			resultText = "This takes time, but the pixie is so grateful that it rewards you with 5 health points.";
@@ -266,10 +267,36 @@ public class Option
 			GameManager.changeTime (10);
 			inResourceBar.incrementHealth (5);
 		}
-		if (num == 45) {
+		if (num == 45 || num == 48) {
 			resultText = "Continue down the path.";
 		}
+		if (num == 46) {
+			resultText = "Continue down the path.";
+			ChallengeManager.setNext (26);
+		}
+		if(num == 47){
+			resultText = "The wizard scarfs down the loaf of bread and jumps up, feeling much better. He hands you a potion bottle as a thank you.";
+			inResourceBar.addResource ("potion");
+			GameManager.AddSurvivedCharacter(new EndItemInfo("Wizard", Resources.Load<Sprite>("sprites/spr_wizard")));
+			ChallengeManager.setNext (26);
+		}
+		if (num == 49) {
+			resultText = "The pixie is grateful for you help and flutters away.";
+			GameManager.AddSurvivedCharacter(new EndItemInfo("Pixie", Resources.Load<Sprite>("sprites/pixie")));
+			if(inResourceBar.checkResource ("potion"))
+			   inResourceBar.useResource ("potion");
+			else
+				inResourceBar.incrementHealth (-3);	
+		}
+		if (num == 50) {
+			resultText = "Continue down the path";
+		}
+		if (num == 51) {
+			resultText = "You give the family the medicine and are relieved to see their baby starting to feel better";
+			GameManager.AddSurvivedCharacter(new EndItemInfo("Fairy", Resources.Load<Sprite>("sprites/fairy")));
+			inResourceBar.useResource ("potofgold");
 
+		}
 
         // TO DO store a ref so Find isn't called every time we need to call GUIManager
         GameObject.Find("Canvas").GetComponent<GUIManager>().showResult(resultText);

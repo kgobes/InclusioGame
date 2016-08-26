@@ -117,7 +117,7 @@ public class ChallengeManager : MonoBehaviour {
 		g.addOption ("Join them! Laugh and throw rocks at the pixie.", 13);
 		g.addOption ("Ignore it and keep walking.", 14);
 		g.addOption ("Tell the elves to stop.", 15);
-		
+		g.SetImage(Resources.Load<Sprite>("sprites/pixie"));
 		//come back to this shit
 		ChallengeTemplate h = new ChallengeTemplate (8, "You encounter a group of werewolves blocking the path. The werewolves refuse to let you through because you are an elf and they do not like elves.", false);
 		h.addOption ("Consume a potion that changes you into a wolf.", 16);
@@ -127,20 +127,22 @@ public class ChallengeManager : MonoBehaviour {
 		//ChallengeTemplate i = new ChallengeTemplate (9, "You meet a wizard on the path. He demands that you solve a riddle to get past him. He says you can either complete one riddle by yourself to get past him or you can work as a group to solve three riddles.", false);
 		//i.addOption ("Choose to work by yourself and solve one riddle.", 19);
 		//i.addOption ("Work as a group.", 20);
-		
-		ChallengeTemplate j = new ChallengeTemplate (10, "You encounter an ogre stuck under a fallen tree. Ogres are known for being vicious creatures who attack anybody in their way. You don’t know if this ogre is necessarily violent, but that’s how the stereotype goes.", false);
-		j.addOption ("Help the ogre - he could be a pleasant fellow.", 21);
+
+		ChallengeTemplate j = new ChallengeTemplate (10, "You encounter a troll stuck under a fallen tree. Trolls are known for being vicious creatures who attack anybody in their way. You don’t know if this trolls is necessarily violent, but that’s how the stereotype goes.", false);
+		j.addOption ("Help the troll - he could be a pleasant fellow.", 21);
 		j.addOption ("Too risky...continue down the path.", 22);
+		j.SetImage(Resources.Load<Sprite>("sprites/spr_troll"));
 
 		ChallengeTemplate k = new ChallengeTemplate(11, "You see a fairy who appears pleasant and sweet. As you approach, you watch her manipulate an ogre into giving her food, but because ogres are typically violent creatures, maybe she had no other choice. She asks to accompany you and claims she knows secret shortcuts through the maze. ", false);
 		k.addOption ("Let the fairy join you, you could use someone who is clever.", 23);
 		k.addOption ("Call out the fairy for being a cheater and report her to the fairy chief.", 24);
-	
-		
+		k.SetImage(Resources.Load<Sprite>("sprites/spr_fairy"));
+
 		ChallengeTemplate l = new ChallengeTemplate (12, "You come across a group of your fellow elves stealing food from a pixie.", false);
 		l.addOption ("Intervene and try stop the elves.", 25);
 		l.addOption ("Ignore them and continue on your journey.", 26);
 		l.addOption ("Join the elves and steal the food.", 27);
+		l.SetImage(Resources.Load<Sprite>("sprites/Elf"));
 
 		ChallengeTemplate m = new ChallengeTemplate (13, " You find yourself lost and see a sign that points directions but it’s in dwarvish language and you can’t read it. You need to ask for help from a dwarf but you remember that someone told you that they have the tendency to lie.", false);
 		m.addOption ("Ask for help, it's worth a try.", 28);
@@ -153,6 +155,7 @@ public class ChallengeManager : MonoBehaviour {
 		ChallengeTemplate o = new ChallengeTemplate(15, "A group of elves is singing about their fairy godmother. They ask you to join in their singing, but you don’t believe in fairy godmothers...although it does look like they are having fun", false);
 		o.addOption ("Ask questions to learn more.", 32);
 		o.addOption("Ignore them and keep going... no time for fun right now.", 33);
+		o.SetImage(Resources.Load<Sprite>("sprites/Elf"));
 
 		ChallengeTemplate p = new ChallengeTemplate(16, "There is a gate ahead with a lock on it. What is the password?", true);
 		p.addOption ("You know this! It’s the secret to life from the singing elves!", 34);
@@ -176,6 +179,22 @@ public class ChallengeManager : MonoBehaviour {
 		t.addOption ("Jump in!", 44);
 		t.addOption ("No time for hanging around.", 45);
 
+
+
+		ChallengeTemplate u = new ChallengeTemplate(25, "An exhausted wizard sits on the side of the path. He asks you for some of your food so that he can regain his strength.", false);
+		u.addOption("Pretend to ignore him... who knows how much further you have to go before getting out of here?", 46);
+		u.addOption ("Hand him a loaf of bread and wish him well.", 47);
+		u.SetImage(Resources.Load<Sprite>("sprites/spr_wizard"));
+
+		ChallengeTemplate v = new ChallengeTemplate(26, "You see a fairy with a bruised wing.", true);
+		v.addOption("You keep walking. You have no obligation to fairies.", 48);
+		v.addOption ("Offer her some help. After all, she is so small that it would hardly be a cost to you.", 49);
+		v.SetImage(Resources.Load<Sprite>("sprites/spr_pixie"));
+
+		ChallengeTemplate w = new ChallengeTemplate (27, "You come across a family of fairies who have a sick baby and need coins to buy medicine from a mysterious shack in the woods.", true);
+		w.addOption ("You don’t stop to help. Fairies are magic, why can’t they fix this problem by themselves and who buys medicine at a sketchy forest shack?", 50);
+		w.addOption ("You offer to go buy medicine that costs 10 coins.", 51);
+		w.SetImage(Resources.Load<Sprite>("sprites/fairy"));
 		
 		//ADD CHALLENGES TO CHALLENGE LIST
 		challenges.Add (a);
@@ -186,7 +205,7 @@ public class ChallengeManager : MonoBehaviour {
 
 		challenges.Add (f);
 		challenges.Add (g);
-		challenges.Add (h);
+		//challenges.Add (h);
 		//challenges.Add (i);
 		challenges.Add (j);
 
@@ -199,6 +218,11 @@ public class ChallengeManager : MonoBehaviour {
 		challenges.Add (q);
 		challenges.Add (r);
 
+		challenges.Add (s);
+		challenges.Add (t);
+		challenges.Add (u);
+		challenges.Add (v);
+		challenges.Add (w);
 
 	}
 }
