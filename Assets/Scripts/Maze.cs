@@ -24,7 +24,7 @@ public class Maze : MonoBehaviour {
 
 	public float generationStepDelay;
     public float postGenerationDelay;
-	public static IntVector2 size = new IntVector2 (5, 5);
+	public IntVector2 size = new IntVector2 (5, 5);
     public ChallengeManager challengeManagerInst;
 
     public float mazeMeshScale = 2;

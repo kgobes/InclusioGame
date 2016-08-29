@@ -94,10 +94,6 @@ Material:
         second: .5
       data:
         first:
-          name: _Cutoff2
-        second: .5
-      data:
-        first:
           name: _Parallax
         second: .0199999996
       data:
@@ -132,6 +128,10 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _Cutoff2
+        second: .5
     m_Colors:
       data:
         first:
@@ -144,7 +144,7 @@ Material:
       data:
         first:
           name: _WaveAndDistance
-        second: {r: 12, g: .014956953, b: 1, a: 1}
+        second: {r: 12, g: .0883361548, b: 1, a: 1}
       data:
         first:
           name: _WavingTint

@@ -18,6 +18,8 @@ public class ChallengeManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        Debug.LogWarning("Challenge Manager Instance Name: " + name);
 		/*eventText = GameObject.Find ("EventText").GetComponent<Text>();
 		textPanel = GameObject.Find ("TextPanel").GetComponent <Image>();
 		textPanel.gameObject.SetActive (false);*/
@@ -27,7 +29,7 @@ public class ChallengeManager : MonoBehaviour {
         if (!GUIManagerInst)
             Debug.LogError("GUI Manager/TextPanel object not found in scene! Unable to store reference");
 
-		checkPosition ();
+		//checkPosition ();
 
 		initializeChallenges ();
 
@@ -47,15 +49,15 @@ public class ChallengeManager : MonoBehaviour {
 	public static void setCorrect (bool b){
 		correct = b;
 	}
-	void checkPosition(){
-		Vector3 sLoc = new Vector3 (-(Maze.size.x-1)/2, 0.5f, -(Maze.size.z-1)/2);
-		Vector3 endSpot = new Vector3 (Maze.size.x-1, 0, Maze.size.z-1);
-		if ((transform.localPosition == sLoc) || (transform.localPosition == endSpot)) {
-			Destroy (this.gameObject);
-			Debug.Log ("event destroyed");
-		}
+    //void checkPosition(){
+    //    Vector3 sLoc = new Vector3 (-(Maze.size.x-1)/2, 0.5f, -(Maze.size.z-1)/2);
+    //    Vector3 endSpot = new Vector3 (Maze.size.x-1, 0, Maze.size.z-1);
+    //    if ((transform.localPosition == sLoc) || (transform.localPosition == endSpot)) {
+    //        Destroy (this.gameObject);
+    //        Debug.Log ("event destroyed");
+    //    }
 
-	}
+    //}
 	public void chooseNextScen(){
 
 		Debug.Log ("next scen is " + next);

@@ -15,14 +15,14 @@ public class EndScreenController : MonoBehaviour
     int tempTime = 0;
     float tempHealth = 0f;
 
-    AudioSource audio;
+    AudioSource audioSource;
     public AudioClip tickSound;
     public AudioClip characterSound;
 
 	// Use this for initialization
 	void Start ()
     {
-        audio = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         timeText.text = "";
         healthText.text = "";
         GetEndGameInfo();
@@ -56,7 +56,7 @@ public class EndScreenController : MonoBehaviour
         while(tempTime < info.time)
         {
             yield return new WaitForSeconds(0.02f);
-            audio.PlayOneShot(tickSound);
+            audioSource.PlayOneShot(tickSound);
             tempTime += 1;
             timeText.text = (tempTime / 60).ToString("00") + ":" + (tempTime % 60).ToString("00");
         }
@@ -66,7 +66,7 @@ public class EndScreenController : MonoBehaviour
         while (tempHealth < info.health)
         {
             yield return new WaitForSeconds(0.02f);
-            audio.PlayOneShot(tickSound);
+            audioSource.PlayOneShot(tickSound);
             tempHealth += 1;
             healthText.text = ((int)tempHealth).ToString();
         }
@@ -88,7 +88,7 @@ public class EndScreenController : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
 
-            audio.PlayOneShot(characterSound);
+            audioSource.PlayOneShot(characterSound);
 
             GameObject _newImage = Instantiate(endItemImagePrefab) as GameObject;
             _newImage.transform.SetParent(survivedPanel, false);

@@ -51,6 +51,9 @@ MonoBehaviour:
     type: 2}
   generationStepDelay: 9.99999975e-06
   postGenerationDelay: 2
+  size:
+    x: 5
+    z: 5
   challengeManagerInst: {fileID: 0}
   mazeMeshScale: 4
   wallPiecesDoubleOpen:
