@@ -26,6 +26,8 @@ public class Maze : MonoBehaviour {
     public float postGenerationDelay;
 	public IntVector2 size = new IntVector2 (5, 5);
     public ChallengeManager challengeManagerInst;
+    public int cairnsPerMazeSize = 1;
+    float cairnSpawnChance = 0f;
 
     public float mazeMeshScale = 2;
 
@@ -58,6 +60,9 @@ public class Maze : MonoBehaviour {
 
         if (!challengeManagerInst)
             Debug.LogError("Challenge Manager object not found in scene! Unable to store reference");
+
+        int _numCairns = cairnsPerMazeSize * (int)(((float)size.x + (float)size.z) / 2f);
+        cairnSpawnChance = (float)_numCairns / ((float)size.x * (float)size.z);
 	}
 	
 	// Update is called once per frame
@@ -183,6 +188,8 @@ public class Maze : MonoBehaviour {
 
     private void GenerateWallPieces()
     {
+        
+
         for (int i = 0; i < walls.Count; ++i)
         {
             walls[i].transform.GetChild(0).GetComponent<Collider>().enabled = false;
@@ -220,8 +227,6 @@ public class Maze : MonoBehaviour {
 
             Text _text = walls[i].GetComponentInChildren<Text>();
 
-            GameObject _wallPiece;
-
             switch(_right)
             {
                 case WallNeighbor.None:
@@ -231,28 +236,19 @@ public class Maze : MonoBehaviour {
                             case WallNeighbor.None:
                                 {
                                     _text.text = "No Neighbors";
-                                    _wallPiece = Instantiate(wallPiecesDoubleOpen[0]) as GameObject;
-                                    _wallPiece.transform.SetParent(walls[i].transform, false);
-                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
-                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    SpawnWallPiece(wallPiecesDoubleOpen, walls[i].transform);                                    
                                     break;
                                 }
                             case WallNeighbor.Parallel:
                                 {
                                     _text.text = "< Parallel";
-                                    _wallPiece = Instantiate(wallPiecesParOpen[0]) as GameObject;
-                                    _wallPiece.transform.SetParent(walls[i].transform, false);
-                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
-                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    SpawnWallPiece(wallPiecesParOpen, walls[i].transform);                                     
                                     break;
                                 }
                             case WallNeighbor.Perpendicular:
                                 {
                                     _text.text = "< Perpendicular";
-                                    _wallPiece = Instantiate(wallPiecesPerpOpen[0]) as GameObject;
-                                    _wallPiece.transform.SetParent(walls[i].transform, false);
-                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
-                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    SpawnWallPiece(wallPiecesPerpOpen, walls[i].transform);
                                     break;
                                 }
                         }
@@ -266,28 +262,19 @@ public class Maze : MonoBehaviour {
                             case WallNeighbor.None:
                                 {
                                     _text.text = "Parallel >";
-                                    _wallPiece = Instantiate(wallPiecesOpenPar[0]) as GameObject;
-                                    _wallPiece.transform.SetParent(walls[i].transform, false);
-                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
-                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    SpawnWallPiece(wallPiecesOpenPar, walls[i].transform);
                                     break;
                                 }
                             case WallNeighbor.Parallel:
                                 {
                                     _text.text = " < Parallel >";
-                                    _wallPiece = Instantiate(wallPiecesDoublePar[0]) as GameObject;
-                                    _wallPiece.transform.SetParent(walls[i].transform, false);
-                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
-                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    SpawnWallPiece(wallPiecesDoublePar, walls[i].transform);
                                     break;
                                 }
                             case WallNeighbor.Perpendicular:
                                 {
                                     _text.text = "< Perp - Par >";
-                                    _wallPiece = Instantiate(wallPiecesPerpPar[0]) as GameObject;
-                                    _wallPiece.transform.SetParent(walls[i].transform, false);
-                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
-                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    SpawnWallPiece(wallPiecesPerpPar, walls[i].transform);
                                     break;
                                 }
                         }
@@ -301,28 +288,19 @@ public class Maze : MonoBehaviour {
                             case WallNeighbor.None:
                                 {
                                     _text.text = "Perpendicular >";
-                                    _wallPiece = Instantiate(wallPiecesOpenPerp[0]) as GameObject;
-                                    _wallPiece.transform.SetParent(walls[i].transform, false);
-                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
-                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    SpawnWallPiece(wallPiecesOpenPerp, walls[i].transform);
                                     break;
                                 }
                             case WallNeighbor.Parallel:
                                 {
                                     _text.text = "< Par - Perp >";
-                                    _wallPiece = Instantiate(wallPiecesParPerp[0]) as GameObject;
-                                    _wallPiece.transform.SetParent(walls[i].transform, false);
-                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
-                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    SpawnWallPiece(wallPiecesParPerp, walls[i].transform);
                                     break;
                                 }
                             case WallNeighbor.Perpendicular:
                                 {
                                     _text.text = "< Perpendicular >";
-                                    _wallPiece = Instantiate(wallPiecesDoublePerp[0]) as GameObject;
-                                    _wallPiece.transform.SetParent(walls[i].transform, false);
-                                    _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
-                                    _wallPiece.transform.localRotation = Quaternion.identity;
+                                    SpawnWallPiece(wallPiecesDoublePerp, walls[i].transform);
                                     break;
                                 }
                         }
@@ -332,6 +310,17 @@ public class Maze : MonoBehaviour {
 
             
         }
+    }
+
+    void SpawnWallPiece(GameObject[] inWallPiecePool, Transform inParentTransform)
+    {
+        GameObject _wallPiece;
+        _wallPiece = Instantiate(inWallPiecePool[(int)Random.Range(0, inWallPiecePool.Length)]) as GameObject;
+        _wallPiece.transform.SetParent(inParentTransform, false);
+        _wallPiece.transform.localPosition = new Vector3(-2, 0, 2);
+        _wallPiece.transform.localRotation = Quaternion.identity;
+        if (Random.value <= cairnSpawnChance) _wallPiece.transform.FindChild("Cairn").gameObject.SetActive(true);
+        else _wallPiece.transform.FindChild("Cairn").gameObject.SetActive(false);
     }
 
     void GeneratePerimeter()

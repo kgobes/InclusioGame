@@ -15,6 +15,8 @@ public class EndGame : MazeCell
 {
     private EndGameInfo info;
 
+    GUIManager guiManager;
+
     void Awake()
     {
         
@@ -25,6 +27,7 @@ public class EndGame : MazeCell
     {
         Debug.LogWarning("endgame start");
         DontDestroyOnLoad(transform.root.gameObject);
+        guiManager = GameObject.Find("Canvas").GetComponent<GUIManager>();
 	}
     
 	// Update is called once per frame
@@ -38,10 +41,10 @@ public class EndGame : MazeCell
 		if (other.name == "player")
         {
             GameManager.pauseTime();
+            other.GetComponent<Player>().canMove(false);
             BuildEndGameInfo();
 
-			Application.LoadLevel ("EndScene");
-
+            guiManager.OnEndGame();
 		}
 	}
 

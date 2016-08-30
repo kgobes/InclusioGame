@@ -276,15 +276,15 @@ public class Option
 		}
 		if(num == 47){
 			resultText = "The wizard scarfs down the loaf of bread and jumps up, feeling much better. He hands you a potion bottle as a thank you.";
-			inResourceBar.addResource ("potion");
-			GameManager.AddSurvivedCharacter(new EndItemInfo("Wizard", Resources.Load<Sprite>("sprites/spr_wizard")));
+			inResourceBar.addResource ("sprites/potion");
+			GameManager.AddSurvivedCharacter(new EndItemInfo("Benjamin - Wizard", Resources.Load<Sprite>("sprites/spr_wizard")));
 			ChallengeManager.setNext (26);
 		}
 		if (num == 49) {
 			resultText = "The pixie is grateful for you help and flutters away.";
-			GameManager.AddSurvivedCharacter(new EndItemInfo("Pixie", Resources.Load<Sprite>("sprites/pixie")));
-			if(inResourceBar.checkResource ("potion"))
-			   inResourceBar.useResource ("potion");
+			GameManager.AddSurvivedCharacter(new EndItemInfo("Flix - Pixie", Resources.Load<Sprite>("sprites/spr_pixie")));
+            if (inResourceBar.checkResource("sprites/potion"))
+                inResourceBar.useResource("sprites/potion");
 			else
 				inResourceBar.incrementHealth (-3);	
 		}
@@ -294,7 +294,7 @@ public class Option
 		if (num == 51) {
 			resultText = "You give the family the medicine and are relieved to see their baby starting to feel better";
 			GameManager.AddSurvivedCharacter(new EndItemInfo("Fairy", Resources.Load<Sprite>("sprites/fairy")));
-			inResourceBar.useResource ("potofgold");
+            inResourceBar.useResource("sprites/potofgold");
 
 		}
 

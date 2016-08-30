@@ -31,6 +31,7 @@ public class GUIManager : MonoBehaviour
     CanvasGroup pauseButton;
     CanvasGroup instructionsPanel;
     CanvasGroup navPanel;
+    CanvasGroup victoryPanel;
 
     GameManager gameManager;
 
@@ -45,6 +46,7 @@ public class GUIManager : MonoBehaviour
         pauseButton = GameObject.Find("Pause Button").GetComponent<CanvasGroup>();
         instructionsPanel = GameObject.Find("InstructionsPanel").GetComponent<CanvasGroup>();
         navPanel = GameObject.Find("NavPanel").GetComponent<CanvasGroup>();
+        victoryPanel = GameObject.Find("VictoryPanel").GetComponent<CanvasGroup>();
 
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
@@ -74,14 +76,17 @@ public class GUIManager : MonoBehaviour
         inGameUI.interactable = false;
         pauseMenu.interactable = false;
         instructionsPanel.interactable = false;
+        victoryPanel.interactable = false;
 
         inGameUI.blocksRaycasts = false;
         pauseMenu.blocksRaycasts = false;
         instructionsPanel.blocksRaycasts = false;
+        victoryPanel.blocksRaycasts = false;
 
         inGameUI.alpha = 0;
         pauseMenu.alpha = 0;
         instructionsPanel.alpha = 0;
+        victoryPanel.alpha = 0;
     }
 
 	// Update is called once per frame
@@ -319,6 +324,26 @@ public class GUIManager : MonoBehaviour
         inGameUI.alpha = 0;
         pauseMenu.alpha = 0;
         instructionsPanel.alpha = 1;
+    }
+
+    public void OnEndGame()
+    {
+        StartCoroutine(VictoryScreen());
+    }
+
+    IEnumerator VictoryScreen()
+    {
+        inGameUI.interactable = false;
+        inGameUI.blocksRaycasts = false;
+        inGameUI.alpha = 0;
+
+        victoryPanel.alpha = 1;
+        victoryPanel.GetComponent<Animator>().SetTrigger("Fade");
+
+        yield return new WaitForSeconds(3f);
+
+        StopAllCoroutines();
+        Application.LoadLevel("EndScene");
     }
 
     public void SetPauseButtonVisibility(bool inIsVisible)

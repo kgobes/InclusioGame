@@ -41,7 +41,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellPrefab: {fileID: 11400010, guid: 738c8e12cd3a74346b9cc6b7b8017d62, type: 2}
   eventPrefab: {fileID: 11401016, guid: c68a88727bb2c4b0dbdbe50c857ef8db, type: 2}
-  eventCounter: 8
+  eventCounter: 16
   eventProbability: .270000011
   endPrefab: {fileID: 11422756, guid: abc574841ae1048c0b5f676ccbd7d702, type: 2}
   passagePrefab: {fileID: 11480734, guid: cc96c8882ef28417683aadac1a408ff0, type: 2}
@@ -52,9 +52,10 @@ MonoBehaviour:
   generationStepDelay: 9.99999975e-06
   postGenerationDelay: 2
   size:
-    x: 5
-    z: 5
+    x: 8
+    z: 8
   challengeManagerInst: {fileID: 0}
+  cairnsPerMazeSize: 1
   mazeMeshScale: 4
   wallPiecesDoubleOpen:
   - {fileID: 139752, guid: e71014e28bda9314a9fd5c10b135d801, type: 2}
@@ -150,11 +151,11 @@ Prefab:
         type: 2}
     - target: {fileID: 0}
       propertyPath: size.x
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: size.z
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: doorPrefab
@@ -193,7 +194,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: eventCounter
-      value: 8
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: mazeMeshScale
