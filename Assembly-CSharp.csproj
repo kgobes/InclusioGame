@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\ChallengeManager.cs" />
      <Compile Include="Assets\Scripts\ChallengeTemplate.cs" />
+     <Compile Include="Assets\Scripts\CustomSortOrder.cs" />
      <Compile Include="Assets\Scripts\DisplaySplashScreen.cs" />
      <Compile Include="Assets\Scripts\EndGame.cs" />
      <Compile Include="Assets\Scripts\EndScreenController.cs" />

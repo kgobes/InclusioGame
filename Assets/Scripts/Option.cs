@@ -105,16 +105,17 @@ public class Option
 
 		if (num == 11) {
 			resultText = "A unicorn set this pot of gold as a test. By not stealing it, you gained its trust and he offers to split the pot with you in exchange for some food.";
+            GameManager.AddSurvivedCharacter(new EndItemInfo("Nightwind - Unicorn", Resources.Load<Sprite>("sprites/unicorn")));
             inResourceBar.addResource("sprites/PotofGold");
 			
 		}
 		if (num == 12) {
-			int rand = Random.Range (1, 2);
-			if(rand == 1){
+            float rand = Random.value;
+			if(rand < 0.5f){
 				resultText = "You now have loads of coins.";
                 inResourceBar.addResource("sprites/PotofGold");
 			}
-			if(rand == 2){
+			if(rand >= 0.5f){
 				resultText = "A unicorn placed the pot as a trick and you fell for it. He takes the gold back and pokes you with his horn.";
                 inResourceBar.incrementHealth(-5);
 			}
@@ -260,7 +261,7 @@ public class Option
 			GameManager.changeTime (10);
 		}
 		if (num == 43) {
-			resultText = "Although the argument was uncomforatble, the character appreciates your patience and explains what the pendant means to him. Turns out, it represents something completely different to him than to you. Interesting.";
+			resultText = "Although the argument was uncomfortable, the character appreciates your patience and explains what the pendant means to him. Turns out, it represents something completely different to him than to you. Interesting.";
 		} 
 		if (num == 44) {
 			resultText = "Ahhh.. so relaxing. That was refreshing.";
@@ -281,7 +282,7 @@ public class Option
 			ChallengeManager.setNext (26);
 		}
 		if (num == 49) {
-			resultText = "The pixie is grateful for you help and flutters away.";
+			resultText = "You give the pixie your bottle of potion, which magically heals her. She is grateful for you help and flutters away.";
 			GameManager.AddSurvivedCharacter(new EndItemInfo("Flix - Pixie", Resources.Load<Sprite>("sprites/spr_pixie")));
             if (inResourceBar.checkResource("sprites/potion"))
                 inResourceBar.useResource("sprites/potion");
@@ -293,7 +294,7 @@ public class Option
 		}
 		if (num == 51) {
 			resultText = "You give the family the medicine and are relieved to see their baby starting to feel better";
-			GameManager.AddSurvivedCharacter(new EndItemInfo("Fairy", Resources.Load<Sprite>("sprites/fairy")));
+            GameManager.AddSurvivedCharacter(new EndItemInfo("Jada - Fairy", Resources.Load<Sprite>("sprites/fairy")));
             inResourceBar.useResource("sprites/potofgold");
 
 		}

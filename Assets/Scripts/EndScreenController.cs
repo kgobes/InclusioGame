@@ -84,7 +84,7 @@ public class EndScreenController : MonoBehaviour
         //}
 
         // survived characters
-        for (int i = 0; i < info.survivedCharacters.Count; ++i)
+        for (int i = 0; i < info.survivedCharacters.Count || i < 15; ++i)
         {
             yield return new WaitForSeconds(1f);
 
@@ -92,9 +92,10 @@ public class EndScreenController : MonoBehaviour
 
             GameObject _newImage = Instantiate(endItemImagePrefab) as GameObject;
             _newImage.transform.SetParent(survivedPanel, false);
+
             _newImage.GetComponent<RectTransform>().sizeDelta = new Vector2(128f, 128f);
             _newImage.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
-            _newImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(64f + (i * 138f), 0f, 0f);
+            _newImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(64f + ((i % 5) * 133f), 0 - ((i / 5) * 138f), 0f);
             _newImage.GetComponent<Image>().sprite = info.survivedCharacters[i].image;
             _newImage.transform.FindChild("CharacterName").gameObject.GetComponent<Text>().text = info.survivedCharacters[i].name;
         }

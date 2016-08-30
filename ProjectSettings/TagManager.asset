@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: UI Top Layer
+    uniqueID: 3016512045
+    locked: 0
   - name: UI Particles
     uniqueID: 1276951769
     locked: 0
@@ -49,4 +52,7 @@ TagManager:
     locked: 0
   - name: Sparkles
     uniqueID: 934241877
+    locked: 0
+  - name: UI Bottom Layer
+    uniqueID: 726778625
     locked: 0

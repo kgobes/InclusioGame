@@ -6430,6 +6430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceBar: {fileID: 0}
+  defeated: 0
 --- !u!114 &1640058965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7759,6 +7760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceBar: {fileID: 1962613125}
+  defeated: 0
 --- !u!225 &1698430700
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -335,10 +335,7 @@ public class GUIManager : MonoBehaviour
 
     public void OnEndGame()
     {
-        if(eventUIActive)
-        {
-
-        }
+        StartCoroutine(VictoryScreen());
         
     }
 
