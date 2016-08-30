@@ -32,10 +32,11 @@ public class GUIManager : MonoBehaviour
     CanvasGroup instructionsPanel;
     CanvasGroup navPanel;
     CanvasGroup victoryPanel;
+    CanvasGroup defeatPanel;
 
     GameManager gameManager;
 
-    
+    public bool defeated = false;
 
 	// Use this for initialization
 
@@ -47,6 +48,7 @@ public class GUIManager : MonoBehaviour
         instructionsPanel = GameObject.Find("InstructionsPanel").GetComponent<CanvasGroup>();
         navPanel = GameObject.Find("NavPanel").GetComponent<CanvasGroup>();
         victoryPanel = GameObject.Find("VictoryPanel").GetComponent<CanvasGroup>();
+        defeatPanel = GameObject.Find("DefeatPanel").GetComponent<CanvasGroup>();
 
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
@@ -77,22 +79,34 @@ public class GUIManager : MonoBehaviour
         pauseMenu.interactable = false;
         instructionsPanel.interactable = false;
         victoryPanel.interactable = false;
+        defeatPanel.interactable = false;
 
         inGameUI.blocksRaycasts = false;
         pauseMenu.blocksRaycasts = false;
         instructionsPanel.blocksRaycasts = false;
         victoryPanel.blocksRaycasts = false;
+        defeatPanel.blocksRaycasts = false;
 
         inGameUI.alpha = 0;
         pauseMenu.alpha = 0;
         instructionsPanel.alpha = 0;
         victoryPanel.alpha = 0;
+        defeatPanel.alpha = 0;
     }
 
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		//resultPanel.gameObject.SetActive(false);
 		//textPanel.gameObject.SetActive (false);
+        if(defeated)
+        {
+            if(!eventUIActive)
+            {
+                OnDefeat();
+            }
+        }
+        
 	}
 	public void disablePanels()
     {
@@ -208,13 +222,6 @@ public class GUIManager : MonoBehaviour
         optObject3.executeResult(resourceBar);
         HideEventUI();
 	}
-	/*public void clickContinue(){
-		Player p = GameObject.Find ("player").GetComponent<Player>();
-		p.canMove (true);
-		textPanel.gameObject.SetActive (false);
-		GameManager.continueTime ();
-		//p.canMove (true);
-	}*/
 
 	public void clickContinue()
     {
@@ -328,7 +335,11 @@ public class GUIManager : MonoBehaviour
 
     public void OnEndGame()
     {
-        StartCoroutine(VictoryScreen());
+        if(eventUIActive)
+        {
+
+        }
+        
     }
 
     IEnumerator VictoryScreen()
@@ -344,6 +355,32 @@ public class GUIManager : MonoBehaviour
 
         StopAllCoroutines();
         Application.LoadLevel("EndScene");
+    }
+
+    void OnDefeat()
+    {
+        defeated = false;
+
+        if (!playerRef) playerRef = GameObject.Find("player").GetComponent<Player>();
+        playerRef.canMove(true);
+
+        StartCoroutine(DefeatScreen());
+    }
+
+    IEnumerator DefeatScreen()
+    {
+        inGameUI.interactable = false;
+        inGameUI.blocksRaycasts = false;
+        inGameUI.alpha = 0;
+
+        defeatPanel.interactable = true;
+        defeatPanel.blocksRaycasts = true;
+        defeatPanel.alpha = 1;
+        defeatPanel.GetComponent<Animator>().SetTrigger("Fade");
+
+        yield return new WaitForSeconds(3f);
+
+        StopCoroutine(DefeatScreen());
     }
 
     public void SetPauseButtonVisibility(bool inIsVisible)
@@ -375,7 +412,13 @@ public class GUIManager : MonoBehaviour
     public void OnPressReturnToMenuButton()
     {
         StopAllCoroutines();
-        Application.LoadLevel(1);
+        Application.LoadLevel("StartScreen");
+    }
+
+    public void OnPressTryAgainButton()
+    {
+        StopAllCoroutines();
+        Application.LoadLevel("MazeScene");
     }
 
     public void OnMouseDownMoveButton()

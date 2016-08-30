@@ -24,6 +24,9 @@ public class ResourceBar : MonoBehaviour {
     public Slider healthBar;
     float targetHealth;
 
+    GUIManager guiManager;
+
+
 	// Use this for initialization
 	void Start ()
     {
@@ -41,6 +44,8 @@ public class ResourceBar : MonoBehaviour {
 
 		healthText = GameObject.Find ("Health Text").GetComponent <Text>();
 		health = 100;
+
+        guiManager = GameObject.Find("Canvas").GetComponent<GUIManager>();
 
         SetResourceBarVisibility(false);
 	}
@@ -150,6 +155,8 @@ public class ResourceBar : MonoBehaviour {
         healthText.text = "Health: " + (int)health;
 
         healthBar.GetComponent<Animator>().SetTrigger("stopflash");
+
+        if (health <= 0) guiManager.defeated = true;
 
         StopCoroutine(HealthBarSlideEffect());
     }
