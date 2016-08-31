@@ -54,6 +54,8 @@ public class AudioManagerSingleton : MonoBehaviour
 
     public float GetGlobalVolume() { return globalVolume; }
 
+    public void SetGlobalVolume(float inNewVolume) { globalVolume = inNewVolume; audioSource.volume = globalVolume; }
+
 	void OnLevelWasLoaded()
     {
 
