@@ -19,9 +19,13 @@ public class EndScreenController : MonoBehaviour
     public AudioClip tickSound;
     public AudioClip characterSound;
 
+    public Graphic fader;
+
 	// Use this for initialization
 	void Start ()
     {
+        fader = GameObject.Find("Fader").GetComponent<Graphic>();
+        fader.canvasRenderer.SetAlpha(0f);
         audioSource = GetComponent<AudioSource>();
         timeText.text = "";
         healthText.text = "";
@@ -45,6 +49,17 @@ public class EndScreenController : MonoBehaviour
 
     public void OnPressContinue()
     {
+        StartCoroutine(FadeOut());
+    }
+
+    IEnumerator FadeOut()
+    {
+        fader.CrossFadeAlpha(1f, 1f, false);
+        AudioManagerSingleton.GetInstance().SetMusic(MusicType.None);
+
+        yield return new WaitForSeconds(1f);
+
+        StopAllCoroutines();
         Application.LoadLevel("StartScreen");
     }
 
@@ -84,7 +99,7 @@ public class EndScreenController : MonoBehaviour
         //}
 
         // survived characters
-        for (int i = 0; i < info.survivedCharacters.Count || i < 15; ++i)
+        for (int i = 0; i < info.survivedCharacters.Count && i < 15; ++i)
         {
             yield return new WaitForSeconds(1f);
 

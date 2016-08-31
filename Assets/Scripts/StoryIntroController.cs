@@ -11,9 +11,13 @@ public class StoryIntroController : MonoBehaviour
     public Graphic skipButton;
     public float fadeDurationSeconds = 1f;
 
+    AudioSource audioSource;
+
 	// Use this for initialization
 	void Start ()
     {
+        audioSource = GetComponent<AudioSource>();
+
         textHeader.canvasRenderer.SetAlpha(0f);
         textFooter.canvasRenderer.SetAlpha(0f);
         textBody1.canvasRenderer.SetAlpha(0f);
@@ -32,9 +36,13 @@ public class StoryIntroController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
+        audioSource.Play();
+
         textHeader.CrossFadeAlpha(1f, 2f, false);
 
         yield return new WaitForSeconds(2f);
+
+        AudioManagerSingleton.GetInstance().SetMusic(MusicType.Game);
 
         textBody1.CrossFadeAlpha(1f, fadeDurationSeconds, false);
 

@@ -55,6 +55,8 @@ public class ScenarioManager : MonoBehaviour {
 
     IEnumerator ExitStartScreen()
     {
+        AudioManagerSingleton.GetInstance().SetMusic(MusicType.None);
+
         faderImage.gameObject.SetActive(true);
         faderImage.canvasRenderer.SetAlpha(0f);
         faderImage.CrossFadeAlpha(1f, 1f, false);

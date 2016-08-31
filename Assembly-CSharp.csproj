@@ -47,10 +47,10 @@
   <ItemGroup>
      <Compile Include="Assets\Old\textChange.cs" />
      <Compile Include="Assets\Scripts\AnimateFoliageMaterials.cs" />
+     <Compile Include="Assets\Scripts\AudioManagerSingleton.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\ChallengeManager.cs" />
      <Compile Include="Assets\Scripts\ChallengeTemplate.cs" />
-     <Compile Include="Assets\Scripts\CustomSortOrder.cs" />
      <Compile Include="Assets\Scripts\DisplaySplashScreen.cs" />
      <Compile Include="Assets\Scripts\EndGame.cs" />
      <Compile Include="Assets\Scripts\EndScreenController.cs" />
@@ -74,6 +74,9 @@
      <Compile Include="Assets\Scripts\RandomMaterialTint.cs" />
      <Compile Include="Assets\Scripts\ResourceBar.cs" />
      <Compile Include="Assets\Scripts\ScenarioManager.cs" />
+     <Compile Include="Assets\Scripts\SetGlobalVolumeOnAudioSource.cs" />
+     <Compile Include="Assets\Scripts\SetMusic.cs" />
+     <Compile Include="Assets\Scripts\SingletonLoader.cs" />
      <Compile Include="Assets\Scripts\StoryIntroController.cs" />
      <Compile Include="Assets\Scripts\UITransformTest.cs" />
      <Compile Include="Assets\dontdestroy.cs" />
