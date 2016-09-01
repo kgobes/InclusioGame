@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a46c780f802da24290fe6eca549789a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetMesh: {fileID: 100000, guid: ec929dab6a93bcf4fb57317b4895eec9, type: 3}
+  targetMesh: {fileID: 115110, guid: a6ef3403f973c6243b5ac33481c4a7bb, type: 2}
   waveAndDistValsFerns: {x: 0, y: 0, z: 0, w: 0}
   waveAndDistValsFirBranches: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &100100000
