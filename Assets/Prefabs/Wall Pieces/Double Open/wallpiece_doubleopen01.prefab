@@ -159,7 +159,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 985bd33aa8c638c4fa48fde00633eb14, type: 2}
+  - {fileID: 2100000, guid: f9a690c8b98bc3b4490e97fa55e565ff, type: 2}
   - {fileID: 2100000, guid: 18d79f6b778c7ec4f8cf8f92e77b27d5, type: 2}
   - {fileID: 2100000, guid: 47f28899527f998478ea19538e53ec04, type: 2}
   - {fileID: 2100000, guid: 758ceca4c0ad190408c25abc38865d73, type: 2}
@@ -326,6 +326,14 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 0b3ea6bfd75dd374881ff4c64e4aef93, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f9a690c8b98bc3b4490e97fa55e565ff, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 139752}

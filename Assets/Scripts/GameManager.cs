@@ -131,6 +131,7 @@ public class GameManager : MonoBehaviour
 		//Camera.main.enabled = false;
 		Camera.main.clearFlags = CameraClearFlags.Depth;
 		Camera.main.rect = new Rect(0f, 0f, 0.5f, 0.5f);
+        Destroy(Camera.main.gameObject);
 
         resourceBar.SetResourceBarVisibility(true);
         guiManager.SetPauseButtonVisibility(true);

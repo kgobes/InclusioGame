@@ -171,7 +171,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: .00999999978
-  far clip plane: 1000
+  far clip plane: 15
   field of view: 110
   orthographic: 0
   orthographic size: 5
@@ -300,12 +300,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 1
-  jumpHeight: 8
   canMoveAround: 1
   TerminalVelocity: -20
   speed: 3
   rotateSpeed: 8
-  jumpSpeed: 8
   gravity: 9.80000019
 --- !u!124 &12491764
 Behaviour:
@@ -2540,6 +2538,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: speed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: far clip plane
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

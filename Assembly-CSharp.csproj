@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\EndGame.cs" />
      <Compile Include="Assets\Scripts\EndScreenController.cs" />
      <Compile Include="Assets\Scripts\EventTrigger.cs" />
+     <Compile Include="Assets\Scripts\FPSDisplay.cs" />
      <Compile Include="Assets\Scripts\GUIManager.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HowToPlayController.cs" />
@@ -79,15 +80,21 @@
      <Compile Include="Assets\Scripts\SingletonLoader.cs" />
      <Compile Include="Assets\Scripts\StartScreenController.cs" />
      <Compile Include="Assets\Scripts\StoryIntroController.cs" />
+     <Compile Include="Assets\Scripts\ToggleRenderCams.cs" />
      <Compile Include="Assets\Scripts\UITransformTest.cs" />
-     <Compile Include="Assets\dontdestroy.cs" />
      <None Include="Assets\BackfaceCullShader.shader" />
      <None Include="Assets\Materials\CustomFoliageShader.shader" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>

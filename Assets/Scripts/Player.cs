@@ -11,13 +11,11 @@ public class Player : MonoBehaviour {
 	//attempt to implement character controller
 	//public CameraFollow camPrefab;
 	public float acceleration=1f;
-	public float jumpHeight = 10f;
 	public bool canMoveAround = true;
 //	Vector3 newPos = new Vector3 (0f,0f,0f); 
 	public float TerminalVelocity = -20f;
 	public float speed = 4.0F;
 	public float rotateSpeed = 16.0f;
-	public float jumpSpeed = 8.0F;
 	public float gravity = -9.8F;
 	private Vector3 moveDirection = Vector3.zero;
 	//private CharacterController controller;
@@ -32,21 +30,30 @@ public class Player : MonoBehaviour {
     private bool mustTurnLeft = false;
     private bool mustTurnRight = false;
 
-	void Start(){
-		//controller = GetComponent<CharacterController>();
+    private Text navDirText;
 
-		//camPrefab = Instantiate (camPrefab) as CameraFollow;
+	void Start()
+    {
+        navDirText = GameObject.Find("Nav Direction Text").GetComponent<Text>();
         UIFogLeft = transform.FindChild("UIFog_left").gameObject.GetComponent<ParticleSystem>();
         UIFogRight = transform.FindChild("UIFog_right").gameObject.GetComponent<ParticleSystem>();
         UIFogLeft.Stop();
         UIFogRight.Stop();
+        SetNavDirText();
 	}
 	
-	private void Rotate (MazeDirection direction) {
+	private void Rotate (MazeDirection direction)
+    {
         Debug.Log("starting rotation");
 		currentDirection = direction;
+        SetNavDirText();
         isTurning = true;
 	}
+
+    private void SetNavDirText()
+    {
+        navDirText.text = ((MazeDirection)currentDirection).ToString().Substring(0,1);
+    }
 
     public MazeDirection GetCurrentDirection() { return currentDirection; }
 	
@@ -74,14 +81,6 @@ public class Player : MonoBehaviour {
 
         moveDirection = transform.TransformDirection(moveDirection);
         moveDirection *= speed;
-        if (controller.isGrounded)
-        {
-            if (Input.GetButton("Jump"))
-            {
-                Debug.Log("In Jump");
-                moveDirection.y += jumpHeight;
-            }
-        }
 
         moveDirection.y -= gravity * Time.deltaTime;
 
