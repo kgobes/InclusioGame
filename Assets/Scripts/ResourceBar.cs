@@ -43,7 +43,7 @@ public class ResourceBar : MonoBehaviour {
 		r3 = "";
 
 		healthText = GameObject.Find ("Health Text").GetComponent <Text>();
-		health = 100;
+		health = 70;
 
         guiManager = GameObject.Find("Canvas").GetComponent<GUIManager>();
 
