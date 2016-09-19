@@ -302,7 +302,7 @@ MonoBehaviour:
   acceleration: 1
   canMoveAround: 1
   TerminalVelocity: -20
-  speed: 3
+  speed: 4
   rotateSpeed: 8
   gravity: 9.80000019
 --- !u!124 &12491764
@@ -2537,7 +2537,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: speed
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: far clip plane

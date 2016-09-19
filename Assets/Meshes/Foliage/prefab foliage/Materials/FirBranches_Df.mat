@@ -94,16 +94,24 @@ Material:
         second: .5
       data:
         first:
+          name: _Cutoff2
+        second: .5
+      data:
+        first:
+          name: _Glossiness
+        second: .5
+      data:
+        first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
           name: _Parallax
         second: .0199999996
       data:
         first:
           name: _ZWrite
         second: 1
-      data:
-        first:
-          name: _Glossiness
-        second: .5
       data:
         first:
           name: _BumpScale
@@ -124,14 +132,6 @@ Material:
         first:
           name: _Mode
         second: 0
-      data:
-        first:
-          name: _Metallic
-        second: 0
-      data:
-        first:
-          name: _Cutoff2
-        second: .5
     m_Colors:
       data:
         first:
@@ -144,7 +144,7 @@ Material:
       data:
         first:
           name: _WaveAndDistance
-        second: {r: 12, g: .0366361067, b: 1, a: 1}
+        second: {r: 12, g: .0388899259, b: 1, a: 1}
       data:
         first:
           name: _WavingTint

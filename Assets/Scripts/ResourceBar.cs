@@ -7,6 +7,7 @@ public class ResourceBar : MonoBehaviour {
 	public Image resource1;
 	public Image resource2;
 	public Image resource3;
+    public Sprite resourceDefaultSprite;
 	private string r1;
     private string r2;
     private string r3;
@@ -33,6 +34,7 @@ public class ResourceBar : MonoBehaviour {
 		resource1 = GameObject.Find ("Resource1").GetComponent <Image>();
 		resource2 = GameObject.Find ("Resource2").GetComponent <Image>();
 		resource3 = GameObject.Find ("Resource3").GetComponent <Image>();
+        resourceDefaultSprite = Resources.Load<Sprite>("sprites/blurredcircle");
 		//resource1.sprite = Resources.Load<Sprite> ("PotofGold");
 
 		/*resource1.gameObject.SetActive (false); //use .enabled if this doesn't work
@@ -95,17 +97,17 @@ public class ResourceBar : MonoBehaviour {
 	}
 	public bool useResource(string imgName){
 		if (r1.Equals (imgName)) {
-			resource1.gameObject.SetActive (false);
+            resource1.sprite = resourceDefaultSprite;
 			r1 = "";
 			return true;
 		}
 		else if (r2.Equals (imgName)) {
-			resource2.gameObject.SetActive (false);
+            resource2.sprite = resourceDefaultSprite;
 			r2 = "";
 			return true;
 		}
 		else if (r3.Equals (imgName)) {
-			resource3.gameObject.SetActive (false);
+            resource3.sprite = resourceDefaultSprite;
 			r3 = "";
 			return true;
 		} else

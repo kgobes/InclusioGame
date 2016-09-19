@@ -4611,6 +4611,18 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11405722, guid: debc91a3bda16204dbde34cd3b217bb3, type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11405722, guid: debc91a3bda16204dbde34cd3b217bb3, type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11405722, guid: debc91a3bda16204dbde34cd3b217bb3, type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: debc91a3bda16204dbde34cd3b217bb3, type: 2}
   m_IsPrefabParent: 0
@@ -4836,6 +4848,7 @@ MonoBehaviour:
   resource1: {fileID: 0}
   resource2: {fileID: 0}
   resource3: {fileID: 0}
+  resourceDefaultSprite: {fileID: 0}
   healthBar: {fileID: 1116471124}
 --- !u!225 &1962613126
 CanvasGroup:
@@ -4863,7 +4876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2013695185
 MonoBehaviour:
   m_ObjectHideFlags: 0
