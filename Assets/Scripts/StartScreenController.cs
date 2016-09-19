@@ -6,6 +6,7 @@ public class StartScreenController : MonoBehaviour
 {
     CanvasGroup startPanel;
     CanvasGroup optionsPanel;
+    CanvasGroup aboutPanel;
     CanvasGroup instructionsPanel;
 
 	// Use this for initialization
@@ -13,9 +14,11 @@ public class StartScreenController : MonoBehaviour
     {
         startPanel = GameObject.Find("StartPanel").GetComponent<CanvasGroup>();
         optionsPanel = GameObject.Find("OptionsPanel").GetComponent<CanvasGroup>();
+        aboutPanel = GameObject.Find("AboutPanel").GetComponent<CanvasGroup>();
         instructionsPanel = GameObject.Find("InstructionsPanel").GetComponent<CanvasGroup>();
 
         SetPanelActive(optionsPanel, false);
+        SetPanelActive(aboutPanel, false);
         SetPanelActive(instructionsPanel, false);
         SetPanelActive(startPanel, true);
 	}
@@ -39,6 +42,7 @@ public class StartScreenController : MonoBehaviour
     {
         SetPanelActive(optionsPanel, false);
         SetPanelActive(instructionsPanel, false);
+        SetPanelActive(aboutPanel, false);
         SetPanelActive(startPanel, true);
     }
 
@@ -51,6 +55,12 @@ public class StartScreenController : MonoBehaviour
     public void OnPressInstructionsButton()
     {
         SetPanelActive(instructionsPanel, true);
+        SetPanelActive(startPanel, false);
+    }
+
+    public void OnPressAboutButton()
+    {
+        SetPanelActive(aboutPanel, true);
         SetPanelActive(startPanel, false);
     }
 
