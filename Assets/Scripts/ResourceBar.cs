@@ -21,6 +21,7 @@ public class ResourceBar : MonoBehaviour {
 
 	//Health
 	public static Text healthText;
+    public float startingHealth = 70;
 	public static float health;
     public Slider healthBar;
     float targetHealth;
@@ -49,17 +50,23 @@ public class ResourceBar : MonoBehaviour {
 
         guiManager = GameObject.Find("Canvas").GetComponent<GUIManager>();
 
+        health = startingHealth;
+        healthBar.value = health;
+        healthText.text = "Health: " + (int)health;
+
         SetResourceBarVisibility(false);
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if(Input.GetKeyDown(KeyCode.F10))
+        if (Debug.isDebugBuild)
         {
-            incrementHealth(-10f);
+            if (Input.GetKeyDown(KeyCode.F10))
+            {
+                incrementHealth(-10f);
+            }
         }
-	
 	}
 
 	public bool addResource(string imgName){

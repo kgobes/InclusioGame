@@ -4849,6 +4849,7 @@ MonoBehaviour:
   resource2: {fileID: 0}
   resource3: {fileID: 0}
   resourceDefaultSprite: {fileID: 0}
+  startingHealth: 70
   healthBar: {fileID: 1116471124}
 --- !u!225 &1962613126
 CanvasGroup:
